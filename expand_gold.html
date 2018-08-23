@@ -1,0 +1,79 @@
+<!--推广赚金-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>推广赚金</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">推广赚金</h1>
+
+			</header>
+			<div class="mui-content ">
+				<ul class="mui-table-view mt0">
+					<li class="mui-table-view-cell" @click="zhu('promote_detail')">
+						<a class="mui-navigate-right">
+							推广总数
+							<span class="fz14 ls fr mr20">{{sd.spreadNumber}}个</span>
+						</a>
+					</li>
+					<li class="mui-table-view-cell" @click="zhu('promote_detail_er')">
+						<a class="mui-navigate-right">
+							累计奖励
+							<span class="fz14 ls fr mr20">{{sd.spreadMoney}}金</span>
+						</a>
+					</li>
+				</ul>
+
+				<section class="mt20">
+					<img src="img/sd_dre_w.jpg" class="w100">
+				</section>
+
+				<p class="pd mt40">
+					<a class="mui-btn bgls w100 fz16 pt10 pm10 " @click="d_tihser">分享给朋友</a>
+				</p>
+			</div>
+
+		</section>
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					sd:""
+				},
+				methods: {
+					d_tihser: function() {
+						mui.alert("推广链接已复制，可以分享给微信、QQ、微博好友哦!", ' ', '', '', 'div')
+						copyShareUrl(this.sd.shareText)
+					}
+				},
+				mounted: function() {
+
+					var getSpreadCount = {},
+						th = this
+					getSpreadCount.key = localStorage.token
+					m_ajax("/api/buyer/getSpreadCount", getSpreadCount, function(data) {
+						th.sd=data
+					})
+				}
+			})
+		</script>
+	</body>
+
+</html>

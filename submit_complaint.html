@@ -1,0 +1,78 @@
+<!--申述-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>申述</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/mui.zoom.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper"> 
+
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">申述</h1>
+
+        </header>
+        <div class="mui-content ">
+
+            <p class="pd pt10 pm10 fz16 z3">
+                第一步，选择申述类型
+            </p>
+
+            <p class="pd pt10 pm10 bgff fz16 cen z3 pr" @click="show_er">
+                  {{s_der_rt}}
+                <i class="dx icon-down down_eererrt"></i>
+            </p>
+
+            <p class="pd pt10 pm10 fz16 z3">
+                填写申诉说明并添加图片
+            </p>
+
+            <textarea placeholder="申诉说明....." class="huif_uyh_e" v-model="content"></textarea>
+
+            <p class="pd pt10 pm10 z6 cen bgff" @click="sd_jh_der">上传图片</p>
+            <section class="mui-row pl10 mt20" v-if="tupin_sd.length>0">
+                <section class="mui-col-xs-4 pr10 mb10" v-for="(sd,idx) in tupin_sd">
+
+                    <section class="dsf_jh_der_r fz12 cen pr">
+                        <img :src="sd" data-preview-src="" :data-preview-group="1">
+
+                        <span class="sd_hjg_drrrt yj bgred" @click="deled(idx)">
+                                <i class="mui-icon mui-icon-closeempty cz"></i>
+                            </span>
+                    </section>
+
+
+
+                </section>
+
+            </section>
+<!--@click="zhu('complaint_center_xq')"-->
+            <p class="pd pt10 pm10 z6 cen bgff mt20 " @click="tijiao_sr">提交申诉</p>
+
+        </div>
+    </section>
+
+ 
+
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/mui.zoom.js"></script>
+    <script src="js/mui.previewimage.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/submit_complaint.js"></script>
+</body>
+
+</html>

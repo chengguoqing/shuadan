@@ -1,0 +1,87 @@
+<!--首页-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+ 
+<body>
+<section id="seek_apper"> 
+ 
+    <section class="pt40 pm10 index_top mui-row cen">
+        <section class="mui-col-xs-6 brm pm10" @click="zhu('commission_account')">
+            <p class="cf fz16 pt5">佣金收益(金)</p>
+            <p class="fz36 cf mt30">
+                {{index_s.commission}}
+            </p>
+        </section>
+        
+              <section class="mui-col-xs-6"  @click="zhu('principal_accounts')">
+           <p class="cf fz16 pt5">本金收益(金)</p>
+            <p class="fz36 cf mt30">
+           {{index_s.capital}}
+            </p>
+        </section>
+    </section>
+    <section class="jinri_er pt10 pm10 mui-row cen">
+        <p class="fz13 mui-col-xs-4">
+            今日收入{{index_s.dailyMoney}}金
+        </p>
+          <p class="fz13 mui-col-xs-4">
+            任务收入{{index_s.taskMoney}}金
+        </p>
+          <p class="fz13 mui-col-xs-4">
+            推广奖励{{index_s.spreadMoney}}金
+        </p>
+    </section>
+    <section class="pd dsf_hjh_deert bgff dian" @tap="zhu('announcement')">
+        <span class="ye fz15">
+        <i class=" dx icon-xiaolaba fz26 cz"></i>
+       	 <span class="cz">公告：</span> 
+         <span class="  z6 cz  ">
+        {{index_s.afficheTitle}}
+        </span> 
+        
+        </span>
+       
+        
+    </section>
+    
+    
+    <section class="mt10 bgff pd pt10 pm10" @click="zhu('tutorial')">
+        <span class="sd_hgh_dert cz">
+        <i class="dx icon-lingdang cf fz26"></i>
+        </span>
+        <span class="ml10 z6 fg_jhh_derer">新手教学</span>
+    </section>
+        <section class="btm bgff pd pt10 pm10" v-if="index_s.isPassedTask==0">
+        <span class="sd_hgh_dert cz ab">
+        <i class="dx icon-zhuyi cf fz26"></i>
+        </span>
+        <span class="ml10 z6 cz ">新手任务</span>
+    </section>
+    
+    <section class="s_jiedan_ere ">
+        
+        <p class="jd" @click="zhu('pick_task')">接 单</p>
+    </section>
+    
+
+
+	
+    </section>
+   <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/index_er.js"> </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!--公告-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>公告</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #fff;
+        }
+
+.sdd_jh_de{
+	display: none;
+}
+    </style>
+</head> 
+
+<body>
+    <section id="seek_apper">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">公告</h1>
+
+
+        </header>
+        <div class="mui-content sdd_jh_de" :class="uisd_sdf?'show':''">
+
+            <section class="pd pt10 pm10">
+
+                <p class="fz16 z3">{{ds.title}}</p>
+                <p class="fz12 mt10">
+                    发布时间:{{ds.createTime|time}}
+                </p>
+
+
+
+                <p class="z9 fz16 mt10">
+                    {{ds.content}}
+                </p>
+            </section>
+
+        </div>
+
+    </section>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({
+            el: '#seek_apper',
+            data: {
+                ds: "",
+                uisd_sdf:false
+            },
+            methods: {
+
+
+            },
+            mounted: function() {
+                var getAffiche = {},
+                    th = this
+
+                mui.plusReady(function() {
+                     var self = plus.webview.currentWebview();
+                    getAffiche.key = localStorage.token
+                    getAffiche.id = self.id_ere
+                    m_ajax("/api/account/getAffiche", getAffiche, function(data) {
+                        th.ds = data
+                        th.uisd_sdf=true
+                    })
+
+                })
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

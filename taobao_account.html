@@ -1,0 +1,64 @@
+<!--淘宝账户-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝账户</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">淘宝账户</h1>
+
+        </header>
+        <div class="mui-content ">
+
+            <section class="pd pt10 pm10 bbm" v-for="sd in BindingList" @click="zhu('taobao_account_bj','',{id_y:sd.id})">
+                <p class="mui-row fz16">
+                    <i class="dx icon-pinpaibiaoshi-aliwangwang fz22 cz"></i>
+                    <span class="cz">{{sd.accountName}}</span>
+
+                    <span class="fr ">{{sd.shippingName}}</span>
+                </p>
+                <p class="fz15 mt5">
+                    收货地址:{{sd.shippingAddress}}
+                </p>
+                <p class="fz15 mt5">
+                    手机号码:{{sd.shippingPhone}}
+                </p>
+                <p class="tr ls">
+                    {{sd.status|sd_ert}}
+                </p>
+
+            </section>
+
+
+        </div>
+
+
+        <p class="mt30 pt10 pm10 bgff ls cen fz16 dsf_jh_dfeert" @click="zhu('new_account')" v-if="BindingList.length<3">
+            新增一个淘宝账号
+        </p>
+
+    </section>
+
+
+
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/taobao_account.js"></script>
+</body>
+
+</html>

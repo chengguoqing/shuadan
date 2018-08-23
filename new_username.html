@@ -1,0 +1,116 @@
+<!--新用户名-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>新用户名</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">用户名修改</h1>
+
+        </header>
+        <div class="mui-content ">
+            <form class="mui-input-group ">
+                <div class="mui-input-row">
+
+                    <input type="text" class="mui-input-clear w100" v-model="form.mobile" placeholder="填写新的手机号">
+                </div>
+                <div class="mui-input-row pr">
+
+                    <input type="text" class=" w100" placeholder="获取验证码" v-model="form.verifyCode">
+                    <span class="ls wang_eert" @click="huoqu_er">获取验证码</span>
+                </div>
+
+                <div class="mui-input-row">
+
+                    <input type="password" class="mui-input-clear w100" v-model="form.password" placeholder="填写登入密码">
+                </div>
+            </form>
+
+
+            <p class="mt30 pt10 pm10 bgff ls cen fz16" @click="tijiao_d">
+                提交
+            </p>
+        </div>
+    </section>
+
+
+
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({
+            el: '#seek_apper',
+            data: {
+                form: {
+                    mobile: "", //新手机号	
+                    password: "", //	买家密码
+                    verifyCode: "" //验证码
+                }
+            },
+            methods: {
+                huoqu_er: function() { //获取验证码按钮触发
+                    if (!yanza.phone(this.form.mobile)) {
+                        mui.toast("手机号格式不正确");
+                        return
+                    }
+                    var sendCode = {},
+                        th = this
+                    sendCode.mobile = this.form.mobile
+                    sendCode.event = 1
+                    sendCode.key = localStorage.key_s
+                    //获取验证码接口
+                    m_ajax("/api/sms/sendCode", sendCode, function(data) {
+
+                    })
+                },
+                tijiao_d: function() {
+                    var doModifyMobileStep2 = {},
+                        th = this
+                    if (!yanza.phone(this.form.mobile)) {
+                        mui.toast("手机号格式不正确");
+                        return
+                    }
+                    if (!this.form.verifyCode) {
+                        mui.toast("请输入验证码");
+                        return
+                    }
+                    if (!this.form.password) {
+                        mui.toast("请输入登录密码");
+                        return
+                    }
+                    this.form.key = localStorage.key_s
+                    m_ajax("/api/buyer/doModifyMobileStep2", this.form, function(data) {
+                        mui.toast("修改成功");
+                        var ws = plus.webview.currentWebview() //当前窗口;
+                        ws.close();
+                        var seldf = plus.webview.getLaunchWebview()
+                        seldf.evalJS("sdfwwer_df();");
+                        plus.webview.show(seldf)
+                    })
+                }
+            },
+            mounted: function() {
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

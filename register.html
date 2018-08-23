@@ -1,0 +1,80 @@
+<!--注册-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" /> 
+</head>
+
+<body>
+    <section id="seek_apper">
+    <header class="mui-bar mui-bar-nav asd_uy_dftx">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+        <h1 class="mui-title cf">注册</h1>
+        <span class="sdeertx_er mui-pull-right " @click="tzqq_w">
+                    <i class="dx icon-qq  fz20 cf "></i>
+                    <p class="cf fz12">客服</p>
+                </span>
+
+    </header>
+    <div class="mui-content ">
+
+        <form class="mui-input-group mt20">
+            <div class="mui-input-row pr" v-if="type_y==0">
+
+                <input type="number" class="mui-input-clear w100 fz16" placeholder="请输入邀请人ID" v-model="form.pid">
+            </div>
+
+        </form>
+        <p class="fz16 z3 pl20 pt10 pm10" v-if="type_y==0">
+            官方邀请人ID:200000
+        </p>
+ 
+        <form class="mui-input-group ">
+            <div class="mui-input-row pr">
+
+                <input type="tel" class="mui-input-clear w100 fz16" placeholder="请输入手机号" v-model="form.mobile">
+            </div>
+            <div class="mui-input-row pr">
+ 
+                <input type="text" class=" w100 fz16" placeholder="请输入验证码" v-model="form.verifyCode">
+                <span class="ls wang_eert" @click="huoqu_er">获取验证码</span>
+            </div>
+        </form>
+
+
+
+        <form class="mui-input-group mt20">
+            <div class="mui-input-row pr">
+
+                <input type="password" class="mui-input-clear w100 fz16" placeholder="请输入6-16位密码" v-model="form.jpassword">
+            </div>
+            <div class="mui-input-row pr">
+
+                <input type="password" class="mui-input-clear w100 fz16" placeholder="请确认密码" v-model="form.password">
+            </div>
+        </form>
+
+
+
+        <p class="mt30 pt10 pm10 bgff ls cen fz16" @click="zhuce_s">
+            注册
+        </p>
+
+
+    </div>
+        </section>
+   <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/register.js"></script>
+</body>
+
+</html>

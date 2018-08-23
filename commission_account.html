@@ -1,0 +1,62 @@
+<!--佣金账户-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>佣金账户</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">佣金账户</h1>
+            <span class="sdeertx_er mui-pull-right ">
+                  
+                    <p class="cf fz16 mt10" @tap="zhu('commission_withdrawal')">提现</p>
+                </span>
+  
+        </header> 
+    
+                    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                
+                
+            <section class="mui-row pd pt10 pm10 bbm" v-for="df in sd"  @tap="zhu('commission_details','',{title_e:'佣金详情',date:df})">
+                    <section class="mui-col-xs-8 ">
+                        <p class="dian fz16 ls">{{df.desc}}</p>
+                        <p class="mt5">
+                       {{df.createTime|time}}
+                        </p>
+                    </section>
+                <section class="mui-col-xs-4">
+                    <p class="ls fz16 tr">{{df.money}}</p>
+                         <p class="mt5 tr">
+                     余额：{{df.balance}}
+                        </p>
+                </section>
+            
+            </section>
+                
+                <p class="qc"></p>
+                
+                        </div>
+            </div>
+
+
+    </section>
+
+    <script src="js/mui.min.js"></script>
+ <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/commission_account.js"></script>
+</body>
+
+</html>

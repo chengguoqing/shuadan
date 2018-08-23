@@ -1,0 +1,75 @@
+<!--回复申述-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>回复申述</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">回复申述</h1>
+
+			</header>
+			<div class="mui-content ">
+
+				<section class="mt10">
+
+					<textarea placeholder="回复内容....." class="huif_uyh_e" v-model="content"></textarea>
+				</section>
+
+				<p class="mt20 pt10 pm10 bgff ls cen fz16" @click="tijiao">
+					提交
+				</p>
+			</div>
+
+		</section>
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					content: "",
+					th_id: 0
+				},
+				methods: {
+					tijiao: function() {
+						var doReplyComplaint = {}
+						doReplyComplaint.key = localStorage.token
+						doReplyComplaint.id = this.th_id
+						doReplyComplaint.content = this.content
+						m_ajax("/api/complaint/doReplyComplaint", doReplyComplaint, function(data) {
+							var register = plus.webview.getWebviewById('complaint_center_xq');
+							register.evalJS("shuax_s();");
+							register.show()
+							var wswert = plus.webview.currentWebview() //当前窗口;
+							wswerter.close();
+						}) 
+					}
+				},
+				mounted: function() {
+					var th = this
+					mui.plusReady(function() {
+						var self = plus.webview.currentWebview();
+						var kmn = self.ytds_id; //获取页面传过来的值
+						th.th_id = kmn
+					})
+				}
+			})
+		</script>
+	</body>
+
+</html>

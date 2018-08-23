@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>System Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+        /* Base */
+        body {
+            color: #333;
+            font: 14px Verdana, "Helvetica Neue", helvetica, Arial, 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0 20px 20px;
+            word-break: break-word;
+        }
+        h1{
+            margin: 10px 0 0;
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 32px;
+        }
+        h2{
+            color: #4288ce;
+            font-weight: 400;
+            padding: 6px 0;
+            margin: 6px 0 0;
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+        }
+        h3.subheading {
+            color: #4288ce;
+            margin: 6px 0 0;
+            font-weight: 400;
+        }
+        h3{
+            margin: 12px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        abbr{
+            cursor: help;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+        a{
+            color: #868686;
+            cursor: pointer;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        .line-error{
+            background: #f8cbcb;
+        }
+
+        .echo table {
+            width: 100%;
+        }
+
+        .echo pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f7f7f7;
+            border: 0;
+            border-radius: 3px;
+            font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
+        .echo pre > pre {
+            padding: 0;
+            margin: 0;
+        }
+        /* Layout */
+        .col-md-3 {
+            width: 25%;
+        }
+        .col-md-9 {
+            width: 75%;
+        }
+        [class^="col-md-"] {
+            float: left;
+        }
+        .clearfix {
+            clear:both;
+        }
+        @media only screen 
+        and (min-device-width : 375px) 
+        and (max-device-width : 667px) { 
+            .col-md-3,
+            .col-md-9 {
+                width: 100%;
+            }
+        }
+        /* Exception Info */
+        .exception {
+            margin-top: 20px;
+        }
+        .exception .message{
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-bottom: 0 none;
+            line-height: 18px;
+            font-size:16px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            font-family: Consolas,"Liberation Mono",Courier,Verdana,"微软雅黑";
+        }
+
+        .exception .code{
+            float: left;
+            text-align: center;
+            color: #fff;
+            margin-right: 12px;
+            padding: 16px;
+            border-radius: 4px;
+            background: #999;
+        }
+        .exception .source-code{
+            padding: 6px;
+            border: 1px solid #ddd;
+
+            background: #f9f9f9;
+            overflow-x: auto;
+
+        }
+        .exception .source-code pre{
+            margin: 0;
+        }
+        .exception .source-code pre ol{
+            margin: 0;
+            color: #4288ce;
+            display: inline-block;
+            min-width: 100%;
+            box-sizing: border-box;
+        font-size:14px;
+            font-family: "Century Gothic",Consolas,"Liberation Mono",Courier,Verdana;
+            padding-left: 56px;
+        }
+        .exception .source-code pre li{
+            border-left: 1px solid #ddd;
+            height: 18px;
+            line-height: 18px;
+        }
+        .exception .source-code pre code{
+            color: #333;
+            height: 100%;
+            display: inline-block;
+            border-left: 1px solid #fff;
+        font-size:14px;
+            font-family: Consolas,"Liberation Mono",Courier,Verdana,"微软雅黑";
+        }
+        .exception .trace{
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-top: 0 none;
+            line-height: 16px;
+        font-size:14px;
+            font-family: Consolas,"Liberation Mono",Courier,Verdana,"微软雅黑";
+        }
+        .exception .trace ol{
+            margin: 12px;
+        }
+        .exception .trace ol li{
+            padding: 2px 4px;
+        }
+        .exception div:last-child{
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Exception Variables */
+        .exception-var table{
+            width: 100%;
+            margin: 12px 0;
+            box-sizing: border-box;
+            table-layout:fixed;
+            word-wrap:break-word;            
+        }
+        .exception-var table caption{
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 6px 0;
+        }
+        .exception-var table caption small{
+            font-weight: 300;
+            display: inline-block;
+            margin-left: 10px;
+            color: #ccc;
+        }
+        .exception-var table tbody{
+            font-size: 13px;
+            font-family: Consolas,"Liberation Mono",Courier,"微软雅黑";
+        }
+        .exception-var table td{
+            padding: 0 6px;
+            vertical-align: top;
+            word-break: break-all;
+        }
+        .exception-var table td:first-child{
+            width: 28%;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .exception-var table td pre{
+            margin: 0;
+        }
+
+        /* Copyright Info */
+        .copyright{
+            margin-top: 24px;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+        }
+
+        /* SPAN elements with the classes below are added by prettyprint. */
+        pre.prettyprint .pln { color: #000 }  /* plain text */
+        pre.prettyprint .str { color: #080 }  /* string content */
+        pre.prettyprint .kwd { color: #008 }  /* a keyword */
+        pre.prettyprint .com { color: #800 }  /* a comment */
+        pre.prettyprint .typ { color: #606 }  /* a type name */
+        pre.prettyprint .lit { color: #066 }  /* a literal value */
+        /* punctuation, lisp open bracket, lisp close bracket */
+        pre.prettyprint .pun, pre.prettyprint .opn, pre.prettyprint .clo { color: #660 }
+        pre.prettyprint .tag { color: #008 }  /* a markup tag name */
+        pre.prettyprint .atn { color: #606 }  /* a markup attribute name */
+        pre.prettyprint .atv { color: #080 }  /* a markup attribute value */
+        pre.prettyprint .dec, pre.prettyprint .var { color: #606 }  /* a declaration; a variable name */
+        pre.prettyprint .fun { color: red }  /* a function name */
+    </style>
+</head>
+<body>
+    <div class="echo">
+            </div>
+        <div class="exception">
+    <div class="message">
+        
+            <div class="info">
+                <div>
+                    <h2>[0]&nbsp;<abbr title="think\exception\ClassNotFoundException">ClassNotFoundException</abbr> in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Loader.php line 457">Loader.php line 457</a></h2>
+                </div>
+                <div><h1>类不存在:app\common\Logic\Sms</h1></div>
+            </div>
+        
+    </div>
+	        <div class="source-code">
+            <pre class="prettyprint lang-php"><ol start="448"><li class="line-448"><code>
+</code></li><li class="line-449"><code>        if (class_exists($class)) {
+</code></li><li class="line-450"><code>            $model = new $class();
+</code></li><li class="line-451"><code>        } else {
+</code></li><li class="line-452"><code>            $class = str_replace('\\' . $module . '\\', '\\' . $common . '\\', $class);
+</code></li><li class="line-453"><code>
+</code></li><li class="line-454"><code>            if (class_exists($class)) {
+</code></li><li class="line-455"><code>                $model = new $class();
+</code></li><li class="line-456"><code>            } else {
+</code></li><li class="line-457"><code>                throw new ClassNotFoundException('class not exists:' . $class, $class);
+</code></li><li class="line-458"><code>            }
+</code></li><li class="line-459"><code>        }
+</code></li><li class="line-460"><code>
+</code></li><li class="line-461"><code>        return self::$instance[$uid] = $model;
+</code></li><li class="line-462"><code>    }
+</code></li><li class="line-463"><code>
+</code></li><li class="line-464"><code>    /**
+</code></li><li class="line-465"><code>     * 实例化（分层）控制器 格式：[模块名/]控制器名
+</code></li><li class="line-466"><code>     * @access public
+</code></li></ol></pre>
+        </div>
+	        <div class="trace">
+            <h2>Call Stack</h2>
+            <ol>
+                <li>in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Loader.php line 457">Loader.php line 457</a></li>
+                                <li>
+                at <abbr title="think\Loader">Loader</abbr>::model('Sms', 'Logic', <em>false</em>) in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/helper.php line 169">helper.php line 169</a>                </li>
+                                <li>
+                at model('Sms', 'Logic') in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/application/api/controller/Index.php line 62">Index.php line 62</a>                </li>
+                                <li>
+                at <abbr title="app\api\controller\Index">Index</abbr>->doRegister()                </li>
+                                <li>
+                at <abbr title="ReflectionMethod">ReflectionMethod</abbr>->invokeArgs(<em>object</em>(<abbr title="app\api\controller\Index">Index</abbr>), []) in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/library/think/App.php line 343">App.php line 343</a>                </li>
+                                <li>
+                at <abbr title="think\App">App</abbr>::invokeMethod([<em>object</em>(<abbr title="app\api\controller\Index">Index</abbr>), 'doregister'], []) in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/library/think/App.php line 606">App.php line 606</a>                </li>
+                                <li>
+                at <abbr title="think\App">App</abbr>::module(['api', 'index', 'doRegister'], ['app_host' => '', 'app_debug' => <em>true</em>, 'app_trace' => <em>false</em>, ...], <em>null</em>) in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/library/think/App.php line 457">App.php line 457</a>                </li>
+                                <li>
+                at <abbr title="think\App">App</abbr>::exec(['type' => 'module', 'module' => ['api', 'index', 'doRegister']], ['app_host' => '', 'app_debug' => <em>true</em>, 'app_trace' => <em>false</em>, ...]) in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/library/think/App.php line 139">App.php line 139</a>                </li>
+                                <li>
+                at <abbr title="think\App">App</abbr>::run() in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/start.php line 19">start.php line 19</a>                </li>
+                                <li>
+                at require('<a class="toggle" title="/www/wwwroot/test_xiaobaitu/thinkphp/start.php">/www/wwwroot/test_xi...</a>') in <a class="toggle" title="/www/wwwroot/test_xiaobaitu/public/index.php line 25">index.php line 25</a>                </li>
+                            </ol>
+        </div>
+    </div>
+        
+    
+        <div class="exception-var">
+        <h2>Environment Variables</h2>
+                <div>
+                        <div class="clearfix">
+                <div class="col-md-3"><strong>GET Data</strong></div>
+                <div class="col-md-9"><small>empty</small></div>
+            </div>
+                    </div>
+                <div>
+                        <h3 class="subheading">POST Data</h3>
+            <div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>pid</strong></div>
+                    <div class="col-md-9"><small>
+                        200000                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>mobile</strong></div>
+                    <div class="col-md-9"><small>
+                        13538190372                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>verifyCode</strong></div>
+                    <div class="col-md-9"><small>
+                        3397                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>jpassword</strong></div>
+                    <div class="col-md-9"><small>
+                        kiss1001                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>password</strong></div>
+                    <div class="col-md-9"><small>
+                        kiss1001                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>mobileImei</strong></div>
+                    <div class="col-md-9"><small>
+                                            </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>mobileOs</strong></div>
+                    <div class="col-md-9"><small>
+                        2                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>key</strong></div>
+                    <div class="col-md-9"><small>
+                        miagr4tgnoe3lv1drre480f3d5                    </small></div>
+                </div>
+                            </div>
+                    </div>
+                <div>
+                        <div class="clearfix">
+                <div class="col-md-3"><strong>Files</strong></div>
+                <div class="col-md-9"><small>empty</small></div>
+            </div>
+                    </div>
+                <div>
+                        <div class="clearfix">
+                <div class="col-md-3"><strong>Cookies</strong></div>
+                <div class="col-md-9"><small>empty</small></div>
+            </div>
+                    </div>
+                <div>
+                        <div class="clearfix">
+                <div class="col-md-3"><strong>Session</strong></div>
+                <div class="col-md-9"><small>empty</small></div>
+            </div>
+                    </div>
+                <div>
+                        <h3 class="subheading">Server/Request Data</h3>
+            <div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>USER</strong></div>
+                    <div class="col-md-9"><small>
+                        www                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HOME</strong></div>
+                    <div class="col-md-9"><small>
+                        /home/www                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>FCGI_ROLE</strong></div>
+                    <div class="col-md-9"><small>
+                        RESPONDER                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>SCRIPT_FILENAME</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/public/index.php                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>QUERY_STRING</strong></div>
+                    <div class="col-md-9"><small>
+                        s=/api/index/doRegister                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>REQUEST_METHOD</strong></div>
+                    <div class="col-md-9"><small>
+                        POST                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>CONTENT_TYPE</strong></div>
+                    <div class="col-md-9"><small>
+                        application/x-www-form-urlencoded; charset=UTF-8                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>CONTENT_LENGTH</strong></div>
+                    <div class="col-md-9"><small>
+                        136                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>SCRIPT_NAME</strong></div>
+                    <div class="col-md-9"><small>
+                        /index.php                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>REQUEST_URI</strong></div>
+                    <div class="col-md-9"><small>
+                        /api/index/doRegister                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>DOCUMENT_URI</strong></div>
+                    <div class="col-md-9"><small>
+                        /index.php                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>DOCUMENT_ROOT</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/public                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>SERVER_PROTOCOL</strong></div>
+                    <div class="col-md-9"><small>
+                        HTTP/1.1                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>GATEWAY_INTERFACE</strong></div>
+                    <div class="col-md-9"><small>
+                        CGI/1.1                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>SERVER_SOFTWARE</strong></div>
+                    <div class="col-md-9"><small>
+                        nginx/1.8.1                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>REMOTE_ADDR</strong></div>
+                    <div class="col-md-9"><small>
+                        113.65.31.116                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>REMOTE_PORT</strong></div>
+                    <div class="col-md-9"><small>
+                        26836                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>SERVER_ADDR</strong></div>
+                    <div class="col-md-9"><small>
+                        172.27.0.3                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>SERVER_PORT</strong></div>
+                    <div class="col-md-9"><small>
+                        80                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>SERVER_NAME</strong></div>
+                    <div class="col-md-9"><small>
+                        test.xiaobay.com                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>REDIRECT_STATUS</strong></div>
+                    <div class="col-md-9"><small>
+                        200                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>PATH_INFO</strong></div>
+                    <div class="col-md-9"><small>
+                        /api/index/doRegister                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_HOST</strong></div>
+                    <div class="col-md-9"><small>
+                        test.xiaobay.com                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_CONNECTION</strong></div>
+                    <div class="col-md-9"><small>
+                        keep-alive                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_CONTENT_LENGTH</strong></div>
+                    <div class="col-md-9"><small>
+                        136                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_ACCEPT</strong></div>
+                    <div class="col-md-9"><small>
+                        application/json, text/javascript, */*; q=0.01                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_ORIGIN</strong></div>
+                    <div class="col-md-9"><small>
+                        http://127.0.0.1:8020                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_USER_AGENT</strong></div>
+                    <div class="col-md-9"><small>
+                        Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_CONTENT_TYPE</strong></div>
+                    <div class="col-md-9"><small>
+                        application/x-www-form-urlencoded; charset=UTF-8                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_REFERER</strong></div>
+                    <div class="col-md-9"><small>
+                        http://127.0.0.1:8020/%e5%88%b7%e5%8d%95app/register.html                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_ACCEPT_ENCODING</strong></div>
+                    <div class="col-md-9"><small>
+                        gzip, deflate                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>HTTP_ACCEPT_LANGUAGE</strong></div>
+                    <div class="col-md-9"><small>
+                        zh-CN,zh;q=0.9                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>PHP_SELF</strong></div>
+                    <div class="col-md-9"><small>
+                        /index.php                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>REQUEST_TIME_FLOAT</strong></div>
+                    <div class="col-md-9"><small>
+                        1532840127.6277                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>REQUEST_TIME</strong></div>
+                    <div class="col-md-9"><small>
+                        1532840127                    </small></div>
+                </div>
+                            </div>
+                    </div>
+                <div>
+                        <div class="clearfix">
+                <div class="col-md-3"><strong>Environment Variables</strong></div>
+                <div class="col-md-9"><small>empty</small></div>
+            </div>
+                    </div>
+                <div>
+                        <h3 class="subheading">ThinkPHP Constants</h3>
+            <div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>APP_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/public/../application/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>THINK_VERSION</strong></div>
+                    <div class="col-md-9"><small>
+                        5.0.20                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>THINK_START_TIME</strong></div>
+                    <div class="col-md-9"><small>
+                        1532840127.6281                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>THINK_START_MEM</strong></div>
+                    <div class="col-md-9"><small>
+                        268536                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>EXT</strong></div>
+                    <div class="col-md-9"><small>
+                        .php                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>DS</strong></div>
+                    <div class="col-md-9"><small>
+                        /                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>THINK_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/thinkphp/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>LIB_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/thinkphp/library/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>CORE_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/thinkphp/library/think/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>TRAIT_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/thinkphp/library/traits/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>ROOT_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>EXTEND_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/extend/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>VENDOR_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/vendor/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>RUNTIME_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/runtime/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>LOG_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/runtime/log/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>CACHE_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/runtime/cache/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>TEMP_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/runtime/temp/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>CONF_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/public/../application/                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>CONF_EXT</strong></div>
+                    <div class="col-md-9"><small>
+                        .php                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>ENV_PREFIX</strong></div>
+                    <div class="col-md-9"><small>
+                        PHP_                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>IS_CLI</strong></div>
+                    <div class="col-md-9"><small>
+                        false                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>IS_WIN</strong></div>
+                    <div class="col-md-9"><small>
+                        false                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>RANDOM_COMPAT_READ_BUFFER</strong></div>
+                    <div class="col-md-9"><small>
+                        8                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>PHP_INT_MIN</strong></div>
+                    <div class="col-md-9"><small>
+                        -9223372036854775808                    </small></div>
+                </div>
+                                <div class="clearfix">
+                    <div class="col-md-3"><strong>ADDON_PATH</strong></div>
+                    <div class="col-md-9"><small>
+                        /www/wwwroot/test_xiaobaitu/addons/                    </small></div>
+                </div>
+                            </div>
+                    </div>
+            </div>
+    
+    <div class="copyright">
+        <a title="官方网站" href="http://www.thinkphp.cn">ThinkPHP</a> 
+        <span>V5.0.20</span> 
+        <span>{ 十年磨一剑-为API开发设计的高性能框架 }</span>
+    </div>
+        <script>
+        var LINE = 457;
+
+        function $(selector, node){
+            var elements;
+
+            node = node || document;
+            if(document.querySelectorAll){
+                elements = node.querySelectorAll(selector);
+            } else {
+                switch(selector.substr(0, 1)){
+                    case '#':
+                        elements = [node.getElementById(selector.substr(1))];
+                        break;
+                    case '.':
+                        if(document.getElementsByClassName){
+                            elements = node.getElementsByClassName(selector.substr(1));
+                        } else {
+                            elements = get_elements_by_class(selector.substr(1), node);
+                        }
+                        break;
+                    default:
+                        elements = node.getElementsByTagName();
+                }
+            }
+            return elements;
+
+            function get_elements_by_class(search_class, node, tag) {
+                var elements = [], eles, 
+                    pattern  = new RegExp('(^|\\s)' + search_class + '(\\s|$)');
+
+                node = node || document;
+                tag  = tag  || '*';
+
+                eles = node.getElementsByTagName(tag);
+                for(var i = 0; i < eles.length; i++) {
+                    if(pattern.test(eles[i].className)) {
+                        elements.push(eles[i])
+                    }
+                }
+
+                return elements;
+            }
+        }
+
+        $.getScript = function(src, func){
+            var script = document.createElement('script');
+            
+            script.async  = 'async';
+            script.src    = src;
+            script.onload = func || function(){};
+            
+            $('head')[0].appendChild(script);
+        }
+
+        ;(function(){
+            var files = $('.toggle');
+            var ol    = $('ol', $('.prettyprint')[0]);
+            var li    = $('li', ol[0]);   
+
+            // 短路径和长路径变换
+            for(var i = 0; i < files.length; i++){
+                files[i].ondblclick = function(){
+                    var title = this.title;
+
+                    this.title = this.innerHTML;
+                    this.innerHTML = title;
+                }
+            }
+
+            // 设置出错行
+            var err_line = $('.line-' + LINE, ol[0])[0];
+            err_line.className = err_line.className + ' line-error';
+
+            $.getScript('//cdn.bootcss.com/prettify/r298/prettify.min.js', function(){
+                prettyPrint();
+
+                // 解决Firefox浏览器一个很诡异的问题
+                // 当代码高亮后，ol的行号莫名其妙的错位
+                // 但是只要刷新li里面的html重新渲染就没有问题了
+                if(window.navigator.userAgent.indexOf('Firefox') >= 0){
+                    ol[0].innerHTML = ol[0].innerHTML;
+                }
+            });
+
+        })();
+    </script>
+    </body>
+</html>

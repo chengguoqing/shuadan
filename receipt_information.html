@@ -1,0 +1,149 @@
+<!--修改收货信息-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>修改收货信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">修改收货信息</h1>
+
+			</header>
+			<div class="mui-content ">
+				<p class=" pt10 pm10 fz16 z3 pd">
+					账户信息
+
+				</p>
+
+				<form class="mui-input-group  act">
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" placeholder="请输入账号" v-model="form.accountName">
+					</div>
+
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" placeholder="收货人" v-model="form.shippingName">
+					</div>
+
+					<div class="mui-input-row pr">
+
+						<input type="tel" class="mui-input-clear w100 fz16" placeholder="收货人手机" v-model="form.shippingPhone">
+					</div>
+
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" readonly placeholder="省份、地级市、县级市" v-model="sd_de_e">
+					</div>
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" placeholder="详细地址" v-model="form.shippingStreet">
+					</div>
+
+				</form>
+
+				<p class="mt30 pt10 pm10 bgff ls cen fz16" @click="sd_jh_d">
+					提交审核
+				</p>
+
+			</div>
+
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/city.data.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					sd_de_e: "",
+					form: {},
+				},
+				methods: {
+					shg_err: function() {
+						var th = this
+						this.picker.show(function(rl) {
+							th.sd_de_e = rl[0].text + "-" + rl[1].text + "-" + rl[2].text
+							th.from.shippingCity = rl[0].text
+							th.from.data.shippingProvince = rl[1].text
+							th.from.data.shippingCount = rl[2].text
+						})
+					},
+					sd_jh_d: function() {
+						if(!this.form.accountName) {
+							mui.toast("请输入第三方账号");
+							return
+						}
+						if(!this.form.shippingName) {
+							mui.toast("请输入收货人");
+							return
+						}
+						if(!yanza.phone(this.form.shippingPhone)) {
+							mui.toast("收货人电话格式错误");
+							return
+						}
+						if(!this.sd_de_e) {
+							mui.toast("请现在省份");
+							return
+						}
+						if(!this.form.shippingStreet) {
+							mui.toast("请输入详细地址");
+							return
+						}
+
+						this.form.key = localStorage.token
+						m_ajax("/api/buyer/doAccountBindingAddress", this.form, function(data) {
+
+							mui.back()
+						})
+					}
+				},
+				mounted: function() {
+					this.picker = new mui.PopPicker({
+						"layer": [3]
+					});
+					this.picker.setData(cityData3)
+					var getAccountBinding = {},
+						th = this
+					mui.plusReady(function() {
+						var self = plus.webview.currentWebview();
+						getAccountBinding.key = localStorage.token
+						getAccountBinding.id = self.id_y
+						m_ajax("/api/buyer/getAccountBindingAddress", getAccountBinding, function(data) {
+							th.form = data
+							th.form.id = self.id_y
+							th.sd_de_e = data.shippingCity + "" + data.shippingProvince + "" + data.shippingCounty
+						})
+					})
+
+				}
+			})
+			mui.init({
+				beforeback: function() {
+					//获得列表界面的webview  
+					var list = plus.webview.currentWebview().opener(); //获取父窗口
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+					mui.fire(list, 'refresh');
+					//返回true，继续页面关闭逻辑  
+					return true;
+				}
+			});
+		</script>
+	</body>
+
+</html>

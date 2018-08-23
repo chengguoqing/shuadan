@@ -1,0 +1,1071 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+<metacharset="UTF-8">
+<title>SystemError</title>
+<metaname="robots"content="noindex,nofollow"/>
+<metaname="viewport"content="width=device-width, initial-scale=1, user-scalable=no">
+<style>
+/*Base*/
+body{
+    
+color: #333;
+font: 14pxVerdana,
+    "Helvetica Neue",
+    helvetica,
+    Arial,
+    'MicrosoftYaHei',
+    sans-serif;
+margin: 0;
+padding: 020px20px;
+word-break: break-word;
+}
+h1{
+    
+margin: 10px00;
+font-size: 28px;
+font-weight: 500;
+line-height: 32px;
+}
+h2{
+    
+color: #4288ce;
+font-weight: 400;
+padding: 6px0;
+margin: 6px00;
+font-size: 18px;
+border-bottom: 1pxsolid#eee;
+}
+h3.subheading{
+    
+color: #4288ce;
+margin: 6px00;
+font-weight: 400;
+}
+h3{
+    
+margin: 12px;
+font-size: 16px;
+font-weight: bold;
+}
+abbr{
+    
+cursor: help;
+text-decoration: underline;
+text-decoration-style: dotted;
+}
+a{
+    
+color: #868686;
+cursor: pointer;
+}
+a: hover{
+    
+text-decoration: underline;
+}
+.line-error{
+    
+background: #f8cbcb;
+}
+
+.echotable{
+    
+width: 100%;
+}
+
+.echopre{
+    
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border: 0;
+border-radius: 3px;
+font-family: Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
+    monospace;
+}
+
+.echopre>pre{
+    
+padding: 0;
+margin: 0;
+}
+/*Layout*/
+.col-md-3{
+    
+width: 25%;
+}
+.col-md-9{
+    
+width: 75%;
+}
+[
+    class^="col-md-"
+]{
+    
+float: left;
+}
+.clearfix{
+    
+clear: both;
+}
+@mediaonlyscreen
+and(min-device-width: 375px)
+and(max-device-width: 667px){
+    
+.col-md-3,
+    
+.col-md-9{
+        
+width: 100%;
+    }
+}
+/*ExceptionInfo*/
+.exception{
+    
+margin-top: 20px;
+}
+.exception.message{
+    
+padding: 12px;
+border: 1pxsolid#ddd;
+border-bottom: 0none;
+line-height: 18px;
+font-size: 16px;
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+font-family: Consolas,
+    "Liberation Mono",
+    Courier,
+    Verdana,
+    "微软雅黑";
+}
+
+.exception.code{
+    
+float: left;
+text-align: center;
+color: #fff;
+margin-right: 12px;
+padding: 16px;
+border-radius: 4px;
+background: #999;
+}
+.exception.source-code{
+    
+padding: 6px;
+border: 1pxsolid#ddd;
+
+background: #f9f9f9;
+overflow-x: auto;
+
+}
+.exception.source-codepre{
+    
+margin: 0;
+}
+.exception.source-codepreol{
+    
+margin: 0;
+color: #4288ce;
+display: inline-block;
+min-width: 100%;
+box-sizing: border-box;
+font-size: 14px;
+font-family: "Century Gothic",
+    Consolas,
+    "Liberation Mono",
+    Courier,
+    Verdana;
+padding-left: 56px;
+}
+.exception.source-codepreli{
+    
+border-left: 1pxsolid#ddd;
+height: 18px;
+line-height: 18px;
+}
+.exception.source-codeprecode{
+    
+color: #333;
+height: 100%;
+display: inline-block;
+border-left: 1pxsolid#fff;
+font-size: 14px;
+font-family: Consolas,
+    "Liberation Mono",
+    Courier,
+    Verdana,
+    "微软雅黑";
+}
+.exception.trace{
+    
+padding: 6px;
+border: 1pxsolid#ddd;
+border-top: 0none;
+line-height: 16px;
+font-size: 14px;
+font-family: Consolas,
+    "Liberation Mono",
+    Courier,
+    Verdana,
+    "微软雅黑";
+}
+.exception.traceol{
+    
+margin: 12px;
+}
+.exception.traceolli{
+    
+padding: 2px4px;
+}
+.exceptiondiv: last-child{
+    
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+}
+
+/*ExceptionVariables*/
+.exception-vartable{
+    
+width: 100%;
+margin: 12px0;
+box-sizing: border-box;
+table-layout: fixed;
+word-wrap: break-word;
+}
+.exception-vartablecaption{
+    
+text-align: left;
+font-size: 16px;
+font-weight: bold;
+padding: 6px0;
+}
+.exception-vartablecaptionsmall{
+    
+font-weight: 300;
+display: inline-block;
+margin-left: 10px;
+color: #ccc;
+}
+.exception-vartabletbody{
+    
+font-size: 13px;
+font-family: Consolas,
+    "Liberation Mono",
+    Courier,
+    "微软雅黑";
+}
+.exception-vartabletd{
+    
+padding: 06px;
+vertical-align: top;
+word-break: break-all;
+}
+.exception-vartabletd: first-child{
+    
+width: 28%;
+font-weight: bold;
+white-space: nowrap;
+}
+.exception-vartabletdpre{
+    
+margin: 0;
+}
+
+/*CopyrightInfo*/
+.copyright{
+    
+margin-top: 24px;
+padding: 12px0;
+border-top: 1pxsolid#eee;
+}
+
+/*SPANelementswiththeclassesbelowareaddedbyprettyprint.*/
+pre.prettyprint.pln{
+    color: #000
+}/*plaintext*/
+pre.prettyprint.str{
+    color: #080
+}/*stringcontent*/
+pre.prettyprint.kwd{
+    color: #008
+}/*akeyword*/
+pre.prettyprint.com{
+    color: #800
+}/*acomment*/
+pre.prettyprint.typ{
+    color: #606
+}/*atypename*/
+pre.prettyprint.lit{
+    color: #066
+}/*aliteralvalue*/
+/*punctuation,
+lispopenbracket,
+lispclosebracket*/
+pre.prettyprint.pun,
+pre.prettyprint.opn,
+pre.prettyprint.clo{
+    color: #660
+}
+pre.prettyprint.tag{
+    color: #008
+}/*amarkuptagname*/
+pre.prettyprint.atn{
+    color: #606
+}/*amarkupattributename*/
+pre.prettyprint.atv{
+    color: #080
+}/*amarkupattributevalue*/
+pre.prettyprint.dec,
+pre.prettyprint.var{
+    color: #606
+}/*adeclaration;avariablename*/
+pre.prettyprint.fun{
+    color: red
+}/*afunctionname*/
+</style>
+</head>
+<body>
+<divclass="echo">
+<br/><b>Parseerror</b>: syntaxerror,
+unexpected'&lt;&lt;'(T_SL)in<b>/www/wwwroot/test_xiaobaitu/application/api/controller/Order.php</b>online<b>473</b><br/></div>
+<divclass="exception">
+<divclass="message">
+
+<divclass="info">
+<div>
+<h2>[
+    4
+]&nbsp;<abbrtitle="think\exception\ErrorException">ErrorException</abbr>in<aclass="toggle"title="/www/wwwroot/test_xiaobaitu/application/api/controller/Order.php line 473">Order.phpline473</a></h2>
+</div>
+<div><h1>语法错误: unexpected'&lt;&lt;'(T_SL)</h1></div>
+</div>
+
+</div>
+<divclass="source-code">
+<preclass="prettyprint lang-php"><olstart="464"><liclass="line-464"><code>$chatOrder=apiRequest('chatOrder');
+</code></li><liclass="line-465"><code>
+</code></li><liclass="line-466"><code>if(!$thirdOrderId||!$browseStore||!$compareGoods||!$goodsPrice||!$chatOrder){
+    
+</code></li><liclass="line-467"><code>$this-&gt;error(40002);
+</code></li><liclass="line-468"><code>
+}
+</code></li><liclass="line-469"><code>if(count($compareGoods)&lt;=1||count($browseStore)&lt;=1||count($chatOrder)&lt;=1){
+    
+</code></li><liclass="line-470"><code>$this-&gt;error(3018);
+</code></li><liclass="line-471"><code>
+}
+</code></li><liclass="line-472"><code>//聊天下单多个用||分割
+</code></li><liclass="line-473"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mine$data[
+    'chat_order'
+]=arrayImpload(apiRequest('chatOrder'));
+</code></li><liclass="line-474"><code>=======$data[
+    'chat_order'
+]=arrayImplodeapiRequest(('chatOrder'));
+</code></li><liclass="line-475"><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;.theirs$data.=[
+    
+</code></li><liclass="line-476"><code>'third_order_id'=&gt;$thirdOrderId,
+    
+</code></li><liclass="line-477"><code>'compare_goods'=&gt;arrayImplode($compareGoods),
+    
+</code></li><liclass="line-478"><code>'browse_store'=&gt;arrayImplode($browseStore),
+    
+</code></li><liclass="line-479"><code>'actual_pay_price'=&gt;$goodsPrice,
+    
+</code></li><liclass="line-480"><code>
+];
+</code></li><liclass="line-481"><code>
+}
+</code></li><liclass="line-482"><code>//浏览截图任务
+</code></li></ol></pre>
+</div>
+<divclass="trace">
+<h2>CallStack</h2>
+<ol>
+<li>in<aclass="toggle"title="/www/wwwroot/test_xiaobaitu/application/api/controller/Order.php line 473">Order.phpline473</a></li>
+<li>
+at<abbrtitle="think\Error">Error</abbr>: : appShutdown()</li>
+</ol>
+</div>
+</div>
+
+
+<divclass="exception-var">
+<h2>EnvironmentVariables</h2>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>GETData</strong></div>
+<divclass="col-md-9"><small>empty</small></div>
+</div>
+</div>
+<div>
+<h3class="subheading">POSTData</h3>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>key</strong></div>
+<divclass="col-md-9"><small>
+c8ef52ebc071e79d71b90945f4b7597b5dc56231</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>orderId</strong></div>
+<divclass="col-md-9"><small>
+50</small></div>
+</div>
+</div>
+</div>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>Files</strong></div>
+<divclass="col-md-9"><small>empty</small></div>
+</div>
+</div>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>Cookies</strong></div>
+<divclass="col-md-9"><small>empty</small></div>
+</div>
+</div>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>Session</strong></div>
+<divclass="col-md-9"><small>empty</small></div>
+</div>
+</div>
+<div>
+<h3class="subheading">Server/RequestData</h3>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>USER</strong></div>
+<divclass="col-md-9"><small>
+www</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HOME</strong></div>
+<divclass="col-md-9"><small>
+/home/www</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>FCGI_ROLE</strong></div>
+<divclass="col-md-9"><small>
+RESPONDER</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>SCRIPT_FILENAME</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/public/index.php</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>QUERY_STRING</strong></div>
+<divclass="col-md-9"><small>
+s=/api/order/getTaskDetail</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>REQUEST_METHOD</strong></div>
+<divclass="col-md-9"><small>
+POST</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>CONTENT_TYPE</strong></div>
+<divclass="col-md-9"><small>
+application/x-www-form-urlencoded</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>CONTENT_LENGTH</strong></div>
+<divclass="col-md-9"><small>
+55</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>SCRIPT_NAME</strong></div>
+<divclass="col-md-9"><small>
+/index.php</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>REQUEST_URI</strong></div>
+<divclass="col-md-9"><small>
+/api/order/getTaskDetail</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>DOCUMENT_URI</strong></div>
+<divclass="col-md-9"><small>
+/index.php</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>DOCUMENT_ROOT</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/public</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>SERVER_PROTOCOL</strong></div>
+<divclass="col-md-9"><small>
+HTTP/1.1</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>GATEWAY_INTERFACE</strong></div>
+<divclass="col-md-9"><small>
+CGI/1.1</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>SERVER_SOFTWARE</strong></div>
+<divclass="col-md-9"><small>
+nginx/1.8.1</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>REMOTE_ADDR</strong></div>
+<divclass="col-md-9"><small>
+39.106.72.110</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>REMOTE_PORT</strong></div>
+<divclass="col-md-9"><small>
+54532</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>SERVER_ADDR</strong></div>
+<divclass="col-md-9"><small>
+172.27.0.3</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>SERVER_PORT</strong></div>
+<divclass="col-md-9"><small>
+80</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>SERVER_NAME</strong></div>
+<divclass="col-md-9"><small>
+test.xiaobay.com</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>REDIRECT_STATUS</strong></div>
+<divclass="col-md-9"><small>
+200</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>PATH_INFO</strong></div>
+<divclass="col-md-9"><small>
+/api/order/getTaskDetail</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_ACCEPT</strong></div>
+<divclass="col-md-9"><small>
+text/html,
+application/xhtml+xml,
+application/xml;q=0.9,
+*/*;q=0.8</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_CONNECTION</strong></div>
+<divclass="col-md-9"><small>
+close</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_CONTENT_TYPE</strong></div>
+<divclass="col-md-9"><small>
+application/x-www-form-urlencoded</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_CACHE_CONTROL</strong></div>
+<divclass="col-md-9"><small>
+no-cache</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_PRAGMA</strong></div>
+<divclass="col-md-9"><small>
+no-cache</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_USER_AGENT</strong></div>
+<divclass="col-md-9"><small>
+Java/1.8.0_77</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_HOST</strong></div>
+<divclass="col-md-9"><small>
+test.xiaobay.com</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>HTTP_CONTENT_LENGTH</strong></div>
+<divclass="col-md-9"><small>
+55</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>PHP_SELF</strong></div>
+<divclass="col-md-9"><small>
+/index.php</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>REQUEST_TIME_FLOAT</strong></div>
+<divclass="col-md-9"><small>
+1533371645.8873</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>REQUEST_TIME</strong></div>
+<divclass="col-md-9"><small>
+1533371645</small></div>
+</div>
+</div>
+</div>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>EnvironmentVariables</strong></div>
+<divclass="col-md-9"><small>empty</small></div>
+</div>
+</div>
+<div>
+<h3class="subheading">ThinkPHPConstants</h3>
+<div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>APP_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/public/../application/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>THINK_VERSION</strong></div>
+<divclass="col-md-9"><small>
+5.0.20</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>THINK_START_TIME</strong></div>
+<divclass="col-md-9"><small>
+1533371645.8877</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>THINK_START_MEM</strong></div>
+<divclass="col-md-9"><small>
+264792</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>EXT</strong></div>
+<divclass="col-md-9"><small>
+.php</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>DS</strong></div>
+<divclass="col-md-9"><small>
+/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>THINK_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/thinkphp/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>LIB_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/thinkphp/library/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>CORE_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/thinkphp/library/think/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>TRAIT_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/thinkphp/library/traits/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>ROOT_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>EXTEND_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/extend/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>VENDOR_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/vendor/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>RUNTIME_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/runtime/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>LOG_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/runtime/log/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>CACHE_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/runtime/cache/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>TEMP_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/runtime/temp/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>CONF_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/public/../application/</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>CONF_EXT</strong></div>
+<divclass="col-md-9"><small>
+.php</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>ENV_PREFIX</strong></div>
+<divclass="col-md-9"><small>
+PHP_</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>IS_CLI</strong></div>
+<divclass="col-md-9"><small>
+false</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>IS_WIN</strong></div>
+<divclass="col-md-9"><small>
+false</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>RANDOM_COMPAT_READ_BUFFER</strong></div>
+<divclass="col-md-9"><small>
+8</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>PHP_INT_MIN</strong></div>
+<divclass="col-md-9"><small>
+-9223372036854775808</small></div>
+</div>
+<divclass="clearfix">
+<divclass="col-md-3"><strong>ADDON_PATH</strong></div>
+<divclass="col-md-9"><small>
+/www/wwwroot/test_xiaobaitu/addons/</small></div>
+</div>
+</div>
+</div>
+</div>
+
+<divclass="copyright">
+<atitle="官方网站"href="http://www.thinkphp.cn">ThinkPHP</a>
+<span>V5.0.20</span>
+<span>{
+十年磨一剑-为API开发设计的高性能框架
+}</span>
+</div>
+<script>
+varLINE=473;
+
+function$(selector,
+node){
+
+varelements;
+
+node=node||document;
+if(document.querySelectorAll){
+    
+elements=node.querySelectorAll(selector);
+}else{
+    
+switch(selector.substr(0,
+    1)){
+        
+case'#': 
+elements=[
+            node.getElementById(selector.substr(1))
+        ];
+break;
+case'.': 
+if(document.getElementsByClassName){
+            
+elements=node.getElementsByClassName(selector.substr(1));
+        }else{
+            
+elements=get_elements_by_class(selector.substr(1),
+            node);
+        }
+break;
+default: 
+elements=node.getElementsByTagName();
+    }
+}
+returnelements;
+
+functionget_elements_by_class(search_class,
+node,
+tag){
+    
+varelements=[
+        
+    ],
+    eles,
+    
+pattern=newRegExp('(^|\\s)'+search_class+'(\\s|$)');
+
+node=node||document;
+tag=tag||'*';
+
+eles=node.getElementsByTagName(tag);
+for(vari=0;i<eles.length;i++){
+        
+if(pattern.test(eles[
+            i
+        ].className)){
+            
+elements.push(eles[
+                i
+            ])
+        }
+    }
+
+returnelements;
+}
+}
+
+$.getScript=function(src,
+func){
+
+varscript=document.createElement('script');
+
+script.async='async';
+script.src=src;
+script.onload=func||function(){
+    
+};
+
+$('head')[
+    0
+].appendChild(script);
+}
+
+;(function(){
+
+varfiles=$('.toggle');
+varol=$('ol',
+$('.prettyprint')[
+    0
+]);
+varli=$('li',
+ol[
+    0
+]);
+
+//短路径和长路径变换
+for(vari=0;i<files.length;i++){
+    
+files[
+        i
+    ].ondblclick=function(){
+        
+vartitle=this.title;
+
+this.title=this.innerHTML;
+this.innerHTML=title;
+    }
+}
+
+//设置出错行
+varerr_line=$('.line-'+LINE,
+ol[
+    0
+])[
+    0
+];
+err_line.className=err_line.className+'line-error';
+
+$.getScript('//cdn.bootcss.com/prettify/r298/prettify.min.js',
+function(){
+    
+prettyPrint();
+
+//解决Firefox浏览器一个很诡异的问题
+//当代码高亮后，ol的行号莫名其妙的错位
+//但是只要刷新li里面的html重新渲染就没有问题了
+if(window.navigator.userAgent.indexOf('Firefox')>=0){
+        
+ol[
+            0
+        ].innerHTML=ol[
+            0
+        ].innerHTML;
+    }
+});
+
+})();
+</script>
+<divid="think_page_trace"style="position: fixed;bottom:0;right:0;font-size:14px;width:100%;z-index: 999999;color: #000;text-align:left;font-family:'微软雅黑';">
+<divid="think_page_trace_tab"style="display: none;background:white;margin:0;height: 250px;">
+<divid="think_page_trace_tab_tit"style="height:30px;padding: 6px 12px 0;border-bottom:1px solid #ececec;border-top:1px solid #ececec;font-size:16px">
+<spanstyle="color:#000;padding-right:12px;height:30px;line-height:30px;display:inline-block;margin-right:3px;cursor:pointer;font-weight:700">基本</span>
+<spanstyle="color:#000;padding-right:12px;height:30px;line-height:30px;display:inline-block;margin-right:3px;cursor:pointer;font-weight:700">文件</span>
+<spanstyle="color:#000;padding-right:12px;height:30px;line-height:30px;display:inline-block;margin-right:3px;cursor:pointer;font-weight:700">流程</span>
+<spanstyle="color:#000;padding-right:12px;height:30px;line-height:30px;display:inline-block;margin-right:3px;cursor:pointer;font-weight:700">错误</span>
+<spanstyle="color:#000;padding-right:12px;height:30px;line-height:30px;display:inline-block;margin-right:3px;cursor:pointer;font-weight:700">SQL</span>
+<spanstyle="color:#000;padding-right:12px;height:30px;line-height:30px;display:inline-block;margin-right:3px;cursor:pointer;font-weight:700">调试</span>
+</div>
+<divid="think_page_trace_tab_cont"style="overflow:auto;height:212px;padding:0;line-height: 24px">
+<divstyle="display:none;">
+<olstyle="padding: 0; margin:0">
+<listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">请求信息: 2018-08-0416: 34: 05HTTP/1.1POST: test.xiaobay.com/api/order/getTaskDetail</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">运行时间: 0.020352s[
+吞吐率：49.14req/s
+]内存消耗：2,
+681.26kb文件加载：65</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">查询信息: 0queries0writes</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">缓存信息: 0reads,
+1writes</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">配置加载: 79</li></ol>
+</div>
+<divstyle="display:none;">
+<olstyle="padding: 0; margin:0">
+<listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/public/index.php(1.01KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/start.php(0.74KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/base.php(2.66KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Loader.php(21.73KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/composer/autoload_static.php(7.95KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/paragonie/random_compat/lib/random.php(7.79KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/paragonie/random_compat/lib/byte_safe_strings.php(6.01KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/paragonie/random_compat/lib/cast_to_int.php(2.64KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/paragonie/random_compat/lib/error_polyfill.php(1.71KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/paragonie/random_compat/lib/random_bytes_dev_urandom.php(5.48KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/paragonie/random_compat/lib/random_int.php(6.30KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/symfony/polyfill-php70/bootstrap.php(0.91KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/symfony/polyfill-mbstring/bootstrap.php(4.63KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/guzzlehttp/promises/src/functions_include.php(0.17KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/guzzlehttp/promises/src/functions.php(12.22KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/guzzlehttp/psr7/src/functions_include.php(0.16KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/guzzlehttp/psr7/src/functions.php(24.69KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/guzzlehttp/guzzle/src/functions_include.php(0.16KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/guzzlehttp/guzzle/src/functions.php(9.97KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/topthink/think-helper/src/helper.php(2.97KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/topthink/think-captcha/src/helper.php(1.65KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Route.php(60.57KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Config.php(6.58KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Validate.php(41.81KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/overtrue/wechat/src/Payment/helpers.php(1.68KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/karsonzhang/fastadmin-addons/src/common.php(12.91KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Hook.php(4.86KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Error.php(3.88KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/convention.php(10.66KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/App.php(22.01KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Request.php(50.60KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/config.php(11.92KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Env.php(1.25KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/database.php(1.91KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/extra/addons.php(0.60KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/extra/global.php(5.79KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/extra/site.php(2.22KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/extra/upload.php(0.56KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/tags.php(1.13KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/common.php(15.02KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/helper.php(17.87KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Debug.php(7.37KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Log.php(6.27KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/addons/alisms/Alisms.php(1.33KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/vendor/karsonzhang/fastadmin-addons/src/Addons.php(6.62KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/addons/ihuyisms/Ihuyisms.php(1.24KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/addons/qiniu/Qiniu.php(1.66KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Cache.php(6.34KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/cache/driver/File.php(7.54KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/cache/Driver.php(6.21KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Lang.php(7.49KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/lang/zh-cn.php(11.94KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/route.php(0.92KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/api/config.php(0.14KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/api/extra/apicode.php(3.13KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/api/common.php(0.01KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/api/lang/zh-cn.php(5.73KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/common/behavior/Common.php(2.33KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/exception/ErrorException.php(1.89KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Exception.php(1.66KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/application/api/library/ExceptionHandle.php(1.00KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/exception/Handle.php(8.72KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/tpl/think_exception.tpl(18.28KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Response.php(8.61KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/debug/Html.php(4.28KB)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">/www/wwwroot/test_xiaobaitu/thinkphp/library/think/Db.php(6.85KB)</li></ol>
+</div>
+<divstyle="display:none;">
+<olstyle="padding: 0; margin:0">
+<listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+BEHAVIOR
+]RunClosure@app_init[
+RunTime: 0.000032s
+]</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+CACHE
+]INITFile</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+BEHAVIOR
+]RunClosure@app_init[
+RunTime: 0.001684s
+]</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+LANG
+]/www/wwwroot/test_xiaobaitu/thinkphp/lang/zh-cn.php</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+ROUTE
+]array('type'=&gt;'module',
+'module'=&gt;array(0=&gt;'api',
+1=&gt;'order',
+2=&gt;'getTaskDetail',
+),
+)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+HEADER
+]array('accept'=&gt;'text/html,
+application/xhtml+xml,
+application/xml;q=0.9,
+*/*;q=0.8',
+'connection'=&gt;'close',
+'content-type'=&gt;'application/x-www-form-urlencoded',
+'cache-control'=&gt;'no-cache',
+'pragma'=&gt;'no-cache',
+'user-agent'=&gt;'Java/1.8.0_77',
+'host'=&gt;'test.xiaobay.com',
+'content-length'=&gt;'55',
+)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+PARAM
+]array('key'=&gt;'c8ef52ebc071e79d71b90945f4b7597b5dc56231',
+'orderId'=&gt;'50',
+)</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+LANG
+]/www/wwwroot/test_xiaobaitu/public/../application/api/lang/zh-cn.php</li><listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+BEHAVIOR
+]Runapp\common\behavior\Common@module_init[
+RunTime: 0.000242s
+]</li></ol>
+</div>
+<divstyle="display:none;">
+<olstyle="padding: 0; margin:0">
+<listyle="border-bottom:1px solid #EEE;font-size:14px;padding:0 12px">[
+4
+]语法错误: unexpected'&lt;&lt;'(T_SL)[
+/www/wwwroot/test_xiaobaitu/application/api/controller/Order.php: 473
+]</li></ol>
+</div>
+<divstyle="display:none;">
+<olstyle="padding: 0; margin:0">
+</ol>
+</div>
+<divstyle="display:none;">
+<olstyle="padding: 0; margin:0">
+</ol>
+</div>
+</div>
+</div>
+<divid="think_page_trace_close"style="display:none;text-align:right;height:15px;position:absolute;top:10px;right:12px;cursor:pointer;"><imgstyle="vertical-align:top;"src="data:image/gif;base64,R0lGODlhDwAPAJEAAAAAAAMDA////wAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjAgNjEuMTM0Nzc3LCAyMDEwLzAyLzEyLTE3OjMyOjAwICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUQxMjc1MUJCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUQxMjc1MUNCQUJDMTFFMTk0OUVGRjc3QzU4RURFNkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDEyNzUxOUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRDEyNzUxQUJBQkMxMUUxOTQ5RUZGNzdDNThFREU2QSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAPAA8AAAIdjI6JZqotoJPR1fnsgRR3C2jZl3Ai9aWZZooV+RQAOw=="/></div>
+</div>
+<divid="think_page_trace_open"style="height:30px;float:right;text-align:right;overflow:hidden;position:fixed;bottom:0;right:0;color:#000;line-height:30px;cursor:pointer;">
+<divstyle="background:#232323;color:#FFF;padding:0 6px;float:right;line-height:30px;font-size:14px">0.021060s</div>
+<imgwidth="30"style=""title="ShowPageTrace"src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjVERDVENkZGQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjVERDVENzAwQjkyNDExRTE5REY3RDQ5RTQ2RTRDQUJCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NURENUQ2RkRCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NURENUQ2RkVCOTI0MTFFMTlERjdENDlFNDZFNENBQkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5fx6IRAAAMCElEQVR42sxae3BU1Rk/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">
+</div>
+
+<scripttype="text/javascript">
+(function(){
+
+vartab_tit=document.getElementById('think_page_trace_tab_tit').getElementsByTagName('span');
+vartab_cont=document.getElementById('think_page_trace_tab_cont').getElementsByTagName('div');
+varopen=document.getElementById('think_page_trace_open');
+varclose=document.getElementById('think_page_trace_close').children[
+    0
+];
+vartrace=document.getElementById('think_page_trace_tab');
+varcookie=document.cookie.match(/thinkphp_show_page_trace=(\d\|\d)/);
+varhistory=(cookie&&typeofcookie[
+    1
+]!='undefined'&&cookie[
+    1
+].split('|'))||[
+    0,
+    0
+];
+open.onclick=function(){
+    
+trace.style.display='block';
+this.style.display='none';
+close.parentNode.style.display='block';
+history[
+        0
+    ]=1;
+document.cookie='thinkphp_show_page_trace='+history.join('|')
+}
+close.onclick=function(){
+    
+trace.style.display='none';
+this.parentNode.style.display='none';
+open.style.display='block';
+history[
+        0
+    ]=0;
+document.cookie='thinkphp_show_page_trace='+history.join('|')
+}
+for(vari=0;i<tab_tit.length;i++){
+    
+tab_tit[
+        i
+    ].onclick=(function(i){
+        
+returnfunction(){
+            
+for(varj=0;j<tab_cont.length;j++){
+                
+tab_cont[
+                    j
+                ].style.display='none';
+tab_tit[
+                    j
+                ].style.color='#999';
+            }
+tab_cont[
+                i
+            ].style.display='block';
+tab_tit[
+                i
+            ].style.color='#000';
+history[
+                1
+            ]=i;
+document.cookie='thinkphp_show_page_trace='+history.join('|')
+        }
+    })(i)
+}
+parseInt(history[
+    0
+])&&open.click();
+tab_tit[
+    history[
+        1
+    ]
+].click();
+})();
+</script>
+</body>
+</html>

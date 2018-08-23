@@ -1,0 +1,77 @@
+<!--新增身份证信息-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新增身份证信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">身份证信息</h1>
+
+			</header>
+			<div class="mui-content ">
+
+				<p class="pd pt10 pm10 fz16 z3">
+					第一步输入您的真实姓名
+				</p>
+
+				<p>
+					<input type="text" placeholder="请输入真实姓名" class="dsf_jh_de" v-model="form.realName">
+				</p>
+
+				<p class="pd pt10 pm10 fz16 z3">
+					第二步输入您的身份证号
+				</p>
+
+				<p>
+					<input type="number" placeholder="请输入身份证号" class="dsf_jh_de" v-model="form.identity">
+				</p>
+
+				<p class="pd pt10 pm10 fz16 z3">
+					第三步上传身份证信息
+				</p>
+
+				<section class="mui-row pl10">
+					<section class="mui-col-xs-4 pr10 mb10 " v-for="sd in sd_hjh_der">
+						<section @click="dfd_drrt(sd)">
+							<section class="dsf_jh_der_r fz12 cen pr">
+								<img :src="sd.img_url" v-if="sd.img_url">
+
+								<span class="sd_jh_ceertx" v-if="!sd.img_url">点击上传图片</span>
+								<i class="dx icon-tupian   dsf_hj_deert" v-if="!sd.img_url"></i>
+							</section>
+							<p class="cen fz14 mt10">
+								{{sd.name}}
+							</p>
+
+						</section>
+					</section>
+				</section>
+
+			</div>
+<!--@click="zhu('collection_room')"-->
+			<p class="mt30 pt10 pm10 bgff ls cen fz16" @click="baocun_s">
+				保存
+			</p>
+
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/page/new_card.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!--本金提现-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>本金提现</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">本金提现</h1>
+
+
+        </header>
+        <div class="mui-content ">
+
+            <p class="mt10 ls tr fz16 pd" @tap="zhu('withdrawal_subsidiary')">
+                杳看明细
+            </p>
+            <p class="z3 pd fz16">
+
+            </p>
+            <section class="pd  fz15 z6">
+
+                本金提现说明：1,每次必须全额提出<br> 2, 7天内第一次提现不管任何金额都免手续费<br> 3, 7天内第二次及以上提现且金额小于500元，每笔提 现收取一元转走手续费
+                <br> 4, 提现金额大于或等于500元的免转账手续费 提醒：您如果在
+                <span class="red">2018-06-02 15:25:28</span>后提现或累计本 金达至IJ
+                <span class="red">500以上</span>时可免手续费。
+            </section>
+            <p class="pd pt10 pm10 bgff mt20 z3 fz16 z9">
+                银行:{{sd.bankInfo}}
+            </p>
+            <p class="pd pt10 pm10 bgff mt10 z3 fz16 z9">
+                {{sd.capitalInfo}}
+            </p>
+
+
+
+            <p class="mt10 ">
+                <input type="password" placeholder="请输入测评符密码" v-model="u_password" class="sd_jhj_eert fz16">
+            </p>
+
+            <p class="mt40 pd">
+                <button class="w100 fz16 pt10 pm10 bgls " @click="tiiao_df">提交</button>
+            </p>
+
+
+        </div>
+
+    </section>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({
+            el: '#seek_apper',
+            data: {
+                sd: "",
+                u_password: ""
+            },
+            methods: {
+                tiiao_df: function() {
+                    var doWithdrawalCapital = {}
+                    doWithdrawalCapital.key = localStorage.token
+                    
+                doWithdrawalCapital.password=this.u_password
+                    m_ajax("/api/account/doWithdrawalCapital", doWithdrawalCapital, function(data) {
+                        mui.back()
+                    },true)
+                }
+
+            },
+            mounted: function() {
+
+                var getWithdrawalCapital = {},
+                    th = this
+                getWithdrawalCapital.key = localStorage.token
+                m_ajax("/api/account/getWithdrawalCapital", getWithdrawalCapital, function(data) {
+                    th.sd = data
+                },true)
+            }
+        })
+        
+        
+        
+        mui.init({
+	beforeback: function() {
+		//获得列表界面的webview  
+		var list = plus.webview.currentWebview().opener(); //获取父窗口
+		//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+		mui.fire(list, 'refresh');
+
+		//返回true，继续页面关闭逻辑  
+		return true;
+	}
+});
+
+    </script>
+</body>
+
+</html>

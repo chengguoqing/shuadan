@@ -1,0 +1,68 @@
+<!--银行信息-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>银行信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">银行信息</h1>
+
+			</header>
+			<div class="mui-content ">
+				<p class="pd z9 pt10 fz16">
+					姓名必须和身份认证中填写的一致,请不要使用信 用卡绑定!
+				</p>
+
+				<form class="mui-input-group mt10">
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" placeholder="银行名称" v-model="form.bank">
+					</div>
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" placeholder="开户所在地" v-model="form.bankCity">
+					</div>
+
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" placeholder="开户行" v-model="form.bankAddress">
+					</div>
+
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" placeholder="银行账号" v-model="form.bankAccount">
+					</div>
+
+					<div class="mui-input-row pr">
+
+						<input type="text" class="mui-input-clear w100 fz16" disabled placeholder="开户行名称,不清楚请咨询银行">
+					</div>
+				</form>
+
+				<p class="mt30 pt10 pm10 bgff ls cen fz16" @click="baocun_s">
+					保存
+				</p>
+			</div>
+
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script> 
+		<script src="js/page/bank_information.js"></script>
+	</body>
+
+</html>

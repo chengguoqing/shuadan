@@ -1,0 +1,106 @@
+<!--新增qq-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新增qq</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/mui.zoom.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper" class="pm40">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">QQ号修改</h1>
+
+			</header>
+			<div class="mui-content ">
+
+				<form class="mui-input-group ">
+					<div class="mui-input-row" v-if="qq_ert">
+						<input type="number" class="mui-input-clear" placeholder="原qq号" v-model="qq_ert" disabled="">
+					</div>
+					<div class="mui-input-row">
+						<input type="number" class="mui-input-clear" placeholder="填写qq号" v-model="ne_ewer">
+					</div>
+
+				</form>
+
+				<p class="mt30 pt10 pm10 bgff ls cen fz16" @click="baocun_e">
+					保存
+				</p>
+			</div>
+
+			<script src="js/mui.min.js"></script>
+			<script src="js/jquery-1.11.3.min.js"></script>
+			<script src="js/vue.js"></script>
+			<script src="js/base.js"></script>
+			<script>
+				var km = new Vue({
+					el: '#seek_apper',
+					data: {
+						qq_ert: "",
+						ne_ewer: ""
+					},
+					methods: {
+						set_qq: function(qq, callsd) {
+							var th = this
+							var getBank = {}
+							getBank.key = localStorage.token
+							getBank.qq = qq
+							m_ajax("/api/buyer/doModifyQQ", getBank, function(data, dater) {
+								th.qq_ert = dater.qq
+								try {
+									callsd()
+								} catch(e) {
+
+								}
+							})
+						},
+						baocun_e: function() { //保存按钮触发
+							if(!this.ne_ewer) {
+								mui.toast("QQ号不能为空");
+								return
+							}
+							this.set_qq(this.ne_ewer, function() {
+		mui.back()
+							})
+						}
+					},
+					mounted: function() {
+
+						var th = this
+						mui.plusReady(function() {
+							var self = plus.webview.currentWebview();
+							var kmn = self.bank_s;
+							if(kmn) {
+								th.set_qq(kmn)
+							}
+
+						})
+
+					}
+				})
+
+				mui.init({
+					beforeback: function() {
+						//获得列表界面的webview  
+						var list = plus.webview.currentWebview().opener(); //获取父窗口
+						//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+						mui.fire(list, 'refresh');
+
+						//返回true，继续页面关闭逻辑  
+						return true;
+					}
+				});
+			</script>
+	</body>
+
+</html>

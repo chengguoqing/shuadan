@@ -1,0 +1,69 @@
+<!--用户中心-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户中心</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+        <section class="pt40 pm10 index_top mui-row cen">
+            <p @click="tishi">
+                <img :src="user_icon" class="yj user_icon">
+            </p>
+            <p class="cf fz16">
+                ID:{{sd.id}}
+            </p>
+
+        </section>
+        <section class="jinri_er pt10 pm10 mui-row cen">
+            <section class="mui-col-xs-6 brm" @click="zhu('name_modification','',{mobile_y:sd.mobile})">
+                <p class="fz16 br0">账号：{{sd.mobile}}</p>
+                <p class="fz12">
+                    (点击可修改用户名)
+                </p>
+            </section>
+            <section class="mui-col-xs-6">
+                <p class="fz16">
+                    等级:{{sd.groupName}}
+                </p>
+            </section>
+
+        </section>
+
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell pr" v-for="sd in user_meat" @click="zhu(sd.url_er)">
+                <label class="yj4 dsf_jh_ddff f_b cz " :class="sd.clsss_s">
+                    <i class="dx  cf cz " :class="[sd.icon,'fz'+sd.size]"></i>
+                </label>
+
+                <span class="ml10 fz16 z6 cz">
+                {{sd.name}}
+                </span>
+                <span v-if="sd.jindu" class="jindu_deret">
+                {{sd.jindu}}
+                </span>
+            </li>
+
+        </ul>
+    </section>
+
+
+
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/user_center.js"></script>
+</body>
+
+</html>

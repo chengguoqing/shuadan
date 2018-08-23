@@ -1,0 +1,103 @@
+<!--新用户名-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>新用户名</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">用户名修改</h1>
+
+        </header>
+        <div class="mui-content ">
+            <p class="pd pt10 pm10 z3">
+                原用户名可接收短信的用户可自主验证修改用户名,修改后原有 的邀请关系不受影响;原用户名无法接受短信的用户,需要联系 在线客服验证后修改用户名。
+            </p>
+
+            <section class="bgff pt10 pm10 pd fz16">
+                原用户名
+                <span class="fr">{{sd}}</span>
+            </section>
+            <form class="mui-input-group ">
+
+                <div class="mui-input-row pr ">
+
+                    <input type="text" class=" w100" placeholder="获取验证码" v-model="verifyCode">
+                    <span class="ls wang_eert" @click="huoqu_er">获取验证码</span>
+                </div>
+
+            </form>
+            <!--@click="zhu('new_username')"-->
+            <p class="mt30 pt10 pm10 bgff ls cen fz16" @click="xiyibus">
+                下一步
+            </p>
+        </div>
+    </section>
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({ 
+            el: '#seek_apper',
+            data: {
+                sd: "",
+                verifyCode: ""
+            },
+            methods: {
+                huoqu_er: function() { //获取验证码按钮触发
+
+                    var sendCode = {},
+                        th = this
+                    sendCode.event = 3
+                    sendCode.key = localStorage.key_s
+                    //获取验证码接口
+                    m_ajax("/api/sms/sendCode", sendCode, function(data) {
+
+                    })
+                },
+                xiyibus: function() { //下一步按钮触发
+                    if (!this.form.verifyCode) {
+                        mui.toast("请输入验证码");
+                        return
+                    }
+                    var doModifyMobileStep1={},
+                        th=this
+                    doModifyMobileStep1.key = localStorage.key_s
+                    doModifyMobileStep1.verifyCode=this.verifyCode
+                    
+                    m_ajax("/api/buyer/doModifyMobileStep1", doModifyMobileStep1, function(data) {
+                        th.zhu('new_username')
+                    })
+
+                }
+            }, 
+            mounted: function() {
+                var th = this
+                mui.plusReady(function() {
+                    var self = plus.webview.currentWebview();
+
+                    th.sd = self.mobile_y
+
+                })
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

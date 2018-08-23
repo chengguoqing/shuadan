@@ -1,0 +1,107 @@
+<!--我的消息-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的消息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+
+				<h1 class="mui-title cf">我的消息</h1>
+
+			</header>
+			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+
+					<ul class="mui-table-view mt0">
+						<li class="mui-table-view-cell mui-media" v-for="sf in sd" @tap="zhu('information_xq','',{content:sf.content})">
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left df_d_dfgxc" :src="sf.avatar">
+								<div class="mui-media-body">
+									<p class="fz16 z0 dian">{{sf.content}}</p>
+									<p class="fz12 mt5 dsf_d_sdggx tr">{{sf.createTime|time}}</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			var km = new Vue({
+				el: '#seek_apper',
+				data: {
+					page: 1,
+					sd: []
+				},
+				methods: {
+					get_data: function(call_back) {
+						var getCapitalLog = {},
+							th = this
+						getCapitalLog.key = localStorage.token
+						getCapitalLog.page = this.page
+						m_ajax("/api/buyer/getMessageList", getCapitalLog, function(data) {
+							try {
+								call_back(data.list || [])
+							} catch(e) {
+
+							}
+							data.list.map(function(a) {
+								th.sd.push(a)
+							})
+
+						})
+					}
+				},
+				mounted: function() {
+
+				}
+			})
+
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+
+			function pullupRefresh() {
+				km.page++
+					var th = this
+				km.get_data(function(dads_e) {
+					if(dads_e.length >= 10) {
+						th.endPullupToRefresh(false)
+					} else {
+						th.endPullupToRefresh(true)
+					}
+				})
+
+			}
+
+			window.addEventListener('refresh', function(e) {
+				km.page = 1
+				km.sd = []
+				km.get_data()
+			})
+		</script>
+	</body>
+
+</html>

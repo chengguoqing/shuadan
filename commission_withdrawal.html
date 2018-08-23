@@ -1,0 +1,134 @@
+<!--佣金提现-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>佣金提现</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">佣金提现</h1>
+
+
+        </header>
+        <div class="mui-content ">
+
+            <section class="pd pt10 fz15 z3">
+                提现说明：最低佣金提现额度为50金且需扣除手续费2 金，提现100金起免除手续费，提现200金奖励2金，提 现300金奖励3金，以此类推，1000封顶。
+            </section>
+            <p class="pd pt10 pm10 bgff mt10 z3 fz16">
+                银行:{{sd_f.bankInfo}}
+            </p>
+
+            <p class="pd pt10 pm10 bgff mt10 z3 cen fz16 pr" @tap="sho_se">
+                {{xzs_eer}}
+                <i class="dx fz16 icon-down dfown_icon"></i>
+            </p>
+
+
+            <p class="mt10 ">
+                <input type="password" placeholder="请输入测评符密码" v-model="form.password" class="sd_jhj_eert fz16">
+            </p>
+
+            <p class="mt40 pd">
+                <button class="w100 fz16 pt10 pm10 bgls" @click="tijiao_s">提交</button>
+            </p>
+
+
+        </div>
+
+    </section>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({
+            el: '#seek_apper',
+            data: {
+                picker: "",
+                sd_f: "",
+                xzs_eer: "选择佣金提现金额",
+                form: {
+                    password: "", //密码
+                    money: "" //	提现金额
+                }
+            },
+            methods: {
+                sho_se: function() {
+                    var th = this
+                    this.picker.show(function(SelectedItem) {
+                        th.xzs_eer = SelectedItem[0].text
+                        th.form.money=SelectedItem[0].value
+                    })
+                },
+                tijiao_s: function() { //提交按钮触发
+                    if (!this.form.money) {
+                        mui.toast("请选择提现金额");
+                        return
+                    }
+                    if (!this.form.password) {
+                        mui.toast("请输入密码");
+                        return
+                    }
+
+                    this.form.key = localStorage.token
+                    m_ajax("/api/account/doWithdrawalCommission", this.form, function(data) {
+                        mui.back()
+                    },true)
+
+
+                }
+
+            },
+            mounted: function() {
+                var walCommission = {},
+                    th = this
+                walCommission.key = localStorage.token
+                this.picker = new mui.PopPicker();
+                m_ajax("/api/account/getWithdrawalCommission", walCommission, function(data) {
+                    th.sd_f = data
+                    data.list.map(function(a) {
+                        a.text = a.desc
+                        a.value = a.money
+                    })
+
+                    th.picker.setData(data.list)
+                },true)
+
+
+
+
+
+
+            } 
+        })
+
+
+        mui.init({
+            beforeback: function() {
+                //获得列表界面的webview  
+                var list = plus.webview.currentWebview().opener(); //获取父窗口
+                //触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+                mui.fire(list, 'refresh');
+
+                //返回true，继续页面关闭逻辑  
+                return true;
+            }
+        });
+
+    </script>
+</body>
+
+</html>

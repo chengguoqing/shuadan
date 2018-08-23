@@ -1,0 +1,95 @@
+<!--申诉中心-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>申诉中心</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			.dfs_d_dfgx {
+				top: 0px
+			}
+		</style>
+	</head>
+
+	<body>
+		<section id="seek_apper">
+
+			<header class="mui-bar mui-bar-nav asd_uy_dftx  ab">
+				<h1 class="mui-title cf">申诉中心</h1>
+
+			</header>
+			<div class="mui-content mui-scroll">
+				<section class="pr dsf_d_sdsf">
+					<span class="dsf_sdf"></span>
+					<div class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary dfs_d_dfgx">
+						<a class="mui-control-item mui-active " data-wid="complaint_center_fa_a.html0">
+							<span class="pr">	 我发起的申诉
+							
+                        <span class="yj numy_sd_rer" v-if="ssd_sr.fromMyComplaintNum>0">{{ssd_sr.fromMyComplaintNum}}</span>
+							</span>
+						</a>
+						<a class="mui-control-item" data-wid="complaint_center_fa_b.html1">
+							<span class="pr">我收到的申诉
+                         <span class="yj numy_sd_rer" v-if="ssd_sr.fromStoreComplaintNum>0">{{ssd_sr.fromStoreComplaintNum}}</span>
+							</span>
+						</a>
+
+					</div>
+
+				</section>
+
+			</div>
+		</section>
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/webviewGroup.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			var km = new Vue({
+				el: '#seek_apper',
+				data: {
+					ssd_sr: {},
+					caidan: [{
+						name: "我发起的申诉",
+						id: 0,
+						top: "100px",
+						url: "complaint_center_fa_a.html"
+					}, {
+						name: "我收到的申诉",
+						id: 1,
+						top: "100",
+						url: "complaint_center_fa_b.html"
+					}]
+				},
+				methods: {
+
+				},
+				mounted: function() {
+					mui.init();
+					var th = this;
+
+					mui.plusReady(function() {
+						qiehuan(th.caidan)
+
+					});
+				}
+			})
+
+			function fdf_dr(x, y) {
+				km.ssd_sr = x
+			}
+
+
+		</script>
+	</body>
+
+</html>

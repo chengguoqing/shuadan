@@ -1,0 +1,136 @@
+<!--未完成垫付任务-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>未完成垫付任务</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+
+			<div id="pullrefresh" class=" mui-scroll-wrapper" v-if="date_er.length>0">
+				<div class="mui-scroll ">
+
+					<ul class="mui-table-view"> 
+						<li class="mui-table-view-cell mui-media" v-for="sd in date_er" @click="zhu('stay_back_task')">
+							
+							<a href="javascript:;">
+								<img class="mui-media-object mui-pull-left df_Kj_deert " :src="sd.goodsImage">
+								<div class="mui-media-body">
+									<section class="mui-row">
+										<p class="mui-col-xs-6 fz16 dian">
+											<i class="dx icon-pinpaibiaoshi-aliwangwang fz22 cz"></i>
+											<span>{{sd.accountName}}</span>
+										</p>
+										<p class="mui-col-xs-6 fz16 tr">
+											{{sd.createTime|time}}
+										</p>
+									</section>
+									<section class="btm mt5 pt5">
+										<span class="fz24 ls">
+                                ￥{{sd.taskPrice}}
+                                </span>
+										<span class="bgls fz14 yj4 fr pd sd_jh_erdeert">{{sd.statusMsg}}</span>
+									</section>
+									<p class="qc pt5">
+										<span>垫资{{sd.goodsPrice}}元</span>
+										<span class="fr red">{{sd.task_type==1?'垫付任务':'浏览任务'}}</span>
+									</p>
+
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<section v-else class="cen fz16 z9 mt20">
+				没有数据！
+				
+			</section>
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			var km = new Vue({
+				el: '#seek_apper',
+				data: {
+					page: 1,
+					date_er: "",
+					status:'',
+					type_e:""
+				},
+				methods: {
+					get_data: function(call_der) {
+						var getOrderList = {}
+
+						getOrderList.key = localStorage.token
+						getOrderList.status = this.status
+						getOrderList.taskType = this.type_e//1：垫付任务 2：浏览任务
+						getOrderList.page = this.page
+						m_ajax("/api/order/getOrderList", getOrderList, function(data) {
+							call_der(data)
+						})
+
+					} 
+				},
+				mounted: function() {
+					var th = this
+					mui.plusReady(function() {
+						   var self = plus.webview.currentWebview();
+
+           				 var kmn=self.chanshu;
+            				th.status=kmn
+            				th.type_e=self.type_e
+						th.get_data(function(data) {
+							th.date_er = data.list
+							plus.webview.currentWebview().parent().evalJS("sdf_df(" + JSON.stringify(data.countList) + ")");
+
+						})
+					})
+				}
+			})
+
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+
+			function pullupRefresh() {
+				km.page++
+					var th = this
+				km.get_data(function(der) {
+					var der=der.list
+					der.map(function(a){
+						km.date_er.push(a)
+					})
+					
+					if(der.length>=10) {
+						th.endPullupToRefresh(false)
+					} else {
+						th.endPullupToRefresh(true)
+					}
+
+				})
+
+			}
+		</script>
+
+	</body>
+
+</html>

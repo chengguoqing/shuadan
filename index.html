@@ -1,0 +1,144 @@
+<!--首页-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="mui-bar mui-bar-tab df_jh_deert" id="seek_apper">
+        <a class="mui-tab-item mui-active" data-href="index_er.html">
+            <p>
+                <span class="dx icon-zhuye fz20"></span>
+            </p>
+            <span class="mui-tab-label">主页</span>
+        </a>
+
+        <a class="mui-tab-item " data-href="task_center.html">
+            <p class="pr">
+                <span class="dx icon-renwufenpeiguize fz20 pr">
+                              <i class="hong_sd_e yj" v-if="sd_jh_e.resOrder>0"></i>
+                    </span>
+
+            </p>
+
+            <span class="mui-tab-label">已接任务</span>
+
+        </a>
+        <a class="mui-tab-item" data-href="complaint_center.html">
+            <p>
+                <span class="dx icon-duihuazixun fz22 pr">  
+                    <i class="hong_sd_e yj" v-if="sd_jh_e.resComplaint>0"></i></span>
+            </p>
+            <span class="mui-tab-label">申诉中心</span>
+        </a>
+        <a class="mui-tab-item" data-href="information.html">
+            <p>
+                <span class="dx icon-weibiaoti554 fz26 pr">    
+                    <i class="hong_sd_e yj" v-if="sd_jh_e.resMessage>0"></i></span>
+            </p>
+            <span class="mui-tab-label">我的消息</span>
+        </a>
+        <a class="mui-tab-item" data-href="user_center.html">
+            <p>
+                <span class="dx icon-icon-user fz20"></span>
+            </p>
+            <span class="mui-tab-label">个人中心</span>
+        </a>
+    </nav>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mui.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({
+            el: '#seek_apper',
+            data: {
+                sd_jh_e: ""
+            },
+            methods: {
+                get_sdf: function() {
+                    var getResponse = {},
+                        th = this
+                    getResponse.key = localStorage.token
+                    m_ajax("/api/common/getResponse", getResponse, function(data) {
+                       
+                        th.sd_jh_e = data
+                    },true)
+                }
+            },
+            mounted: function() {
+                this.get_sdf()
+                var thj=this
+                setInterval(function() {
+                    thj.get_sdf()
+                }, 5000);
+            }
+        })
+
+
+
+        var self = ""
+        var subpagestyle = {
+            "top": "0px",
+            "bottom": "50px"
+        }
+        mui.plusReady(function() {
+            self = plus.webview.currentWebview();
+            var sub = plus.webview.create("index_er.html", "index_er.html", subpagestyle)
+            self.append(sub);
+            plus.navigator.setStatusBarBackground("#5DB9FF");
+
+            mui('.mui-bar-tab').on('tap', 'a', function(e) {
+                var targetTab = this.getAttribute('data-href')
+
+                tiaosd(targetTab)
+            })
+
+        })
+
+        function sdfwwer_df() {
+            var sd_ddrt = plus.webview.getWebviewById('index_er.html');
+            sd_ddrt.evalJS("chusu_e();");
+        }
+
+        function tiaosd(targetTab, num) {
+
+            var sd_sdrt = plus.webview.getWebviewById(targetTab),
+                ahg_s = ["index_er.html", "task_center.html", "complaint_center.html", "information.html", "user_center.html"]
+
+            if (sd_sdrt) {
+                ahg_s.map(function(a) {
+                    plus.webview.hide(a)
+                })
+                plus.webview.show(targetTab)
+
+            } else {
+                var sub = plus.webview.create(targetTab, targetTab, subpagestyle)
+                self.append(sub);
+                ahg_s.map(function(a) {
+                    plus.webview.hide(a)
+                })
+                plus.webview.show(sub)
+            }
+            if (num) {
+                document.querySelector(".mui-tab-item.mui-active").classList.remove("mui-active");
+                document.querySelector(".mui-tab-item:nth-child(" + num + ")").classList.add("mui-active");
+            }
+        }
+
+        function sdf_df() {
+            tiaosd("index_er.html", 3)
+        }
+
+    </script>
+</body>
+
+</html>

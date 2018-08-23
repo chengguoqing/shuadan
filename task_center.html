@@ -1,0 +1,139 @@
+<!--任务中心-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>任务中心</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		
+
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+
+				<h1 class="mui-title cf">已接任务</h1>
+
+			</header>
+			<div class="mui-content ">
+
+				<section class="bgff">
+					<p class="pd pt5 pm5 z3">已接垫付任务</p>
+					<section class="mui-row cen btm pt10 pm5">
+						<section class="mui-col-xs-4 brm" @click="zhu('unfinished_task','',{type_e:1})">
+							<p>未完成</p>
+							<p class="sd_jh_deert mt10 pm5">
+								<span class="pr">
+                                        <img src="img/dfdf_a.png">
+                                        <span class="yj hg_hgsd_der" v-if="sd.cancelledNum>0">{{sd.cancelledNum}}</span>
+								</span>
+
+							</p>
+						</section>
+
+						<section class="mui-col-xs-4 brm" @click="zhu('completed_task','',{type_e:1})">
+							<p>已完成</p>
+							<p class="sd_jh_deert mt10 pm5">
+								<span class="pr">
+                                        <img src="img/dfdf_b.png">
+                                          <span class="yj hg_hgsd_der" v-if="sd.completedNum>0">{{sd.completedNum}}</span>
+                                    </span>
+
+							</p>
+						</section> 
+
+						<section class="mui-col-xs-4 " @click="zhu('cancelled_task','',{type_e:1})">
+							<p>已撤销</p>
+							<p class="sd_jh_deert mt10 pm5">
+								<span class="pr">
+                                        <img src="img/dfdf_c.png">
+                                           <span class="yj hg_hgsd_der" v-if="sd.incompleteNum>0">{{sd.incompleteNum}}</span>
+                                    </span>
+
+							</p>
+						</section>
+
+					</section> 
+
+				</section>
+
+				<section class="bgff mt10">
+					<p class="pd pt5 pm5 z3">已接浏览任务</p>
+
+					<section class="mui-row cen btm pt10 pm5">
+						<section class="mui-col-xs-4 brm" @click="zhu('unfinished_task','',{type_e:2})">
+							<p>未完成</p>
+							<p class="sd_jh_deert mt10 pm5">
+								<span class="pr">
+                                        <img src="img/dfdf_a.png">
+                                         <span class="yj hg_hgsd_der" v-if="sf.cancelledNum>0">{{sf.cancelledNum}}</span>
+								</span>
+
+							</p>
+						</section>
+
+						<section class="mui-col-xs-4 brm" @click="zhu('completed_task','',{type_e:2})">
+							<p>已完成</p>
+							<p class="sd_jh_deert mt10 pm5">
+								<span class="pr">
+                                        <img src="img/dfdf_b.png">
+                                           <span class="yj hg_hgsd_der" v-if="sf.completedNum>0">{{sf.completedNum}}</span>
+                                    </span>
+
+							</p>
+						</section>
+
+						<section class="mui-col-xs-4 " @click="zhu('cancelled_task','',{type_e:2})">
+							<p>已撤销</p>
+							<p class="sd_jh_deert mt10 pm5">
+								<span class="pr">
+                                        <img src="img/dfdf_c.png">
+                                           <span class="yj hg_hgsd_der" v-if="sf.incompleteNum>0">{{sf.incompleteNum}}</span>
+                                    </span>
+
+							</p>
+						</section>
+
+					</section>
+
+				</section>
+
+			</div>
+
+		</section>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					sd:"",
+					sf:""
+				},
+				methods: {
+
+				},
+				mounted: function() {
+					var getOrderNumber={},
+					th=this
+					getOrderNumber.key = localStorage.token
+					m_ajax("/api/order/getOrderNumber", getOrderNumber, function(data) {
+						th.sd=data.advances
+						th.sf=data.browse
+					})
+				}
+			})
+		</script>
+	</body>
+
+</html>

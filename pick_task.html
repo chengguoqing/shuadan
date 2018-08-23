@@ -1,0 +1,209 @@
+<!--接任务-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>接任务</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body> 
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">接任务</h1>
+
+			</header>
+			<div class="mui-content ">
+
+				<section class="bgff pd pt10 pm10">
+					<p class="z3 fz16 pr">
+						ID:{{buyer.buyerId}} |<span class="fz14 ml5">完成率:{{buyer.completionRate}}</span>
+						<img src="img/wenhao.png" class="wenhao_eeret">
+					</p>
+					<p class="fz14 mt5 z6">
+						设置好每个平台的模式,可以自由组合多个平台同时接单哦
+					</p>
+
+				</section>
+
+				<section class="btm pt10 pm10 df_hj_deert" @click="zhu('account_binding')" v-for="sd in list">
+					<section class="pd">
+						<img src="img/dsf_a.png" class="sd_jh_isdr fl mt2">
+						<section class="ov pl10 pr">
+							<p class="fz14 z6">{{sd.accountName}}</p>
+							<p class="fz12 z9">
+								{{sd.dayNum}}
+							</p>
+
+							<div class="mui-switch mui-switch-mini mui-active fg_hj_deert">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</section>
+
+						<p class="qc"></p>
+					</section>
+
+				</section>
+
+				<p class="pd pt5 pm5  dfd_jh_deeret">
+					淘宝任务模式:全部/淘宝/任务
+				</p>
+			</div>
+
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" v-for="sd in sd_derr">
+					<a class="mui-navigate-right  fz16">
+
+						<img :src="sd.icon" class="sd_jh_ceert cz">
+						<span class="fz16 cz ml10">{{sd.name}}</span>
+					</a>
+
+				</li>
+			</ul>
+
+			<section class="s_jiedan_ere " :class="is_jiedn_e?'act':''">
+				<!--<p class="fz12 z3 df_rth_err">
+                00:00:06
+            </p>-->
+				<p class="jd pr" @click="jiednas">
+					接 单
+					<img src="img/huangs_as.png" class="sd_hjh_deert">
+				</p>
+				<span class="sd_jh_de_er bgls cf" @click="is_jiedn_e=false">停止</span>
+			</section>
+
+			<section class="yj4 bgff sd_ertjh_dert pd" :class="is_ren_e?'show':''">
+				<section class="cen pt20">
+					<span class="bgls f_b df_jh_der yj4 cz">
+                    <i class="dx icon-zhuyi fz30"></i>
+                </span>
+					<span class="ls fz20 ml10 cz">来任务啦~</span>
+				</section>
+
+				<section class="btm mt15 pd">
+
+					<section class="mui-row fz15 dsf_jh_dertd">
+						<span>任务类型：</span>
+						<span class="fr">{{sd_jh_deer.type}}</span>
+					</section>
+
+					<section class="mui-row fz15 dsf_jh_dertd">
+						<span>任务佣金：</span>
+						<span class="fr">{{sd_jh_deer.taskPrice}}金</span>
+					</section>
+					<section class="mui-row fz15 dsf_jh_dertd">
+						<span>时间限制：</span>
+						<span class="fr">{{sd_jh_deer.taskTime}}</span>
+					</section>
+
+				</section>
+
+			</section>
+
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					is_jiedn_e: false,
+					mask: "",
+					is_ren_e: false,
+					buyer: "",
+					list: "",
+					sd_jh_deer: "",
+					accountId: "",
+					sd_derr: [{
+						icon: "img/dsfd_a.png",
+						name: "绑定京东账号",
+						url: ""
+					}, {
+						icon: "img/dsfd_b.png",
+						name: "绑定美丽说账号",
+						url: ""
+					}, {
+						icon: "img/dsfd_c.png",
+						name: "绑定蘑菇街账号",
+						url: ""
+					}, {
+						icon: "img/dsfd_d.png",
+						name: "绑定拼多多账号",
+						url: ""
+					}]
+				},
+				methods: {
+					get_renwu: function() {
+
+						var doStartReceiptTask = {},
+							th = this
+
+						doStartReceiptTask.key = localStorage.token
+						doStartReceiptTask.accountId = this.accountId
+						m_ajax("/api/order/doStartReceiptTask", doStartReceiptTask, function(data) {
+							if(data) {
+								th.sd_jh_deer = data
+								th.is_ren_e = true
+								th.mask.show()
+								th.is_jiedn_e = false
+								setTimeout(function(){
+									 th.zhu('operation_tasks','',{id_pe:data.orderId})
+								},3000)
+
+							} else {
+
+							}
+
+						})
+
+					},
+					jiednas: function() {
+						var th = this
+						th.is_jiedn_e = true
+
+					
+
+						this.get_renwu()
+
+						setTimeout(function() {
+							if(th.is_jiedn_e) {
+								th.get_renwu()
+							}
+
+						}, 10000)
+						setTimeout(function() {
+
+						}, 600000);
+					}
+				},
+				mounted: function() {
+					var th = this
+					this.mask = mui.createMask(function() {
+						th.is_ren_e = false
+					});
+
+					var getBuyerAccountBindingList = {}
+
+					getBuyerAccountBindingList.key = localStorage.token
+					m_ajax("/api/order/getBuyerAccountBindingList", getBuyerAccountBindingList, function(data) {
+						th.buyer = data.buyer
+						th.list = data.list
+						th.accountId = data.list[0].accountId
+					})
+
+				}
+			})
+		</script>
+	</body>
+
+</html>

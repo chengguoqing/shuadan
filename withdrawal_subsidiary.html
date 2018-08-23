@@ -1,0 +1,57 @@
+<!--提现明细-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>提现明细</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+        <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+ 
+<body>
+    <section id="seek_apper">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">提现明细</h1>
+
+
+        </header>
+
+                             <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                
+            <table class="mui-table cen fz16 ds_y_taberet">
+                <thead>
+                    <tr class="bgff">
+                        <td>实际到账金额</td>
+                         <td>状态</td>
+                         <td>时间</td>
+                    </tr>
+                </thead>
+                <tbody class="z9">
+                    <tr v-for="df in sd">
+                            <td>{{df.money}}</td>
+                            <td>{{df.status|zhaungtai}}</td>
+                            <td>{{df.createTime|time}}</td>
+                    </tr>
+                </tbody>
+            </table>
+                                 </div>
+            </div>
+            
+ 
+    </section>
+     <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/withdrawal_subsidiary.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!--设置-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>设置</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <section id="seek_apper">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">设置</h1>
+
+        </header>
+        <div class="mui-content ">
+            <ul class="mui-table-view mt0">
+                <li class="mui-table-view-cell pr" v-for="sd in user_meat" @click="sd_jhd(sd.url_er) ">
+                    <label class="yj4 dsf_jh_ddff f_b cz " :class="sd.clsss_s">
+                    <i class="dx  cf cz " :class="[sd.icon,'fz'+sd.size]"></i>
+                </label>
+
+                    <span class="ml10 fz16 z6 cz">
+                {{sd.name}}
+                </span>
+                    <span v-if="sd.jindu" class="jindu_deret">
+                {{sd.jindu}}
+                </span>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({
+            el: '#seek_apper',
+            data: {
+                user_meat: [{
+                        size: "20",
+                        clsss_s: "ah", //class名字
+                        jindu: "",
+                        icon: "icon-icon-test", //图标名字
+                        name: "密码修改",
+                        url_er: "change_password" //跳转地址
+                    },
+                    {
+                        size: "16",
+                        clsss_s: "aj", //class名字
+                        icon: "icon-qiehuanzuhu", //图标名字
+                        name: "退出账号",
+                        jindu: "",
+                        url_er: "" //跳转地址
+                    },
+                ]
+
+            },
+            methods: {
+                sd_jhd: function(url_e) {
+                    if (!url_e) { //退出账号点击事件
+                        var doLogout = {} 
+                        doLogout.key = localStorage.token
+                        m_ajax("/api/buyer/doLogout", doLogout, function(data) {
+                            localStorage.token =""
+                              localStorage.key_s =""
+                              localStorage.user_info=""
+                             this.zhu("login")
+                        })
+                        return
+                    }
+                    this.zhu(url_e)
+                }
+            },
+            mounted: function() {
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

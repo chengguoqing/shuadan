@@ -1,0 +1,60 @@
+<!--登录-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+ 
+<body>
+    <section id="seek_apper"> 
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+
+            <h1 class="mui-title cf">登录</h1>
+            <span class="sdeertx_er mui-pull-right " @click="tzqq_w">
+                    <i class="dx icon-qq  fz20 cf "></i>
+                    <p class="cf fz12">客服</p>
+                </span>
+
+        </header> 
+        <div class="mui-content ">
+
+            <form class="mui-input-group mt20">
+                <div class="mui-input-row">
+            
+                    <input type="tel" class="mui-input-clear" placeholder="手机号码" v-model="form.mobile">
+                </div>
+                <div class="mui-input-row pr dder_xcde_er">
+             
+                    <input type="password" class="mui-input-clear" placeholder="密码"  v-model="form.password"> 
+                    <span class="ls wang_eert" @click="zhu('retrieve_password')">忘记密码</span>
+                </div>
+            </form>
+
+            <p class="mt30 pt10 pm10 bgff ls cen fz16" @click="deng_lu">
+                登录
+            </p>
+
+            <p class="mt20 cen fz16">
+                <ins @click="zhuce">还没有注册账号，注册点这里！</ins>
+            </p>
+            <p class="cen ls mt10">
+                新手咨询群：520043520
+            </p>
+
+        </div>
+    </section> 
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/page/login.js"></script>
+</body>
+
+</html>

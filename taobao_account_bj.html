@@ -1,0 +1,217 @@
+<!--绑定账号-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>绑定账号</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/mui.zoom.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+ 
+<body>
+    <section id="seek_apper" class="pm40">
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">绑定账号</h1>
+ 
+        </header> 
+        <div class="mui-content ">
+
+            <section class="pd pt10">
+                <p class="zhuy_eerr pd ">
+                    注意事项
+                </p>
+                <p class="pd pt10 pm10">
+                    账号审核时间周一至周五账号提交后3个工作日内完成审 核,如遇周末或节假日顺延审核工作人工进行,买手请耐 心等,新手务必看下方的审核要求
+                </p>
+
+                <p class="bgye fz16  cen pt10 pm10" @click="zhu('explain')">
+                    进入查看绑定要求
+                </p>
+
+                   <p class=" pt10 pm10 fz16 z3">
+                    账户信息
+
+                    <span class="yj4 bgls fr fz14 pd   sd_jhj_drert" @click="gengia_d">更改收货信息</span>
+
+                </p>
+
+
+
+
+
+
+
+
+
+            </section>
+
+
+            <form class="mui-input-group dsf_dsf_dffdg act">
+                <div class="mui-input-row pr">
+
+                    <input type="text" class="mui-input-clear w100 fz16" placeholder="请输入账号" v-model="form.accountName">
+                </div>
+
+                <div class="mui-input-row pr">
+
+                    <input type="text" class="mui-input-clear w100 fz16" placeholder="收货人" v-model="form.shippingName">
+                </div>
+
+                <div class="mui-input-row pr">
+
+                    <input type="tel" class="mui-input-clear w100 fz16" placeholder="收货人手机" v-model="form.shippingPhone">
+                </div>
+
+                <div class="mui-input-row pr">
+
+                    <input type="text" class="mui-input-clear w100 fz16" readonly placeholder="省份、地级市、县级市" v-model="sd_de_e">
+                </div>
+                <div class="mui-input-row pr">
+
+                    <input type="text" class="mui-input-clear w100 fz16" placeholder="详细地址" v-model="form.shippingStreet">
+                </div>
+
+
+            </form>
+            
+            
+               <p class="pd pt10 pm10 fz16 z3">
+                账号属性
+            </p>
+
+            <form class="mui-input-group dsf_dsf_dffdg   act">
+
+                <div class="mui-input-row pr">
+
+                    <input type="text" class="mui-input-clear w100 fz16" placeholder="" :value="gender" disabled  >
+                </div>
+                <div class="mui-input-row pr">
+
+                    <input type="text" class="mui-input-clear w100 fz16" placeholder="" :value="age" disabled  > 
+                </div>
+
+
+                <div class="mui-input-row pr">
+
+                    <input type="text" class="mui-input-clear w100 fz16" disabled v-model="xinxs"  placeholder="等级 请选择">
+                </div>
+
+
+
+                <div class="mui-input-row pr" @click="is_fen=true">
+
+                    <input type="text" class=" w100 fz16" disabled  v-model="sd_h_xdf" placeholder="购物类目 请选择" >
+                </div>
+
+              
+<section class="bgff pd fz14 z9 pt10 pm10" v-if="is_fen">
+                请任意选择<span class="red">三</span>个淘宝号经常购买的商品类目,提交后不可以自
+行修改,如需要修改请联系人工客服处理;只有选择了购买类
+目的买手才能接受相关要求的任务
+    
+    <section class="mui-row pm10">
+        <section class="mui-col-xs-4 cen mt20" v-for="(sd,idx) in fenlei">
+            <span class="sd_jher_der " :class="sd.cls" @click="sd_jgh(sd)">{{sd.name}}</span>
+        </section>
+    
+    </section>
+    
+                </section>
+                
+                
+
+            </form>
+            
+            
+
+            <p class="pd pt10 pm10 fz16 z3">
+                图片示例
+
+            </p> 
+
+            <section class="mui-row pl10">
+                <section class="mui-col-xs-4 pr10 mb10" v-for="sd in sd_hjh_der">
+                    <section >
+                        <section class="dsf_jh_der_r fz12 cen pr">
+                     
+
+                            
+                                        <img class="head-img mui-action-preview" id="head-img1" :src="sd.img_url" v-if="sd.img_url"  data-preview-src="" data-preview-group="1">
+                            <span class="sd_jh_ceertx" v-if="!sd.img_url">点击上传图片</span>
+                            <i class="dx icon-tupian   dsf_hj_deert" v-if="!sd.img_url"></i>
+                        </section>
+                        <p class="cen fz14 mt10">
+                            {{sd.name}}
+                        </p> 
+
+
+                    </section>
+                </section>
+
+            </section>
+
+
+
+
+      
+
+ <p class="pd pt10 pm10 fz16 z3">
+                可接单数
+
+            </p>
+            <table class="mui-table cen fs_juh_eertx bgff ">
+                <thead>
+                    <tr>
+                        <td class="tl" width="150">类别</td>
+                        <td>
+                            今日
+                        </td>
+                        <td>
+                            本周
+                        </td>
+                        <td>
+                            本月
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="tl">淘宝垫付单</td>
+                        <td>
+                            {{orderCount.daily}}
+                        </td>
+                        <td>
+                              {{orderCount.weekly}}
+                        </td>
+                        <td>
+                              {{orderCount.monthly}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+
+
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/mui.zoom.js"></script>
+    <script src="js/mui.previewimage.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script src="js/city.data.js"></script>
+    <script src="js/page/taobao_account_bj.js"> </script>
+</body>
+
+</html>

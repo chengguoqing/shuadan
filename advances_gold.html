@@ -1,0 +1,199 @@
+<!--垫付赚金-->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>垫付赚金</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/iconfont.css" rel="stylesheet" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/mui.picker.min.css" rel="stylesheet" />
+    <link href="css/mui.zoom.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+ 
+<body>
+    <section id="seek_apper">
+
+        <header class="mui-bar mui-bar-nav asd_uy_dftx">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+            <h1 class="mui-title cf">垫付赚金</h1>
+
+        </header>
+        <div class="mui-content ">
+            <section class="bgff">
+                <p class="pd pt10 pm10 z3 fz16">
+                    *美奇数码专营*
+                </p>
+                <section class="pd pt5 pm5 btm">
+                    <img src="img/sji_e.png" class="sd_jh_wedeert cz">
+                    <span class="fz16 z6 ml5">目标商品</span>
+                    <span class="fz14 fr mt5">
+                    如遇到问题，请先<span class="red">联系店家</span>
+                    </span>
+                </section>
+            </section>
+
+            <ul class="mui-table-view mt0">
+                <li class="mui-table-view-cell mui-media" >
+                    <a href="javascript:;">
+                        <img class="mui-media-object mui-pull-left df_Kj_deert " src="img/logo.png">
+                        <div class="mui-media-body df_jh_deertt">
+
+                            <p class="z3 fz16">
+                                商品成交价格:<span class="red">￥1180</span>
+                            </p>
+                            <p class="mt5 fz16 z3">
+                                件数和规格: <span class="red">1</span>
+                            </p>
+
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="pd pt5 pm5 bgff  z3">
+                任务状态:待评价
+            </p>
+            <p class="pd pt5 pm5 bgff btm red">
+
+                商家要求:暂无商家要求
+            </p>
+
+            <p class="pd pt5 pm5 bgff btm red">
+                订单留言:暂无订单留言
+            </p>
+
+
+            <p class="pd pt5 pm5 bgff btm ">
+                <a class="mui-btn bgls" @click="zhu('submit_complaint')">申诉任务</a>
+            </p>
+
+        </div>
+
+
+        <p class="pd pt5 pm5  btm z6">
+            接手任务 <span class="fr">2018-05-03 12:54</span>
+        </p>
+
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell fz16">
+            任务编号 <span class="ls fr">2822202</span>
+            </li>
+               <li class="mui-table-view-cell fz16">
+            买号 <span class="ls fr">这么麻烦恶心</span>
+            </li>
+               <li class="mui-table-view-cell fz16">
+            商品金额 <span class="ls fr">118.00</span>
+            </li>
+        </ul>
+        
+             <p class="pd pt5 pm5   z6">
+            订单付款 <span class="fr">2018-05-03 12:54</span>
+        </p>
+        <section class="bgff pt10 pl10 fz16">
+            货比三家
+            <section class="mui-row ">
+                <section class="mui-col-xs-4 mui-col-sm-3 pr10 dsf_jerh_deert" v-for="sd in 3">
+                    <img src="img/sd_dre_w.jpg" class="w100" data-preview-src="" :data-preview-group="1">
+                </section>
+            </section>
+            
+            <section class="btm mt10 pt10">
+                 浏览店铺
+            <section class="mui-row ">
+                <section class="mui-col-xs-4 mui-col-sm-3 pr10 dsf_jerh_deert" v-for="sd in 3">
+                    <img src="img/sd_dre_w.jpg" class="w100" data-preview-src="" :data-preview-group="2">
+                </section>
+            </section>
+            </section>
+            
+             <section class="btm mt10 pt10">
+                 聊天下单
+            <section class="mui-row ">
+                <section class="mui-col-xs-4 mui-col-sm-3 pr10 dsf_jerh_deert" v-for="sd in 3">
+                    <img src="img/sd_dre_w.jpg" class="w100" data-preview-src="" :data-preview-group="3">
+                </section>
+            </section>
+            </section>
+        
+        </section>
+        
+        
+        
+        
+        
+        <p class="pd pt5 pm5  btm z6"> 
+           商家确认订单
+        </p>
+
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell fz16">
+            订单编号 <span class="ls fr">168043304082375405</span>
+            </li>
+               <li class="mui-table-view-cell fz16">
+            返款方式 <span class="ls fr">
+平台还款</span>
+            </li>
+               <li class="mui-table-view-cell fz16">
+            返款账号 <span class="ls fr">测评符买手账号</span>
+            </li>
+            
+                  <li class="mui-table-view-cell fz16">
+            返款金额 <span class="ls fr">118.00</span>
+            </li>
+        </ul>
+        
+
+<!--
+           <p class="pd pt5 pm5   z6">
+           收货好评
+        </p>
+        <section class="bgff pd pt10 pm10">
+        <a class="mui-btn sd_jh_derett">去收货</a>
+        </section>
+-->
+            <p class="pd pt5 pm5   z6">
+           收货好评
+        </p>
+               <section class="bgff pt10 pl10 fz14">
+
+                 评价及物流截图
+            <section class="mui-row ">
+                <section class="mui-col-xs-4 mui-col-sm-3 pr10 dsf_jerh_deert" v-for="sd in 3">
+                    <img src="img/sd_dre_w.jpg" class="w100" data-preview-src="" :data-preview-group="3">
+                </section>
+            </section>
+            </section>
+  
+        
+    </section>
+
+
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/mui.zoom.js"></script>
+    <script src="js/mui.previewimage.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/base.js"></script>
+    <script>
+        new Vue({
+            el: '#seek_apper',
+            data: {
+
+            },
+            methods: {
+
+            },
+            mounted: function() {
+    mui.previewImage();
+            }
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!--身份认证信息-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>身份认证信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">身份认证信息</h1>
+
+			</header>
+			<div class="mui-content ">
+
+				<section class="pd pt10">
+					<p class="fz20 z3 b">身份证信息</p>
+
+					<p class="mt10 z3">
+						姓名: {{Identity.realName}}
+					</p>
+					<p class="mt5 z3">
+						身份证号: {{Identity.identity}}
+					</p>
+					<p class="mt5 z3">
+						身份证照
+					</p>
+					<p class="mt5">
+						<img :src="Identity.identityImg" class="sjemh_weert">
+					</p>
+
+					<p class="mt5 z3">
+						正面
+					</p>
+
+				</section>
+
+			</div>
+
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					Identity:""
+				},
+				methods: {
+
+				},
+				mounted: function() {
+					var getIdentity = {},
+						th = this
+					getIdentity.key = localStorage.token
+					m_ajax("/api/buyer/getIdentity", getIdentity, function(data, user_in) {
+						if(data.realName) {
+							th.Identity = data
+						}
+					})
+
+				}
+			})
+		</script>
+	</body>
+
+</html>

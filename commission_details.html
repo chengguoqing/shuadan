@@ -1,0 +1,80 @@
+<!--佣金详情-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>佣金详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+	</head>
+ 
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">{{title_dd}}</h1>
+				<span class="sdeertx_er mui-pull-right " @click="tzqq_w">
+                  
+                </span>
+
+			</header>
+			<div class="mui-content pd">
+
+				<section class=" pt15 pm15 bbm ">
+					<p class="fz16 fl df_jHJ_der">交易金额</p>
+					<p class="ov z3 fz16">{{date_s.money}}</p>
+					<p class="qc"></p>
+				</section>
+
+				<section class=" pt15 pm15 bbm ">
+					<p class="fz16 fl df_jHJ_der">交易类型</p>
+					<p class="ov z3 fz16">{{date_s.type}}</p>
+					<p class="qc"></p>
+				</section>
+
+				<section class=" pt15 pm15 bbm ">
+					<p class="fz16 fl df_jHJ_der">创建时间</p>
+					<p class="ov  fz16">{{date_s.createTime|time}}<br></p>
+					<p class="qc"></p>
+				</section>
+
+				<section class=" pt15 pm15 bbm ">
+					<p class="fz16 fl df_jHJ_der">备注说明</p>
+					<p class="ov  fz16">{{date_s.desc}}</p>
+					<p class="qc"></p>
+				</section>
+
+			</div>
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					title_dd:"",
+					date_s:""
+				},
+				methods: {
+
+				},
+				mounted: function() {
+					var th=this
+					mui.plusReady(function() {
+						var self = plus.webview.currentWebview();
+						th.title_dd=self.title_e
+						th.date_s=self.date
+					})
+				}
+			})
+		</script>
+	</body>
+
+</html>

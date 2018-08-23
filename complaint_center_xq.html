@@ -1,0 +1,101 @@
+<!--申诉详情-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>申诉详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" /> 
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">申诉详情</h1>
+
+			</header>
+			<div class="mui-content ">
+				<p class="pd pt10 pm10 z6 fz16">
+					<i class="dx icon-shenfenzheng  cz"></i> 申诉详情
+				</p>
+				<section class="pd  pm10 bgff">
+					<img :src="sd.goodsImage" class="sd_dre_w_deer fl mt10">
+					<section class="ov pl10 pt5">
+						<section class="fz15 dsf_jH_deet">
+							任务编号:
+							<span class="fr">
+                            {{sd.orderId}}<a class="red">[详情]</a>
+                        </span>
+						</section>
+
+						<section class="fz15 dsf_jH_deet">
+							QQ号码:
+							<span class="fr">
+                           {{sd.serviceQQ}}
+                        </span>
+						</section>
+
+						<section class="fz15 dsf_jH_deet tr z9">
+							如需获取更多信息请申请平台介入
+						</section>
+
+					</section>
+
+					<p class="qc"></p>
+				</section>
+
+				<p class="pd pt10 pm10 z6 fz16">
+					<i class="dx icon-shijian fz22  cz"></i> 状态详情
+				</p>
+
+				<section class="pd dsf_jh_deert fz15">
+					投诉内容 {{sd.createTime|time}}
+					<span class="ls_er fr" @click="cexiaosq('确定要撤销申诉',1)">撤销申诉</span>
+				</section>
+				<section class="bgff pd pt10 pm10 dsf_herj_deert">
+					<img :src="sd.image" v-if="sd.image" />
+					<p class="fz16 fz16 z3 mt10">类型：{{sd.reasonType|reasonType}}</p>
+					<p class="fz16 fz16 z3 mt10">原因：{{sd.content}}</p>
+				</section>
+
+				<section class="pd dsf_jh_deert fz15">
+					协商处理
+					<span class="ls_er fr" @click="cexiaosq('确定完结申述',2)">完结申述</span>
+				</section>
+				<section class="pd pt10 btm pm10 bgff" v-for="sf in sd.list">
+					<p class="fz16 z3">{{sf.createTime|time}}</p>
+					<p class="fz16 fz16 z3 mt5">{{sf.complaintName}}：{{sf.content}}</p>
+
+				</section>
+
+				<section class="pd pt10 pm10 bgff">
+					<section class="btm mt10 pt20 mui-row pm20">
+						<section class="mui-col-xs-6 pr10">
+							<a class="mui-btn w100 sddf_sd_sd " @click="zhu('reply_com','',{ytds_id:ytds_id})">回复申述</a>
+						</section>
+						<section class="mui-col-xs-6 pl10">
+							<a class="mui-btn w100 sddf_sd_sd ab" @click="sehng_de">申请平台介入</a>
+						</section>
+
+					</section>
+				</section>
+
+			</div>
+
+		</section>
+
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/page/complaint_center_xq.js">
+		</script>
+	</body>
+
+</html>
