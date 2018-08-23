@@ -1,0 +1,193 @@
+<!--淘宝账号绑定-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>淘宝账号绑定</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">淘宝账号绑定</h1>
+				<a class="  mui-pull-right cf dsf_jh_derrt fz15" @click="baocun">保存</a>
+			</header>
+			<div class="mui-content ">
+				<p class="pd pt5 pm5 z3">
+					接单账号选择(必选)
+				</p>
+				<section class="pd pt10 pm10 bgff" @click="shoid_e">
+					<img src="img/dsf_a.png" class="sd_jh_left cz">
+
+					<span class="ml5 ls fz15 cz">{{sd_anme}}</span>
+					<i class="dx icon-down ls fr mt5"></i>
+				</section>
+
+				<section v-for="sd in xsd_eer">
+					<p class="pd pt5 pm5 z3">
+						{{sd.title}}
+					</p>
+					<section class="mui-row bgff pd pt10 pm10">
+						<section class="mui-col-xs-4" v-for="sf in sd.dete_s">
+							<span class="sd_jh_dertse " :class="sf.cls" @click="xs_eer(sd,sf)">
+                    {{sf.name}}
+                    </span>
+						</section>
+					</section>
+
+				</section>
+			</div>
+
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					picker: "",
+					sd_anme: "",
+					accountId: "",
+					sd_xasd: '',
+					sd_xasd_er:"",
+					xsd_eer: [{
+						title: "选择操作设备",
+						dete_s: [{
+							cls: "",
+							id: "",
+							name: "全部"
+						}, {
+							cls: "",
+							id: "",
+							name: "手机"
+						}, {
+							cls: "",
+							id: "",
+							name: "电脑"
+						}]
+					}, {
+						title: "任务平台",
+						dete_s: [{
+							cls: "act",
+							id: "",
+							name: "淘宝"
+						}]
+					}, {
+						title: "选择任务类型",
+						dete_s: [{
+							cls: "",
+							id: "",
+							name: "全部"
+						}, {
+							cls: "",
+							id: "",
+							name: "垫付任务"
+						}, {
+							cls: "",
+							id: "",
+							name: "浏览任务"
+						}]
+					}, {
+						title: "选择返款方式",
+						dete_s: [{
+							cls: "act",
+							id: "",
+							name: "平台返款"
+						}]
+					}]
+				},
+				methods: {
+					shoid_e: function(e) {
+						var th = this
+						this.picker.show(function(rl) {
+							th.sd_anme = rl[0].text
+							th.sd_anme = rl[0].text
+							th.accountId = rl[0].value
+							th.chusddf(rl[0].taskOrderType)
+						})
+					},
+					chusddf: function(dayer) {
+						this.sd_xasd_er=dayer
+						this.xsd_eer.map(function(a,idx){
+							a.dete_s.map(function(b){
+								if(idx==0||idx==2){
+									b.cls=""
+								}
+								
+							})
+						})
+						this.xsd_eer[0].dete_s[dayer.pcMobile].cls = "act"
+						this.xsd_eer[2].dete_s[dayer.taskType].cls = "act"
+
+					},
+					xs_eer: function(sd, sf) {
+					
+						sd.dete_s.map(function(a) {
+							a.cls = ""
+						})
+						sf.cls = "act"
+
+						localStorage.sd_eert = JSON.stringify(this.xsd_eer)
+					},
+					baocun: function() { //保存按钮触发
+						var doBuyerAccountSet = {}
+						doBuyerAccountSet.key = localStorage.token
+						doBuyerAccountSet.accountId = this.sd_xasd_er.accountId
+						doBuyerAccountSet.taskType=this.sd_xasd_er.taskType
+						doBuyerAccountSet.pcMobile=this.sd_xasd_er.pcMobile
+						m_ajax("/api/order/doBuyerAccountSet", doBuyerAccountSet, function(data) {
+							mui.back()
+						})
+
+					}
+				},
+				mounted: function() {
+					this.picker = new mui.PopPicker({
+						"layer": [1]
+					});
+
+					
+					var getBuyerSetList = {},
+						th = this
+
+					getBuyerSetList.key = localStorage.token
+					getBuyerSetList.platformType = 1
+					m_ajax("/api/order/getBuyerSetList", getBuyerSetList, function(data) {
+						var sd_xerr = []
+						data.list.map(function(a) {
+							var sd_dxer = {}
+							sd_dxer.value = a.accountId
+							sd_dxer.text = a.accountName
+							sd_dxer.isDefault = a.isDefault
+							sd_dxer.taskOrderType = a.taskOrderType
+							sd_xerr.push(sd_dxer)
+							if(a.isDefault == 1) {
+								th.sd_anme = a.accountName
+								th.accountId = a.accountId
+								th.chusddf(a.taskOrderType)
+							}
+						})
+
+						
+						th.picker.setData(sd_xerr)
+
+					})
+
+				}
+			})
+		</script>
+	</body>
+
+</html>
