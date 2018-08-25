@@ -27,36 +27,26 @@
 
         <form class="mui-input-group mt20">
             <div class="mui-input-row pr" v-if="type_y==0">
-
                 <input type="number" class="mui-input-clear w100 fz16" placeholder="请输入邀请人ID" v-model="form.pid">
             </div>
-
         </form>
         <p class="fz16 z3 pl20 pt10 pm10" v-if="type_y==0">
-            官方邀请人ID:200000
-        </p>
- 
+           	 官方邀请人ID:100000
+        </p>	
         <form class="mui-input-group ">
             <div class="mui-input-row pr">
-
                 <input type="tel" class="mui-input-clear w100 fz16" placeholder="请输入手机号" v-model="form.mobile">
             </div>
             <div class="mui-input-row pr">
- 
                 <input type="text" class=" w100 fz16" placeholder="请输入验证码" v-model="form.verifyCode">
                 <span class="ls wang_eert" @click="huoqu_er">获取验证码</span>
             </div>
         </form>
-
-
-
         <form class="mui-input-group mt20">
             <div class="mui-input-row pr">
-
-                <input type="password" class="mui-input-clear w100 fz16" placeholder="请输入6-16位密码" v-model="form.jpassword">
+                <input type="password" class="mui-input-clear w100 fz16" placeholder="请输入8-16位密码" v-model="form.jpassword">
             </div>
             <div class="mui-input-row pr">
-
                 <input type="password" class="mui-input-clear w100 fz16" placeholder="请确认密码" v-model="form.password">
             </div>
         </form>

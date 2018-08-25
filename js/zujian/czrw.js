@@ -3,7 +3,8 @@
 Vue.component("renwu", {
 	props: {
 		wangwang: "",
-		orderId:""
+		shuju_e:""
+		
 	},
 	template: `
 	<section>
@@ -23,7 +24,7 @@ Vue.component("renwu", {
 			</section>
 
 			<section class="bgff">
-				<section class="mui-row  bgff">
+				<section class="mui-row  bgff pl10">
 					<section class="mui-col-xs-4 pr10 mb10" v-for="(sd,idx) in fdgf_sdf" v-if="idx<3" @tap="shangchuan(sd)">
 						<section  >
 							<section class="dsf_jh_der_r fz12 cen pr">
@@ -77,7 +78,7 @@ Vue.component("renwu", {
 			</section>
 
 			<section class="mui-row  bgff pm10">
-				<section class="mui-col-xs-4 pr10 mb10" v-for="(sd,idx) in fdgf_sdf" v-if="idx>2&&idx<7" @tap="shangchuan(sd)">
+				<section class="mui-col-xs-4 pr10 mb10 pl10" v-for="(sd,idx) in fdgf_sdf" v-if="idx>2&&idx<7" @tap="shangchuan(sd)">
 					<section  >
 						<section class="dsf_jh_der_r fz12 cen pr">
 							<img :src="sd.url" v-if="sd.url">
@@ -115,7 +116,7 @@ Vue.component("renwu", {
 			</section>
 
 			<section class="mui-row  bgff pm10">
-				<section class="mui-col-xs-4 pr10 mb10" v-for="(sd,idx) in fdgf_sdf" v-if="idx>6" @tap="shangchuan(sd)">
+				<section class="mui-col-xs-4 pr10 mb10 pl10" v-for="(sd,idx) in fdgf_sdf" v-if="idx>6" @tap="shangchuan(sd)">
 					<section  >
 						<section class="dsf_jh_der_r fz12 cen pr">
 							<img :src="sd.url" v-if="sd.url">
@@ -143,7 +144,7 @@ Vue.component("renwu", {
 					<span class="ls">第四步 填写实付金额</span> <span class="ye">点击查看示例</span>
 				</p>
 
-				<p>实际金额参考：49元(填写实际支付款项)</p>
+				<p>实际金额参考：{{shifu}}元(填写实际支付款项)</p>
 				<p>
 					<input type="number" v-model="shifu" class="pl0 fz14" placeholder="请输入实际付款金额">
 				</p>
@@ -159,38 +160,39 @@ Vue.component("renwu", {
 			</section></section>`,
 	data: function() {
 		return {
+			is_yz:false,//地址是否验证
 			s_ddrts: "",
-			s_ddrts: "广东广州萝岗",
+			s_ddrts: "",
 			fdgf_sdf: [{
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "搜索结果"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "商品1"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "商品2"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "店内商品1"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "店内商品2"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "目标商品头部"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "目标商品尾部"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "聊天"
 			}, {
-				url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534529476587&di=d25fcbf9555def2cddc6401609fe3450&imgtype=0&src=http%3A%2F%2Fimg3.100bt.com%2Fupload%2Fscrawl%2F20130512%2F1368358339253.jpg",
+				url: "",
 				name: "下单支付"
 			}],
-			shifu: "49", //实际支付款
-			ddbianhao: "51523516" //订单编号
+			shifu: "", //实际支付款
+			ddbianhao: "" //订单编号
 
 		}
 	},
@@ -202,12 +204,18 @@ Vue.component("renwu", {
 			this.s_ddrts = getClipbordText()
 		},
 		yanzheng: function() { //核对
-			var doValidateKeyword = {}
+			var doValidateKeyword = {},
+			th=this
 			doValidateKeyword.key = localStorage.token
 			doValidateKeyword.keyAnswer = this.s_ddrts
 			doValidateKeyword.type = 3
-			m_ajax("/api/order/doValidateKeyword", doValidateKeyword, function(data) {
-
+			doValidateKeyword.orderId=this.shuju_e.orderId
+			m_ajax("/api/order/doValidateKeyword", doValidateKeyword, function(data,data_er,datasi) {
+			
+				if(datasi.status==1){
+					mui.toast("验证成功")
+					th.is_yz=true
+				}
 			})
 		},
 		shangchuan: function(sd) { //上传图片
@@ -228,6 +236,11 @@ Vue.component("renwu", {
 				return
 			}
 			var sd_drrt = true
+			if(!this.is_yz){
+				mui.toast("请验证地址")
+				return
+			}
+			
 			for(var i = 0; i < this.fdgf_sdf.length; i++) {
 				if(!this.fdgf_sdf[i].url) {
 					mui.toast("请上传" + this.fdgf_sdf[i].name)
@@ -247,12 +260,13 @@ Vue.component("renwu", {
 			var doTaskOrder = {},
 			th=this
 			doTaskOrder.key = localStorage.token
-			doTaskOrder.orderId = this.orderId
+			doTaskOrder.orderId = this.shuju_e.orderId
 			doTaskOrder.thirdOrderId = this.ddbianhao //第三方平台订单号
 			doTaskOrder.compareGoods = [] //货比三家
 			doTaskOrder.browseStore = [] //浏览店铺
 			doTaskOrder.chatOrder = [] //聊天记录
 			doTaskOrder.goodsPrice = this.shifu
+				doTaskOrder.keyAnswer = this.s_ddrts
 			this.fdgf_sdf.map(function(a, b) {
 				if(b < 3) {
 					doTaskOrder.compareGoods.push(a.url)
@@ -267,8 +281,9 @@ Vue.component("renwu", {
 			console.log(doTaskOrder)
 
 
-			m_ajax("/api/order/doTaskOrder", doTaskOrder, function(data) {
-					mui.back()
+			m_ajax("/api/order/doTaskOrder", doTaskOrder, function(data,dat,data_is) {
+				mui.toast(data_is.msg)
+//					mui.back()
 			})
 
 		},

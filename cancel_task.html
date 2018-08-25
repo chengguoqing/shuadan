@@ -2,102 +2,121 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>取消任务</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link href="css/iconfont.css" rel="stylesheet" />
-    <link href="css/mui.min.css" rel="stylesheet" />
-    <link href="css/mui.picker.min.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <style>
-   
-        
-    </style>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>取消任务</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
 
-<body>
-    <section id="seek_apper">
+		</style>
+	</head>
 
-        <header class="mui-bar mui-bar-nav asd_uy_dftx">
-            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
-            <h1 class="mui-title cf">取消任务</h1>
+	<body>
+		<section id="seek_apper">
 
-        </header>
-        <div class="mui-content ">
-            <section class="bgff">
-                <p class="cen df_jh_eert">
-                <img src="img/quxiaods_a.png" >
-            </p>
-            <section class="pd">
-            <p class="dsf_jh_deret ls cen pt15 pm15 mt20">
-                取消任务将扣除相应完成率,请慎重取消哦
-                </p>
-                <p class="mt20 fz15 mb10">
-                选择取消理由
-                </p>
-            
-                
-                
-            </section>
-            
-                <p class="btm pt10 pm10 pd" v-for="sd in df_drts" @click="dsf_dfg(sd)">
-                {{sd.name}}
-                    <span class="dsfer_ertt">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">取消任务</h1>
+
+			</header>
+			<div class="mui-content ">
+				<section class="bgff">
+					<p class="cen df_jh_eert">
+						<img src="img/quxiaods_a.png">
+					</p>
+					<section class="pd">
+						<p class="dsf_jh_deret ls cen pt15 pm15 mt20">
+							取消任务将扣除相应完成率,请慎重取消哦
+						</p>
+						<p class="mt20 fz15 mb10">
+							选择取消理由
+						</p>
+
+					</section>
+
+					<p class="btm pt10 pm10 pd" v-for="sd in df_drts" @click="dsf_dfg(sd)">
+						{{sd.reason}}
+						<span class="dsfer_ertt">
                         <span class="ls" v-if="sd.cls">√</span>
-                    </span>
-                </p>
-            </section>
-            
-            <p class="mt40 pd ">
-            <button  class="bgls fz16 w100 yj4 pt10 pm10">申请取消并派给其他用户</button>
-            </p>
-            
-        </div>
-            
-    </section>
+						</span>
+					</p>
+				</section>
 
+				<p class="mt40 pd ">
+					<button class="bgls fz16 w100 yj4 pt10 pm10" @click="quxiao">申请取消并派给其他用户</button>
+				</p>
 
+			</div>
 
+		</section>
 
-    <script src="js/mui.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/base.js"></script>
-    <script>
-        new Vue({
-            el: '#seek_apper',
-            data: {
-                df_drts:[
-                    {
-                        name:"商品找不到",
-                        cls:"act"
-                    }, {
-                        name:"达不到商家备注要求",
-                        cls:""
-                    }, {
-                        name:"不想做了",
-                        cls:""
-                    }, {
-                        name:"问题任务",
-                        cls:""
-                    }
-                ]
-            },
-            methods: {
-                dsf_dfg:function(sd){
-                    this.df_drts.map(function(a){
-                        a.cls=""
-                    })
-                    sd.cls="act"
-                }
-            },
-            mounted: function() {
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					df_drts: [],
+					is_liy: "",
+					orderId: ""
+				},
+				methods: {
+					dsf_dfg: function(sd) {
+						this.df_drts.map(function(a) {
+							a.cls = ""
+						})
+						sd.cls = "act"
+						this.is_liy = sd.id
+					},
+					quxiao: function() {
+						if(!this.is_liy) {
+							mui.toast("请选择取消理由")
+							return
+						}
+						var doCancelTaskOrder = {}
+						doCancelTaskOrder.key = localStorage.token
+						doCancelTaskOrder.orderId = this.orderId
+						doCancelTaskOrder.id = this.is_liy
+						m_ajax("/api/order/doCancelTaskOrder", doCancelTaskOrder, function(data) {
+							mui.toast("操作成功！")
 
-            }
-        })
+							var seldf = plus.webview.getLaunchWebview()
+							seldf.evalJS("sdf_df_eet();");
+							plus.webview.show(seldf)
 
-    </script>
-</body>
+							var ws = plus.webview.currentWebview() //当前窗口;
+							ws.close();
+
+						})
+					}
+				},
+				mounted: function() {
+					var getCancelOrder = {},
+						th = this
+					mui.plusReady(function() {
+						var self = plus.webview.currentWebview();
+						getCancelOrder.key = localStorage.token
+						th.orderId = self.orderId
+						getCancelOrder.orderId = th.orderId
+						m_ajax("/api/order/getCancelOrder", getCancelOrder, function(data) {
+							data.list.map(function(a) {
+								a.cls = ""
+							})
+							th.df_drts = data.list
+						})
+
+					})
+
+				}
+			})
+		</script>
+	</body>
 
 </html>

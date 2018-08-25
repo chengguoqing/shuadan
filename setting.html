@@ -74,8 +74,9 @@
             methods: {
                 sd_jhd: function(url_e) {
                     if (!url_e) { //退出账号点击事件
-                        var doLogout = {} 
+                        var doLogout = {}  
                         doLogout.key = localStorage.token
+                       
                         m_ajax("/api/buyer/doLogout", doLogout, function(data) {
                             localStorage.token =""
                               localStorage.key_s =""

@@ -189,9 +189,8 @@ function shareSystem() {
 }
 
 //窗口滑动切换
-function qiehuan(da_iu, call_bk, type_e) {
+function qiehuan(da_iu, call_bk, type_e,num) {
 	mui.plusReady(function() {
-
 		var _self = plus.webview.currentWebview();
 		var sd_dsd = []
 		da_iu.map(function(a) {
@@ -221,7 +220,7 @@ function qiehuan(da_iu, call_bk, type_e) {
 					target.scrollIntoView();
 				}
 			}
-		});
+		},num);
 
 		call_bk(group)
 		mui(".mui-content").on("tap", ".mui-control-item", function(e) {
@@ -250,6 +249,7 @@ function m_ajax(url, dat_a, call_blck, ty) {
 
 		}
 	}
+
 	$.ajax({
 		type: 'POST',
 		url: apiBaseUrl + url,
@@ -257,7 +257,6 @@ function m_ajax(url, dat_a, call_blck, ty) {
 		contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
 		dataType: 'json',
 		success: function(data) {
-
 			try {
 				sd_sd.close()
 			} catch(e) {
@@ -268,25 +267,24 @@ function m_ajax(url, dat_a, call_blck, ty) {
 				try {
 					sd_dertt = plus.nativeUI.showWaiting(data.msg);
 				} catch(e) {
-
 				}
-
 				setTimeout(function() {
 					try {
 						sd_dertt.close()
 					} catch(e) {
 
 					}
-					call_blck(data.data, data.request)
-				}, 500)
+					call_blck(data.data, data.request,data)
+				}, 500) 
 				return
 			}
 			if(data.status == 2) {
-				call_blck(data.data, data.request)
+				alert(2)
+				call_blck(data.data, data.request,data)
 				return
 			}
 			if(data.status == "40003" && !ty) {
-				zhu("login")
+			zhu("login")
 				mui.toast(data.msg)
 				return
 			}
@@ -295,10 +293,10 @@ function m_ajax(url, dat_a, call_blck, ty) {
 				return
 			}
 
-			call_blck(data.data, data.request)
+			call_blck(data.data, data.request,data)
 		},
-		error: function(res) {
-			console.log(res.responseText)
+		error: function(res) { 
+			alert(JSON.stringify(res))
 			try {
 
 				mui.toast(res.responseJSON.msg)

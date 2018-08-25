@@ -2,139 +2,123 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>账号绑定</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link href="css/iconfont.css" rel="stylesheet" />
-    <link href="css/mui.min.css" rel="stylesheet" /> 
-    <link href="css/mui.picker.min.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" /> 
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>账号绑定</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
 
-<body> 
-    <section id="seek_apper">
-        <header class="mui-bar mui-bar-nav asd_uy_dftx">
-        	  <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
-                            <h1 class="mui-title cf">账号绑定</h1> 
-            
-                    </header>
-                    <div class="mui-content ">
-                <ul class="mui-table-view mt0">
-                       <li class="mui-table-view-cell dian fz16">
-                            账户信息
-                           <span class="ls fz12">(账户信息账户信息必填,银行卡信息与身份证一致)</span>
-                           
-                     </li>
-                    
-                    
-                        <li class="mui-table-view-cell" @click="bang_ddfe_a(sd.isIdentityCheck)  ">
-                <a class="mui-navigate-right  fz16">
-       <span class=" z6">身份证信息 <span class="red">必填</span></span>
-                    <span class="fr mr20 z9">{{sd.isIdentityCheck|sd_ert}}</span>
-                       </a>
-                                  <p v-if="sd.isIdentityCheck==3">
-                    {{sd.identityRefuseDesc}}
-                            </p>
-                       </li>
-                    
-                    
-                        <li class="mui-table-view-cell"  @click="bang_ddfe(sd.isIdentityCheck,sd.bank)">
-                <a class="mui-navigate-right  fz16">
-       <span class=" z6">银行卡</span>
-                    <span class="fr mr20 z9" v-if="sd.bank">修改</span>
-                    <span  class="fr mr20 z9" v-else>新增</span>
-                        <p  v-if="sd.bank">
-                            {{sd.realName+""+sd.bankAccount}}
-                            </p>
-                       </a>
-                    
-                       </li>
-                    
-                    
-                        <li class="mui-table-view-cell dian fz16" @click="bang_ddff(sd.isIdentityCheck,sd.qq)">
-                                      <a class="mui-navigate-right  fz16">
-                            QQ号{{sd.qq}}
-                          <span class=" z9 fr mr20" v-if="qq">修改联系客服</span>
-                               <span class=" z9 fr mr20" v-else>新增</span>
-                            </a>
-                     </li>
-                    
-                    
-                    
-                    
-                            </ul>
-                        
-                        
-                                  <ul class="mui-table-view mt10">
-                       <li class="mui-table-view-cell dian fz16">
-                            账户信息
-                           <span class="ls fz12">(账号信息任意绑定一个号并通过审核即可完成新手任务)</span>
-                           
-                     </li>
-                                      
-                                      
-                                           <li class="mui-table-view-cell" @click="zhu('taobao_account')">
-                <a class="mui-navigate-right  fz16">
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">账号绑定</h1>
 
-                    <img src="img/dsf_a.png" class="sd_jh_ceert cz">
-                       <span class="fz16 cz ml10">绑定淘宝账号</span>
-                    </a>
-                        
-                       </li>
-                                      
-                                      
-                                                            <li class="mui-table-view-cell" @click="dingr">
-                <a class="mui-navigate-right  fz16">
+			</header>
+			<div class="mui-content ">
+				<ul class="mui-table-view mt0">
+					<li class="mui-table-view-cell dian fz16">
+						账户信息
+						<span class="ls fz12">(账户信息账户信息必填,银行卡信息与身份证一致)</span>
 
-                    <img src="img/dsf_b.png" class="sd_jh_ceert cz">
-                       <span class="fz16 cz ml10">绑定美丽说账号</span>
-                    </a>
-                        
-                       </li>
-                                                            <li class="mui-table-view-cell" @click="dingr">
-                <a class="mui-navigate-right  fz16">
+					</li>
 
-                    <img src="img/dsf_c.png" class="sd_jh_ceert cz">
-                       <span class="fz16 cz ml10">绑定京东账号</span>
-                    </a>
-                        
-                       </li>
-                                                            <li class="mui-table-view-cell" @click="dingr">
-                <a class="mui-navigate-right  fz16">
+					<li class="mui-table-view-cell" @click="bang_ddfe_a(sd.isIdentityCheck)  ">
+						<a class="mui-navigate-right  fz16">
+							<span class=" z6">身份证信息 <span class="red">必填</span></span>
+							<span class="fr mr20 z9">{{sd.isIdentityCheck|sd_ert}}</span>
+						</a>
+						<p v-if="sd.isIdentityCheck==3">
+							{{sd.identityRefuseDesc}}
+						</p>
+					</li>
 
-                    <img src="img/dsf_d.png" class="sd_jh_ceert cz">
-                       <span class="fz16 cz ml10">绑定蘑菇街账号</span>
-                    </a>
-                        
-                       </li>
-                                                            <li class="mui-table-view-cell" @click="dingr">
-                <a class="mui-navigate-right  fz16">
+					<li class="mui-table-view-cell" @click="bang_ddfe(sd.isIdentityCheck,sd.bank)">
+						<a class="mui-navigate-right  fz16">
+							<span class=" z6">银行卡</span>
+							<span class="fr mr20 z9" v-if="sd.bank">修改</span>
+							<span class="fr mr20 z9" v-else>新增</span>
+							<p v-if="sd.bank">
+								{{sd.realName+""+sd.bankAccount}}
+							</p>
+						</a>
 
-                    <img src="img/dsf_d.png" class="sd_jh_ceert cz">
-                       <span class="fz16 cz ml10">绑定定拼并多多账号</span>
-                    </a>
-                        
-                       </li>
-                                      
-                                      
-                                      
-                                      
-                                      
-                        </ul>
-                    </div>
-    
-    </section>
+					</li>
 
+					<li class="mui-table-view-cell dian fz16" @click="bang_ddff(sd.isIdentityCheck,sd.qq)">
+						<a class="mui-navigate-right  fz16">
+							QQ号{{sd.qq}}
+							<span class=" z9 fr mr20" v-if="qq">修改联系客服</span>
+							<span class=" z9 fr mr20" v-else>新增</span>
+						</a>
+					</li>
 
+				</ul>
 
+				<ul class="mui-table-view mt10">
+					<li class="mui-table-view-cell dian fz16">
+						账户信息
+						<span class="ls fz12">(账号信息任意绑定一个号并通过审核即可完成新手任务)</span>
 
-    <script src="js/mui.min.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/base.js"></script>
-    <script src="js/page/bind_account.js"></script>
-</body>
+					</li>
+
+					<li class="mui-table-view-cell" @click="zhu('taobao_account')">
+						<a class="mui-navigate-right  fz16">
+
+							<img src="img/dsf_a.png" class="sd_jh_ceert cz">
+							<span class="fz16 cz ml10">绑定淘宝账号</span>
+						</a>
+
+					</li>
+
+					<li class="mui-table-view-cell" @click="dingr">
+						<a class="mui-navigate-right  fz16">
+
+							<img src="img/dsf_b.png" class="sd_jh_ceert cz">
+							<span class="fz16 cz ml10">绑定美丽说账号</span>
+						</a>
+
+					</li>
+					<li class="mui-table-view-cell" @click="dingr">
+						<a class="mui-navigate-right  fz16">
+
+							<img src="img/dsf_c.png" class="sd_jh_ceert cz">
+							<span class="fz16 cz ml10">绑定京东账号</span>
+						</a>
+
+					</li>
+					<li class="mui-table-view-cell" @click="dingr">
+						<a class="mui-navigate-right  fz16">
+
+							<img src="img/dsf_d.png" class="sd_jh_ceert cz">
+							<span class="fz16 cz ml10">绑定蘑菇街账号</span>
+						</a>
+
+					</li>
+					<li class="mui-table-view-cell" @click="dingr">
+						<a class="mui-navigate-right  fz16">
+
+							<img src="img/dsf_d.png" class="sd_jh_ceert cz">
+							<span class="fz16 cz ml10">绑定定拼并多多账号</span>
+						</a>
+
+					</li>
+
+				</ul>
+			</div>
+
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/page/bind_account.js"></script>
+	</body>
 
 </html>

@@ -4,7 +4,7 @@ Vue.component("gjz", {
 	props: {
 		keyanswer: "",
 		wangwang: "",
-		orderId: ""
+		shuju_e: ""
 
 	},
 	template: `
@@ -133,6 +133,7 @@ Vue.component("gjz", {
 	`,
 	data: function() {
 		return {
+			is_yz: false, //地址是否验证
 			jiner_se: 0,
 			fdgf_sdf: [{
 				url: "",
@@ -146,7 +147,7 @@ Vue.component("gjz", {
 			dianpu_a: "", //店铺商品
 			dianpu_b: '',
 			s_ddrts: "", //目标详情的答案
-			ddbianhao:""//订单编号
+			ddbianhao: "" //订单编号
 
 		}
 	},
@@ -172,9 +173,13 @@ Vue.component("gjz", {
 			var doValidateKeyword = {}
 			doValidateKeyword.key = localStorage.token
 			doValidateKeyword.keyAnswer = this.s_ddrts
-			doValidateKeyword.type = 3
-			m_ajax("/api/order/doValidateKeyword", doValidateKeyword, function(data) {
-
+			doValidateKeyword.type = 4
+			doValidateKeyword.orderId = this.shuju_e.orderId
+			m_ajax("/api/order/doValidateKeyword", doValidateKeyword, function(data, san, datasi) {
+				if(datasi.status == 1) {
+					mui.toast("验证成功")
+					th.is_yz = true
+				}
 			})
 		},
 		shangchuan: function(sd) { //上传图片
@@ -190,35 +195,37 @@ Vue.component("gjz", {
 			})
 		},
 		tijiao_rt: function() { //提交任务
-			if(!this.huobi_a){
+				if(!this.s_ddrts) {
+				mui.toast("请核对关键字")
+				return
+			}
+			if(!this.huobi_a) {
 				mui.toast("请粘贴货比商品链接1")
 				return
-				
+
 			}
-			if(!this.huobi_b){
+			if(!this.huobi_b) {
 				mui.toast("请粘贴货比商品链接2")
 				return
-				
+
 			}
-			
-				if(!this.dianpu_a){
+
+			if(!this.dianpu_a) {
 				mui.toast("店铺商品1")
 				return
-				
+
 			}
-				if(!this.dianpu_b){
+			if(!this.dianpu_b) {
 				mui.toast("店铺商品2")
 				return
-				
+
 			}
-				
+
 			if(!this.s_ddrts) {
 				mui.toast("请输入目标详情的答案")
 				return
 			}
-			
-			
-		
+
 			var sd_drrt = true
 			for(var i = 0; i < this.fdgf_sdf.length; i++) {
 				if(!this.fdgf_sdf[i].url) {
@@ -226,7 +233,6 @@ Vue.component("gjz", {
 					return
 				}
 			}
-		
 
 			if(!this.ddbianhao) {
 				mui.toast("请输入订单编号")
@@ -235,14 +241,15 @@ Vue.component("gjz", {
 
 			var doTaskOrder = {}
 			doTaskOrder.key = localStorage.token
-			doTaskOrder.orderId = this.orderId
+			doTaskOrder.orderId = this.shuju_e.orderId
 			doTaskOrder.thirdOrderId = this.ddbianhao //第三方平台订单号
-			doTaskOrder.compareGoods = [this.huobi_a,this.huobi_b] //货比三家
-			doTaskOrder.browseStore = [this.dianpu_a,this.dianpu_b] //浏览店铺
-			doTaskOrder.keyAnswer=this.s_ddrts//关键词
-			doTaskOrder.goodsPrice = this.jiner_se//实付金额
+			doTaskOrder.compareGoods = [this.huobi_a, this.huobi_b] //货比三家
+			doTaskOrder.browseStore = [this.dianpu_a, this.dianpu_b] //浏览店铺
+			doTaskOrder.keyAnswer = this.s_ddrts //关键词
+			doTaskOrder.goodsPrice = this.jiner_se //实付金额
+			doTaskOrder.chatOrder=[this.fdgf_sdf[0].url,this.fdgf_sdf[1].url]
 			m_ajax("/api/order/doTaskOrder", doTaskOrder, function(data) {
-				mui.back()
+				mui.toast(data_is.msg)
 			})
 
 		},

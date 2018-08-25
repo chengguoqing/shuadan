@@ -44,21 +44,20 @@ var km = new Vue({
 		this.getdatd()
 	},
 	filters: { //过滤器   页面上调用{{dt.state|lei}}
-	
-	 sd_ert(num) {
+	 sd_ert (num) {
 			var sd_serrt = ""
 			if(num == 0) {
 				sd_serrt = "新增"
-			}
+			};
 			if(num == 1) {
 				sd_serrt = "待审核"
-			}
+			};
 			if(num == 2) {
 				sd_serrt = "已审核"
-			}
+			};
 			if(num == 3) {
 				sd_serrt = "审核不通过"
-			}
+			};
 			return sd_serrt
 		}
 	}

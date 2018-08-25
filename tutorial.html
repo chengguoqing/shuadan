@@ -2,25 +2,25 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>新手教程</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link href="css/iconfont.css" rel="stylesheet" />
-    <link href="css/mui.min.css" rel="stylesheet" />
-    <link href="css/mui.picker.min.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>新手教程</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
 
-<body>
-    <section id="seek_apper">
-        <header class="mui-bar mui-bar-nav asd_uy_dftx">
-            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
-            <h1 class="mui-title cf">新手教程</h1>
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">新手教程</h1>
 
-        </header>
-        <div class="mui-content ">
+			</header>
+			<!--<div class="mui-content ">
 
             <section class="pd pt15 pm10 df_hh_dre_erttx">
                 <img src="img/rentou.png" class="iy_yhg_dert fl">
@@ -58,282 +58,284 @@
             </section>
             
 
-        </div>
+        </div>-->
+222
+		</section>
 
-    </section>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/webviewGroup.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					jiacnhe: [{
+							name: "注册",
+							cls: "act",
+							date_e: [{
+									name: "无邀请人,直接输入手机号注册",
+									url_e: ""
+								},
+								{
+									name: "有邀请人,先输入邀请人的ID",
+									url_e: ""
+								},
+								{
+									name: "无法注册",
+									url_e: ""
+								},
+								{
+									name: "无法注册",
+									url_e: "注册相关注意事项"
+								}
+							]
+						},
+						{
+							name: "登录",
+							cls: "",
+							date_e: [{
+									name: "登录",
+									url_e: ""
+								},
+								{
+									name: "登录",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "首页",
+							cls: "",
+							date_e: [{
+									name: "首页",
+									url_e: ""
+								},
+								{
+									name: "首页",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "新手任务",
+							cls: "",
+							date_e: [{
+									name: "新手任务",
+									url_e: ""
+								},
+								{
+									name: "新手任务",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "账号绑定",
+							cls: "",
+							date_e: [{
+									name: "账号绑定",
+									url_e: ""
+								},
+								{
+									name: "账号绑定",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "任务基本操作及类型",
+							cls: "",
+							date_e: [{
+									name: "任务基本操作及类型",
+									url_e: ""
+								},
+								{
+									name: "任务基本操作及类型",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "手机垫付任务及操作",
+							cls: "",
+							date_e: [{
+									name: "手机垫付任务及操作",
+									url_e: ""
+								},
+								{
+									name: "手机垫付任务及操作",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "电脑垫付任务及操作",
+							cls: "",
+							date_e: [{
+									name: "电脑垫付任务及操作",
+									url_e: ""
+								},
+								{
+									name: "电脑垫付任务及操作",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "手机浏览任务及操作",
+							cls: "",
+							date_e: [{
+									name: "手机浏览任务及操作",
+									url_e: ""
+								},
+								{
+									name: "手机浏览任务及操作",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "电脑浏览任务及操作",
+							cls: "",
+							date_e: [{
+									name: "电脑浏览任务及操作",
+									url_e: ""
+								},
+								{
+									name: "电脑浏览任务及操作",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "多商品、特别任务、退款任务及操作",
+							cls: "",
+							date_e: [{
+									name: "多商品、特别任务、退款任务及操作",
+									url_e: ""
+								},
+								{
+									name: "多商品、特别任务、退款任务及操作",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "返款",
+							cls: "",
+							date_e: [{
+									name: "返款",
+									url_e: ""
+								},
+								{
+									name: "返款",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "收货及评价",
+							cls: "",
+							date_e: [{
+									name: "收货及评价",
+									url_e: ""
+								},
+								{
+									name: "收货及评价",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "取消规则",
+							cls: "",
+							date_e: [{
+									name: "取消规则",
+									url_e: ""
+								},
+								{
+									name: "取消规则",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "申诉及撤销",
+							cls: "",
+							date_e: [{
+									name: "申诉及撤销",
+									url_e: ""
+								},
+								{
+									name: "申诉及撤销",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "佣金、本金提现",
+							cls: "",
+							date_e: [{
+									name: "佣金、本金提现",
+									url_e: ""
+								},
+								{
+									name: "佣金、本金提现",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "消息中心",
+							cls: "",
+							date_e: [{
+									name: "消息中心",
+									url_e: ""
+								},
+								{
+									name: "消息中心",
+									url_e: ""
+								}
+							]
+						}, {
+							name: "个人中心",
+							cls: "",
+							date_e: [{
+									name: "个人中心",
+									url_e: ""
+								},
+								{
+									name: "个人中心",
+									url_e: ""
+								}
+							]
+						},
+						{
+							name: "其他",
+							cls: "",
+							date_e: [{
+									name: "其他",
+									url_e: ""
+								},
+								{
+									name: "其他",
+									url_e: ""
+								}
+							]
+						}
 
+					]
 
+				},
+				methods: {
+					sd_drrt: function(datas) {
+						this.jiacnhe.map(function(a) {
+							a.cls = ""
+						})
+						datas.cls = "act"
+					}
+				},
+				mounted: function() { 
+						var win_sd=[
+							{
+								url:"http://test.xiaobay.com/api/guide",
+								id:0
+							}
+						]
+				
+					qiehuan(win_sd, function(group) {
+						
+					},false,65)
 
-
-    <script src="js/mui.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/base.js"></script>
-    <script>
-        new Vue({
-            el: '#seek_apper',
-            data: {
-                jiacnhe: [
-                    {
-                        name:"注册",
-                        cls:"act",
-                        date_e:[
-                            {
-                                name:"无邀请人,直接输入手机号注册",
-                                url_e:""
-                            },
-                             {
-                                name:"有邀请人,先输入邀请人的ID",
-                                url_e:""
-                            },
-                             {
-                                name:"无法注册",
-                                url_e:""
-                            },
-                             {
-                                name:"无法注册",
-                                url_e:"注册相关注意事项"
-                            }
-                        ]
-                    },
-                     {
-                        name:"登录",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"登录",
-                                url_e:""
-                            },
-                             {
-                                name:"登录",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"首页",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"首页",
-                                url_e:""
-                            },
-                             {
-                                name:"首页",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"新手任务",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"新手任务",
-                                url_e:""
-                            },
-                             {
-                                name:"新手任务",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"账号绑定",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"账号绑定",
-                                url_e:""
-                            },
-                             {
-                                name:"账号绑定",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"任务基本操作及类型",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"任务基本操作及类型",
-                                url_e:""
-                            },
-                             {
-                                name:"任务基本操作及类型",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"手机垫付任务及操作",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"手机垫付任务及操作",
-                                url_e:""
-                            },
-                             {
-                                name:"手机垫付任务及操作",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"电脑垫付任务及操作",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"电脑垫付任务及操作",
-                                url_e:""
-                            },
-                             {
-                                name:"电脑垫付任务及操作",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"手机浏览任务及操作",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"手机浏览任务及操作",
-                                url_e:""
-                            },
-                             {
-                                name:"手机浏览任务及操作",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"电脑浏览任务及操作",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"电脑浏览任务及操作",
-                                url_e:""
-                            },
-                             {
-                                name:"电脑浏览任务及操作",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"多商品、特别任务、退款任务及操作",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"多商品、特别任务、退款任务及操作",
-                                url_e:""
-                            },
-                             {
-                                name:"多商品、特别任务、退款任务及操作",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"返款",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"返款",
-                                url_e:""
-                            },
-                             {
-                                name:"返款",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"收货及评价",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"收货及评价",
-                                url_e:""
-                            },
-                             {
-                                name:"收货及评价",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"取消规则",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"取消规则",
-                                url_e:""
-                            },
-                             {
-                                name:"取消规则",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"申诉及撤销",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"申诉及撤销",
-                                url_e:""
-                            },
-                             {
-                                name:"申诉及撤销",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:" ",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:" ",
-                                url_e:""
-                            },
-                             {
-                                name:" ",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"佣金、本金提现",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"佣金、本金提现",
-                                url_e:""
-                            },
-                             {
-                                name:"佣金、本金提现",
-                                url_e:""
-                            }
-                        ]
-                    }, {
-                        name:"消息中心",
-                        cls:"",
-                        date_e:[
-                            {
-                                name:"消息中心",
-                                url_e:""
-                            },
-                             {
-                                name:"消息中心",
-                                url_e:""
-                            }
-                        ]
-                    }
-                ]
-
-            },
-            methods: {
-                sd_drrt:function(datas){
-                    this.jiacnhe.map(function(a){
-                        a.cls=""
-                    })
-                    datas.cls="act"
-                }
-            },
-            mounted: function() {
-
-            }
-        })
-
-    </script>
-</body>
+				}
+			})
+		</script>
+	</body>
 
 </html>

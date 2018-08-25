@@ -2,166 +2,50 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>帮助与客服</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link href="css/iconfont.css" rel="stylesheet" />
-    <link href="css/mui.min.css" rel="stylesheet" />
-    <link href="css/mui.picker.min.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>帮助与客服</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
 
-<body>
-    <section id="seek_apper">
-        <header class="mui-bar mui-bar-nav asd_uy_dftx">
-            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
-            <h1 class="mui-title cf">帮助</h1>
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">帮助</h1>
 
-        </header>
-        <div class="mui-content ">
+			</header>
 
-            <section class="pd pt15 pm10 df_hh_dre_erttx">
-                <img src="img/rentou.png" class="iy_yhg_dert fl">
-                <section class="ov pl20">
-                    <p class="fz16 cen z3">测评符是什么?</p>
-                    <section class="fz14 z6 mt10 dfg_hg_er">
-                        测评符是一款可以用手机接任务,轻松赚 零花钱的应用,你只需要有一部智能手 测评符 机,会淘宝购物,每天一小时的零碎时 感谢您的加入 间,就可以获得不错的收入哦!而且完全 免费,安全,透明!欢迎加入官方QQ 样:
-                        <span class="red"> 643043520</span>
+			<script src="js/mui.min.js"></script>
+			<script src="js/webviewGroup.js"></script>
+			<script src="js/vue.js"></script>
+			<script src="js/base.js"></script>
+			<script>
+				new Vue({
+					el: '#seek_apper',
+					data: {
 
+					},
+					methods: {
 
-                    </section>
-                </section>
+					},
+					mounted: function() {
+						var win_sd = [{
+							url: "http://test.xiaobay.com/api/help",
+							id: 0
+						}]
 
-                <p class="qc"></p>
-            </section>
+						qiehuan(win_sd, function(group) {
 
-       
-            
-
-        </div>
-        
-        
-        <p class="pl10 pt10 pm10 fz16 z3">
-        自助回答
-        </p>
-        <section class="pl10 mui-row">
-            <section class="mui-col-xs-6 pr10  ">
-                <section class="dsf_jh_eertx pr">
-                    <section class="pr">
-                        <p class="fz16 b">账户管理</p>
-                    <p class="fz12">
-                       注册等新用户常见问题 
-                    </p>
-                    <p class="fz12 mt5">
-                        <span class="sd_hg_deert">点击进入</span>
-                    </p>
-                        </section>
-                    <i class="dx icon-user cf dfs_jh_feert"></i>
-                </section>
-            </section>
-            
-             <section class="mui-col-xs-6 pr10  ">
-                <section class="dsf_jh_eertx pr ab">
-                    <section class="pr">
-                        <p class="fz16 b">操作任务</p>
-                    <p class="fz12">
-                       操作任务遇到的问题 
-                    </p>
-                    <p class="fz12 mt5">
-                        <span class="sd_hg_deert">点击进入</span>
-                    </p>
-                        </section>
-                    <i class="dx icon-iconset0136 cf dfs_jh_feert"></i>
-                </section>
-            </section>
-            
-            
-                    <section class="mui-col-xs-6 pr10  ">
-                <section class="dsf_jh_eertx pr ac">
-                    <section class="pr">
-                        <p class="fz16 b">返款管理</p>
-                    <p class="fz12">
-              返款类相关问题
-                    </p>
-                    <p class="fz12 mt5">
-                        <span class="sd_hg_deert">点击进入</span>
-                    </p>
-                        </section>
-                    <i class="dx icon-tieziguanli cf dfs_jh_feert"></i>
-                </section>
-            </section>
-            
-            
-            
-            
-                    <section class="mui-col-xs-6 pr10  ">
-                <section class="dsf_jh_eertx pr ad">
-                    <section class="pr">
-                        <p class="fz16 b">其他问题</p>
-                    <p class="fz12">
-                       推广、网赚等相关问题 
-                    </p>
-                    <p class="fz12 mt5">
-                        <span class="sd_hg_deert">点击进入</span>
-                    </p>
-                        </section>
-                    <i class="dx icon-file cf dfs_jh_feert"></i>
-                </section>
-            </section>
-            
-            
-            
-        
-        </section>
-               <p class="pl10 pt10 pm10 fz16 z3">
-        在线客服
-        </p>
-        <section class="pd">
-        
-        <section class="sd_kjhj_der yj4 br mui-row">
-        
-            <p class="fz12 mui-col-xs-9">
-            如自助回复无法回答你的问题可以咨询在线客
-服,<span class="ls">客服工作时间为周一至周日9:00-18:00</span>,其
-它时间无人在线,在线咨询需排队,请耐心等待
-哦(排队等待时直接说明你的问题客服接入时就
-能看到可以提高处理效率哦!)
-            </p>
-            <section class="mui-col-xs-3 cen pt30">
-                <i class="dx icon-weixinliaotian cf dsf_derttxc"></i>
-                <p class="mt10">
-                <span class="sd_hg_deert ab fz12">点击进入</span>
-                </p>
-            </section>
-            
-        </section>
-</section>
-    </section>
-
-
-
-
-    <script src="js/mui.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/base.js"></script>
-    <script>
-        new Vue({
-            el: '#seek_apper',
-            data: {
-               
-
-            },
-            methods: {
-               
-            },
-            mounted: function() {
-
-            }
-        })
-
-    </script>
-</body>
+						}, false, 65)
+					}
+				})
+			</script>
+	</body>
 
 </html>

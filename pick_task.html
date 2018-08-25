@@ -25,7 +25,7 @@
 				<section class="bgff pd pt10 pm10">
 					<p class="z3 fz16 pr">
 						ID:{{buyer.buyerId}} |<span class="fz14 ml5">完成率:{{buyer.completionRate}}</span>
-						<img src="img/wenhao.png" class="wenhao_eeret">
+						<img src="img/wenhao.png" class="wenhao_eeret" @click="zhu('percentage_complete')">
 					</p>
 					<p class="fz14 mt5 z6">
 						设置好每个平台的模式,可以自由组合多个平台同时接单哦
@@ -51,16 +51,14 @@
 					</section>
 
 				</section>
-
 				<p class="pd pt5 pm5  dfd_jh_deeret">
 					淘宝任务模式:全部/淘宝/任务
 				</p>
 			</div>
 
 			<ul class="mui-table-view">
-				<li class="mui-table-view-cell" v-for="sd in sd_derr">
+				<li class="mui-table-view-cell" v-for="sd in sd_derr" @click="derr()">
 					<a class="mui-navigate-right  fz16">
-
 						<img :src="sd.icon" class="sd_jh_ceert cz">
 						<span class="fz16 cz ml10">{{sd.name}}</span>
 					</a>
@@ -69,9 +67,6 @@
 			</ul>
 
 			<section class="s_jiedan_ere " :class="is_jiedn_e?'act':''">
-				<!--<p class="fz12 z3 df_rth_err">
-                00:00:06
-            </p>-->
 				<p class="jd pr" @click="jiednas">
 					接 单
 					<img src="img/huangs_as.png" class="sd_hjh_deert">
@@ -170,9 +165,6 @@
 					jiednas: function() {
 						var th = this
 						th.is_jiedn_e = true
-
-					
-
 						this.get_renwu()
 
 						setTimeout(function() {
@@ -184,6 +176,10 @@
 						setTimeout(function() {
 
 						}, 600000);
+					},
+					//账号绑定功能未开放
+					derr: function(){
+						mui.toast("该功能未开放")
 					}
 				},
 				mounted: function() {
@@ -193,7 +189,6 @@
 					});
 
 					var getBuyerAccountBindingList = {}
-
 					getBuyerAccountBindingList.key = localStorage.token
 					m_ajax("/api/order/getBuyerAccountBindingList", getBuyerAccountBindingList, function(data) {
 						th.buyer = data.buyer

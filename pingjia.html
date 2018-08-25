@@ -1,0 +1,165 @@
+<!--评价-->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>评价</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">确认收货并好评</h1>
+
+			</header>
+			<div class="mui-content   ">
+
+				<section class="pd bgff pm10">
+					<p class="fz16 z3 pt10 pm10">第一步：去评价并截图</p>
+					<section class="fz14 z3 btm pt10 mui-row">
+						<p class="mui-col-xs-9 dian z3 pt5">评价文字:{{sd.textComment}}</p>
+						<p class="mui-col-xs-3 tr">
+							<a class="mui-btn bgls cz" @tap="fuzhi(sd.textComment})">复制</a>
+						</p>
+
+					</section>
+
+					<p class="z3 fz14 mt10 " v-if="imgComment.length>0">评价图片</p>
+
+					<section class="mui-row  pt10" v-if="imgComment.length>0">
+						<section class="mui-col-xs-4 cen" v-for="sf in imgComment">
+							<section class="pr10">
+								<img :src="sf" class="xiadan_s" />
+
+								<a class="mui-btn bgls cz fz12">点击下载</a>
+							</section>
+
+						</section>
+
+					</section>
+
+				</section>
+
+				<section class="pd bgff pm10 mt10">
+					<p class="fz16 z3 pt10 pm10">第二步：上传物流和评论截图</p>
+
+					<section class="mui-row pl10 btm pt10">
+						<section class="mui-col-xs-4 pr10 mb10" v-for="sd in sd_hjh_der" @tap="shangchuan(sd)">
+							<section>
+								<section class="dsf_jh_der_r fz12 cen pr">
+
+									<img class="head-img mui-action-preview" id="head-img1" :src="sd.img_url" v-if="sd.img_url" data-preview-src="" data-preview-group="1">
+									<span class="sd_jh_ceertx" v-if="!sd.img_url">点击上传图片</span>
+									<i class="dx icon-tupian   dsf_hj_deert" v-if="!sd.img_url"></i>
+								</section>
+								<p class="cen fz14 mt10">
+									{{sd.name}}
+								</p>
+
+							</section>
+						</section>
+
+					</section>
+
+				</section>
+
+				<p class="pd mt40">
+					<button class="fz16 pt10 pm10 w100" @tap="ijiao_e">确认提交</button>
+
+				</p>
+
+			</div>
+		</section>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+		<script src="js/mui.zoom.js"></script>
+		<script src="js/mui.previewimage.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+					sd: "",
+					sd_hjh_der: [{
+						img_url: "",
+						name: "上传物流"
+					}, {
+						img_url: "",
+						name: "评论图片"
+					}],
+					orderId: "6667"
+				},
+				methods: {
+					fuzhi: function(text) {
+						copyShareUrl(text)
+					},
+					ijiao_e: function() { //提交评论
+						var shippingComment = []
+						if(!this.sd_hjh_der[0].img_url) {
+							mui.toast("请上传物流")
+							return
+						}
+						if(!this.sd_hjh_der[1].img_url) {
+							mui.toast("评论图片")
+							return
+						}
+						shippingComment[0] = this.sd_hjh_der[0].img_url
+						shippingComment[1] = this.sd_hjh_der[1].img_url
+						var doShippingComment = {}
+						doShippingComment.key = localStorage.token
+						doShippingComment.orderId = this.orderId
+						doShippingComment.shippingComment = shippingComment
+						m_ajax("/api/order/doShippingComment", doShippingComment, function(data) {
+							mui.toast("评价成功")
+							mui.back()
+						})
+					},
+					shangchuan: function(sd) { //上传图片
+						var th = this
+						get_TE(function(dtrt_ds) {
+							var sd_deerrt = "请上传" + sd.name
+							sc.xz(sd_deerrt, function(url) {
+								putb64(url, dtrt_ds, function(url_e) {
+									sd.url = url_e
+								})
+							})
+
+						})
+					},
+				},
+				mounted: function() {
+					var getShippingComment = {},
+						th = this
+					getShippingComment.key = localStorage.token
+					getShippingComment.orderId = this.orderId
+
+					m_ajax("/api/order/getShippingComment", getShippingComment, function(data) {
+						th.sd = data
+					})
+				}
+			})
+
+			mui.init({
+				beforeback: function() {
+					//获得列表界面的webview  
+					var list = plus.webview.currentWebview().opener(); //获取父窗口
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+					mui.fire(list, 'refresh');
+					//返回true，继续页面关闭逻辑  
+					return true;
+				}
+			});
+		</script>
+	</body>
+
+</html>

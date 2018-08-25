@@ -1,7 +1,7 @@
 {
 	"@platforms": ["android", "iPhone", "iPad"],
-	"id": "H5D4D9C22",/*应用的标识，创建应用时自动生成，勿手动修改*/
-	"name": "测评符",/*应用名称，程序桌面图标名称*/
+	"id": "H56183BFE",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "小白兔",/*应用名称，程序桌面图标名称*/
 	"version": {
 		"name": "1.0",/*应用版本名称*/
 		"code": "83"
@@ -125,65 +125,62 @@
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
-					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					 /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
 					"iphone": {
 						"normal": "",/*iPhone普通屏幕程序图标，分辨率：57x57*/
 						"retina": "",/*iPhone高分屏程序图标，分辨率：114x114*/
-						"retina7": "",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
 						"spotlight-normal": "", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
 						"spotlight-retina": "", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
-						"spotlight-retina7": "",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
 						"settings-normal": "", /*iPhone设置页面程序图标，分辨率：29x29*/
-						"settings-retina": ""
+						"app@2x":"unpackage/res/icons/120x120.png","app@3x":"unpackage/res/icons/180x180.png","settings@3x":"unpackage/res/icons/87x87.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","spotlight@3x":"unpackage/res/icons/120x120.png","notification@3x":"unpackage/res/icons/60x60.png","notification@2x":"unpackage/res/icons/40x40.png"
 					},
 					"ipad": {
 						"normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
 						"retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
-						"normal7": "", /*iPad iOS7程序图标，分辨率：76x76*/
-						"retina7": "", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						 /*iPad iOS7程序图标，分辨率：76x76*/
+						 /*iPad iOS7高分屏程序图标，分辨率：152x152*/
 						"spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
 						"spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-						"spotlight-normal7": "",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-						"spotlight-retina7": "",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "",/*iPad设置页面程序图标，分辨率：29x29*/
-						"settings-retina": ""
-					}
+						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						/*iPad设置页面程序图标，分辨率：29x29*/
+						"app":"unpackage/res/icons/76x76.png","app@2x":"unpackage/res/icons/152x152.png","settings":"unpackage/res/icons/29x29.png","proapp@2x":"unpackage/res/icons/167x167.png","spotlight":"unpackage/res/icons/40x40.png","settings@2x":"unpackage/res/icons/58x58.png","spotlight@2x":"unpackage/res/icons/80x80.png","notification":"unpackage/res/icons/20x20.png","notification@2x":"unpackage/res/icons/40x40.png"
+					},"appstore":"unpackage/res/icons/1024x1024.png"
 				},
 				"android": {
-					"mdpi": "", /*普通屏程序图标，分辨率：48x48*/
-					"ldpi": "", /*大屏程序图标，分辨率：48x48*/
-					"hdpi": "", /*高分屏程序图标，分辨率：72x72*/
-					"xhdpi": "",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": ""
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"
 				}
 			},
 			"splashscreen": {
 				"ios": {
 					"iphone": {
 						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": ""
+						/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "D:/桌面/未标题-2.png","iphonex":"D:/桌面/未标题-2.png","retina47":"D:/桌面/未标题-2.png","iphonexl":"D:/桌面/未标题-2.png","retina35":"D:/桌面/未标题-2.png","retina55":"D:/桌面/未标题-2.png","retina55l":"D:/桌面/未标题-2.png"
 					},
 					"ipad": {
-						"portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": ""
+						"portrait": "D:/桌面/未标题-2.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "D:/桌面/未标题-2.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "D:/桌面/未标题-2.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "D:/桌面/未标题-2.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "D:/桌面/未标题-2.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "D:/桌面/未标题-2.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "D:/桌面/未标题-2.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "D:/桌面/未标题-2.png"
 					}
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": ""
+					"ldpi": ""
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false,"spot":false},"adid":"129919250107"
+		},"ads":{"rp":false,"splash":false,"push":false,"spot":false},"adid":"121682220508"
 	},
 	"dependencies": {
 		"pages": {
@@ -191,7 +188,17 @@
 				"resources": [
 					"indexzh.html",
 					"zijin/index.html",
-					"index_er.html"
+					"index_er.html",
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/base.css",
+					"css/style.css",
+					"js/jquery-1.11.3.min.js",
+					"js/mui.min.js",
+					"js/vue.js",
+					"js/base.js"
 				],
 				"refer": [
 					"cebian.html",
@@ -204,7 +211,8 @@
 					"user_center.html",
 					"information.html",
 					"task_center.html",
-					"complaint_center.html"
+					"complaint_center.html",
+					"login.html"
 				],
 				"priority": 0
 			},
@@ -239,23 +247,53 @@
 				"priority": 0
 			},
 			"user_center.html": {
-				"resources": [],
+				"resources": [
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.min.css",
+					"css/base.css",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.min.js",
+					"js/vue.js",
+					"js/base.js",
+					"js/page/user_center.js"
+				],
 				"refer": [
 					"percentage_complete.html",
 					"bind_account.html",
 					"name_modification.html",
-					"login.html"
+					"login.html",
+					"setting.html",
+					"customer_service.html",
+					"tutorial.html",
+					"expand_gold.html",
+					"versions.html"
 				],
 				"priority": 0
 			},
 			"index_er.html": {
-				"resources": [],
+				"resources": [
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/base.css",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/jquery-1.11.3.min.js",
+					"js/vue.js",
+					"js/base.js"
+				],
 				"refer": [
 					"login.html",
 					"principal_accounts.html",
 					"commission_account.html",
 					"announcement.html",
-					"pick_task.html"
+					"pick_task.html",
+					"tutorial.html"
 				],
 				"priority": 0
 			},
@@ -268,17 +306,47 @@
 			},
 			"complaint_center.html": {
 				"resources": [
-					"complaint_center_fa_a.html"
+					"complaint_center_fa_a.html",
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.min.css",
+					"css/base.css",
+					"css/style.css",
+					"js/jquery-1.11.3.min.js",
+					"js/mui.min.js",
+					"js/vue.js",
+					"js/webviewGroup.js",
+					"js/base.js"
 				],
-				"refer": [],
+				"refer": [
+					"complaint_center_fa_b.html"
+				],
 				"priority": 0
 			},
 			"task_center.html": {
-				"resources": [],
+				"resources": [
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.min.css",
+					"css/base.css",
+					"css/style.css",
+					"js/jquery-1.11.3.min.js",
+					"js/mui.min.js",
+					"js/vue.js",
+					"js/base.js",
+					"img/dfdf_a.png",
+					"img/dfdf_b.png",
+					"img/dfdf_c.png"
+				],
 				"refer": [
 					"unfinished_task.html",
 					"completed_task.html",
-					"cancelled_task.html"
+					"cancelled_task.html",
+					"login.html"
 				],
 				"priority": 0
 			},
@@ -292,7 +360,8 @@
 			"dingdan_list.html": {
 				"resources": [],
 				"refer": [
-					"stay_back_task.html"
+					"stay_back_task.html",
+					"login.html"
 				],
 				"priority": 0
 			},
@@ -313,51 +382,204 @@
 			"stay_back_task.html": {
 				"resources": [],
 				"refer": [
-					"submit_complaint.html"
+					"submit_complaint.html",
+					"cancel_task.html"
 				],
 				"priority": 0
 			},
 			"pick_task.html": {
 				"resources": [],
 				"refer": [
-					"operation_tasks.html"
+					"operation_tasks.html",
+					"login.html",
+					"commission_withdrawal.html",
+					"percentage_complete.html",
+					"account_binding.html"
+				],
+				"priority": 0
+			},
+			"login.html": {
+				"resources": [],
+				"refer": [
+					"retrieve_password.html",
+					"register.html"
+				],
+				"priority": 0
+			},
+			"complaint_center_fa_b.html": {
+				"href": "complaint_center_fa_b.html",
+				"resources": [
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.min.css",
+					"css/base.css",
+					"css/style.css",
+					"js/jquery-1.11.3.min.js",
+					"js/mui.min.js",
+					"js/vue.js",
+					"js/webviewGroup.js",
+					"js/base.js"
+				],
+				"priority": 0
+			},
+			"complaint_center_fa_a.html": {
+				"href": "complaint_center_fa_a.html",
+				"resources": [
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.min.css",
+					"css/base.css",
+					"css/style.css",
+					"js/jquery-1.11.3.min.js",
+					"js/mui.min.js",
+					"js/vue.js",
+					"js/webviewGroup.js",
+					"js/base.js"
+				],
+				"priority": 1,
+				"refer": [
+					"login.html"
+				]
+			},
+			"information.html": {
+				"href": "information.html",
+				"resources": [
+					"css/iconfont.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.min.css",
+					"css/base.css",
+					"css/style.css",
+					"js/jquery-1.11.3.min.js",
+					"js/mui.min.js",
+					"js/vue.js",
+					"js/base.js"
+				],
+				"priority": 2
+			},
+			"setting.html": {
+				"resources": [],
+				"refer": [
+					"login.html"
+				],
+				"priority": 0
+			},
+			"expand_gold.html": {
+				"resources": [],
+				"refer": [
+					"promote_detail_er.html",
+					"promote_detail.html"
+				],
+				"priority": 0
+			},
+			"commission_account.html": {
+				"resources": [],
+				"refer": [
+					"commission_withdrawal.html"
+				],
+				"priority": 0
+			},
+			"principal_withdrawal.html": {
+				"resources": [],
+				"refer": [
+					"withdrawal_subsidiary.html"
+				],
+				"priority": 0
+			},
+			"principal_accounts.html": {
+				"resources": [],
+				"refer": [
+					"principal_withdrawal.html"
 				],
 				"priority": 0
 			}
 		},
 		"idle": {
 			"resources": [
-				"css/mui.zoom.css",
-				"css/base.css",
+				"test.html",
+				"article/help/help.html",
 				"js/mui.picker.min.js",
-				"js/mui.lazyload.img.js",
-				"js/common.js",
+				"js/page/index_er.js",
+				"img/huangs_as.png",
+				"img/sd_dre_w.jpg",
+				"img/xiaols_bg.png",
+				"img/dsf_a.png",
+				"customer_service_backmoney.html",
+				"img/dsfd_d.png",
+				"explain.html",
+				"img/shenfs_a.png",
+				"img/quxiaods_a.png",
+				"xinzhengqq.html",
+				"new_card.html",
+				"js/page/commission_account.js",
 				"js/mui.zoom.js",
-				"js/vue.js",
-				"js/mui.min.js",
-				"css/common.css",
-				"js/webviewGroup.js",
-				"css/iconfont.css",
-				"js/components/test.js",
+				"js/common.js",
+				"img/sd_h_de.jpg",
+				"js/page/principal_accounts.js",
+				"customer_service_other.html",
 				"js/mui.previewimage.js",
-				"js/page/test.js",
-				"fonts/iconfont.ttf",
-				"css/mui.picker.min.css",
+				"img/dsf_d.png",
 				"js/city.data.js",
-				"js/mui.indexedlist.js",
-				"img/nav-bg.png",
-				"fonts/222.css",
-				"img/login_logo.png",
-				"fonts/mui.ttf",
-				"css/style.css",
+				"customer_service_operation.html",
+				"img/dsf_c.png",
+				"README.md",
+				"img/dsfd_a.png",
+				"js/page/bank_information.js",
+				"commission_details.html",
 				"js/mui.lazyload.js",
-				"js/cheng.js",
-				"js/base.js",
+				"bank_information.html",
+				"js/echarts.common.min.js",
+				"js/page/login.js",
+				"new_account.html",
+				"js/page/taobao_account.js",
 				"css/swiper3.07.min.css",
+				"img/dsf_b.png",
+				"js/page/complaint_center_xq.js",
 				"js/swiper3.07.min.js",
-				"css/mui.min.css",
-				"img/logo.png"
+				"change_password.html",
+				"complaint_center_xq.html",
+				"img/dsf_e.png",
+				"img/dsfd_c.png",
+				"css/mui.zoom.css",
+				"error.html",
+				"js/page/bind_account.js",
+				"taobao_account_bj.html",
+				"js/page/new_card.js",
+				"js/mui.lazyload.img.js",
+				"img/user_icon.png",
+				"js/page/register.js",
+				"js/page/withdrawal_subsidiary.js",
+				"js/page/submit_complaint.js",
+				"css/common.css",
+				"taobao_account.html",
+				"js/socket.io.js",
+				"new_username.html",
+				"collection_room.html",
+				"advances_gold.html",
+				"js/mui.indexedlist.js",
+				"reply_com.html",
+				"js/public/formatDate.js",
+				"js/page/new_account.js",
+				"information_xq.html",
+				"img/sji_e.png",
+				"customer_service_account.html",
+				"img/dsfd_b.png",
+				"operation_tasks_er.html",
+				"js/page/unfinished_task.js",
+				"js/page/taobao_account_bj.js",
+				"img/rentou.png",
+				"fonts/iconfont.css",
+				"receipt_information.html",
+				"img/wenhao.png",
+				"img/logo.png",
+				"js/page/retrieve_password.js",
+				"test_s.html"
 			]
 		}
-	}
+	},"fullscreen":false
 }

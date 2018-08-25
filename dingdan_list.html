@@ -19,9 +19,9 @@
 			<div id="pullrefresh" class=" mui-scroll-wrapper" v-if="date_er.length>0">
 				<div class="mui-scroll ">
 
-					<ul class="mui-table-view"> 
-						<li class="mui-table-view-cell mui-media" v-for="sd in date_er" @click="zhu('stay_back_task')">
-							
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media" v-for="sd in date_er" @click="zhu('stay_back_task','',{orderId:sd.id})">
+
 							<a href="javascript:;">
 								<img class="mui-media-object mui-pull-left df_Kj_deert " :src="sd.goodsImage">
 								<div class="mui-media-body">
@@ -53,7 +53,7 @@
 			</div>
 			<section v-else class="cen fz16 z9 mt20">
 				没有数据！
-				
+
 			</section>
 		</section>
 
@@ -67,8 +67,8 @@
 				data: {
 					page: 1,
 					date_er: "",
-					status:'',
-					type_e:""
+					status: '',
+					type_e: ""
 				},
 				methods: {
 					get_data: function(call_der) {
@@ -76,22 +76,22 @@
 
 						getOrderList.key = localStorage.token
 						getOrderList.status = this.status
-						getOrderList.taskType = this.type_e//1：垫付任务 2：浏览任务
+						getOrderList.taskType = this.type_e //1：垫付任务 2：浏览任务
 						getOrderList.page = this.page
 						m_ajax("/api/order/getOrderList", getOrderList, function(data) {
 							call_der(data)
 						})
 
-					} 
+					}
 				},
 				mounted: function() {
 					var th = this
 					mui.plusReady(function() {
-						   var self = plus.webview.currentWebview();
-
-           				 var kmn=self.chanshu;
-            				th.status=kmn
-            				th.type_e=self.type_e
+						var self = plus.webview.currentWebview();
+						var kmn = self.chanshu;
+						th.status = kmn
+						th.type_e = self.type_e
+					
 						th.get_data(function(data) {
 							th.date_er = data.list
 							plus.webview.currentWebview().parent().evalJS("sdf_df(" + JSON.stringify(data.countList) + ")");
@@ -115,12 +115,12 @@
 				km.page++
 					var th = this
 				km.get_data(function(der) {
-					var der=der.list
-					der.map(function(a){
+					var der = der.list
+					der.map(function(a) {
 						km.date_er.push(a)
 					})
-					
-					if(der.length>=10) {
+
+					if(der.length >= 10) {
 						th.endPullupToRefresh(false)
 					} else {
 						th.endPullupToRefresh(true)

@@ -2,107 +2,95 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>完成率</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link href="css/iconfont.css" rel="stylesheet" />
-    <link href="css/mui.min.css" rel="stylesheet" />
-    <link href="css/mui.picker.min.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <style>
-        body{
-            background: #fff;
-        }
-    </style>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>完成率</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			body {
+				background: #fff;
+			}
+		</style>
+	</head>
 
-<body>
-    <section id="seek_apper">
-        <header class="mui-bar mui-bar-nav asd_uy_dftx">
-            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
-            <h1 class="mui-title cf">规则说明</h1>
-    
-        </header>
-        <div class="mui-content  pl20 pr20">
-    
-            <p class=" pt20">
-                <img src="img/xiaols_bg.png" class="w100">
-            </p>
-            
-            <p class="mt30 cen">
-                <span class="sd_jh_derterter">
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">规则说明</h1>
+
+			</header>
+			<div class="mui-content  pl20 pr20">
+
+				<p class=" pt20">
+					<img src="img/xiaols_bg.png" class="w100">
+				</p>
+
+				<p class="mt30 cen">
+					<span class="sd_jh_derterter">
                     <span class="z3">接单规则</span>
-                </span>
-            </p>
-            
-            <p class="z6">
-            平台采用派单机制,用户打开APP,登录平台后,需开启接单模式,选择
-愿意接单的任务类型等条件,等待系统派单,系统有订单时,会根据如下
-几个规则综合后选择用户派单:
-            </p>
-            
-            <p class="mt10 fz12 z9">
-            1开启接单模式的用户
-2符合商家对账号的要求
-3符合平台对时间间隔和订单数量的要求
-4优先给完成率高、被投诉率低、接单量少的用户
-            </p>
-            
-            
-            
-               <p class="mt30 cen">
-                <span class="sd_jh_derterter">
+					</span>
+				</p>
+
+				<p class="z6">
+					平台采用派单机制,用户打开APP,登录平台后,需开启接单模式,选择 愿意接单的任务类型等条件,等待系统派单,系统有订单时,会根据如下 几个规则综合后选择用户派单:
+				</p>
+
+				<p class="mt10 fz12 z9">
+					1.开启接单模式的用户<br /> 2.符合商家对账号的要求
+					<br /> 3.符合平台对时间间隔和订单数量的要求
+					<br /> 4.优先给完成率高、被投诉率低、接单量少的用户
+				</p>
+
+				<p class="mt30 cen">
+					<span class="sd_jh_derterter">
                     <span class="z3">完成率</span>
-                </span>
-            </p>
-            
-                    <p class="z6">
-                        
-                       完成率是指你完成的订单数占所有系统派送给你的订单总数百分比。 
-            </p>
-            
-                   <p class="mt10 fz12 z9">
-                       
-                       1.系统派单之后不去操作,造成超时系统自动取消订单<br>
-2用户要求商家取消订单(或商家要求用户取消订单)<br>
-3用户自行取消订单<br>
-4.管理员撤销的订单
-            </p>
-            
-               <p class="mt10 fz12 z9">
-                   维持高完成率可以保持平台对商家和用户的可靠性,也会增加系统
-派送订单给你的优先级。
-                   
-            </p>
-            
-            
-        </div>
-    
-    </section>
+					</span>
+				</p>
 
+				<p class="z6">
 
+					完成率是指你完成的订单数占所有系统派送给你的订单总数百分比。
+				</p>
 
+				<p class="mt10 fz12 z9">
 
-    <script src="js/mui.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/base.js"></script>
-    <script>
-        new Vue({
-            el: '#seek_apper',
-            data: {
+					1.系统派单之后不去操作,造成超时系统自动取消订单<br> 2.用户要求商家取消订单(或商家要求用户取消订单)
+					<br> 3.用户自行取消订单
+					<br> 4.管理员撤销的订单
+				</p>
 
-            },
-            methods: {
+				<p class="mt10 fz12 z9">
+					维持高完成率可以保持平台对商家和用户的可靠性,也会增加系统 派送订单给你的优先级。
 
-            },
-            mounted: function() {
+				</p>
 
-            }
-        })
+			</div>
 
-    </script>
-</body>
+		</section>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/base.js"></script>
+		<script>
+			new Vue({
+				el: '#seek_apper',
+				data: {
+
+				},
+				methods: {
+
+				},
+				mounted: function() {
+
+				}
+			})
+		</script>
+	</body>
 
 </html>

@@ -10,7 +10,6 @@ new Vue({
 		image: "" //图片证据
 	},
 	methods: {
-
 		sd_jh_der: function(dateer) {
 			var th = this
 			get_TE(function(dtrt_ds) {
@@ -43,7 +42,7 @@ new Vue({
 			}
 
 			var doComplaint = {},
-				th = this
+			th = this
 			doComplaint.key = localStorage.token
 			doComplaint.orderId = this.orderId
 			doComplaint.reasonType = this.reasonType
@@ -56,6 +55,7 @@ new Vue({
 				})
 
 			})
+			console.log(doComplaint)
 
 		}
 
@@ -64,7 +64,7 @@ new Vue({
 		mui.previewImage();
 
 		var getComplaintReason = {},
-			th = this
+		th = this
 		getComplaintReason.key = localStorage.token
 		this.picker = new mui.PopPicker({
 			"layer": [1]
@@ -79,7 +79,7 @@ new Vue({
 		mui.plusReady(function() {
 			var self = plus.webview.currentWebview();
 			var kmn = self.ytds_id; //获取页面传过来的值
-			th.orderId=kmn
+			th.orderId = kmn;
 
 		})
 

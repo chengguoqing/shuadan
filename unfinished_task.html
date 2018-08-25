@@ -2,64 +2,55 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <title>未完成垫付任务</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link href="css/iconfont.css" rel="stylesheet" />
-    <link href="css/mui.min.css" rel="stylesheet" /> 
-    <link href="css/mui.picker.min.css" rel="stylesheet" />
-    <link href="css/base.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <style>
-    	.dsfds_er .mui-col-xs-3:nth-child(2),.dsfds_er .mui-col-xs-3:nth-child(3){
-    		display: none;
-    	}
-    	.dsfds_er .mui-col-xs-3{
-    		width: 50%; 
-    	}
-    </style>
-</head>
- 
-<body>
-    <section id="seek_apper">  
-        <header class="mui-bar mui-bar-nav asd_uy_dftx">
-            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
-            <h1 class="mui-title cf">未完{{is_lex==1?'垫付任务':'浏览任务'}}</h1>
+	<head>
+		<meta charset="UTF-8">
+		<title>未完成垫付任务</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="css/base.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			.dsfds_er .mui-col-xs-3:nth-child(2),
+			.dsfds_er .mui-col-xs-3:nth-child(3) {
+				display: none;
+			}
+			
+			.dsfds_er .mui-col-xs-3 {
+				width: 50%;
+			}
+		</style>
+	</head>
 
-        </header>
-        <div class="mui-content ">
-            <section class="mui-row dsf_jh_dertt cen mui-scroll" :class="is_lex==2?'dsfds_er':''">
-                <section class="mui-col-xs-3 fz16 mui-control-item " v-for="(sd,idx) in sder_er" :class="sd.cls" @tap="sd_hg_e(sd)" :data-wid="'dingdan_list.html'+sd.id">
-                    <span class="pr ">
-                      {{sd.name}}
-                  <span class="hg_hgsd_der ab" v-if="sd.num>0">{{sd.num}}</span>
-                    </span>
-                </section>
+	<body>
+		<section id="seek_apper">
+			<header class="mui-bar mui-bar-nav asd_uy_dftx">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left cf"></a>
+				<h1 class="mui-title cf">未完{{is_lex==1?'垫付任务':'浏览任务'}}</h1>
 
-            </section>  
+			</header>
+			<div class="mui-content ">
+				<section class="mui-row dsf_jh_dertt cen mui-scroll" :class="is_lex==2?'dsfds_er':''">
+					<section class="mui-col-xs-3 fz16 mui-control-item " v-for="(sd,idx) in sder_er" :class="sd.cls" @tap="sd_hg_e(sd)" :data-wid="'dingdan_list.html'+sd.id">
+						<span class="pr ">
+                      		{{sd.name}}
+                  			<span class="hg_hgsd_der ab" v-if="sd.num>0">{{sd.num}}</span>
+						</span>
+					</section>
 
-           
- 
+				</section>
 
+			</div>
 
+		</section>
 
-        </div>
-
-
-    </section>
-
-
-
-
-    <script src="js/mui.min.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/webviewGroup.js"></script>
-    <script src="js/base.js"></script>
-    <script src="js/page/unfinished_task.js">
-
-
-    </script>
-</body>
+		<script src="js/mui.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/webviewGroup.js"></script>
+		<script src="js/base.js"></script>
+		<script src="js/page/unfinished_task.js">
+		</script>
+	</body>
 
 </html>

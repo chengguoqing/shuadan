@@ -59,7 +59,7 @@ new Vue({
 		]
 	},
 	methods: {
-
+		
 		tishi: function(dateer) {
 			var th = this
 			get_TE(function(dtrt_ds) {
@@ -113,11 +113,15 @@ new Vue({
 				th.user_icon = e.files[0]
 			}, function(e) {
 
-			}, {
+			}, { 
 				filter: "image",
 				multiple: true,
 				system: false
 			});
+		},
+		tiaos_sd:function(url){
+		
+			this.zhu(url)
 		}
 	},
 	mounted: function() {

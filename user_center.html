@@ -32,19 +32,19 @@
                 </p>
             </section>
             <section class="mui-col-xs-6">
-                <p class="fz16">
-                    等级:{{sd.groupName}}
+                <p class="fz16">等级:{{sd.groupName}}</p>
+                <p class="fz12">
+                	(等级根据接单次数)
                 </p>
             </section>
 
         </section>
 
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell pr" v-for="sd in user_meat" @click="zhu(sd.url_er)">
+            <li class="mui-table-view-cell pr" v-for="sd in user_meat" @click="tiaos_sd(sd.url_er)">
                 <label class="yj4 dsf_jh_ddff f_b cz " :class="sd.clsss_s">
                     <i class="dx  cf cz " :class="[sd.icon,'fz'+sd.size]"></i>
                 </label>
-
                 <span class="ml10 fz16 z6 cz">
                 {{sd.name}}
                 </span>

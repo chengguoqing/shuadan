@@ -7,7 +7,6 @@ var km = new Vue({
 				cls: "mui-active ",
 				name: "待操作",
 				num: 0
-
 			},
 			{
 				id: 2,
@@ -26,7 +25,7 @@ var km = new Vue({
 				cls: "",
 				name: "待确认",
 				num: 0
-
+				
 			}
 		],
 		is_lex: 1,
@@ -54,7 +53,6 @@ var km = new Vue({
 		var th = this
 		mui.plusReady(function() {
 			var self = plus.webview.currentWebview();
-
 			var kmn = self.type_e;
 			th.is_lex = kmn
 			qiehuan(th.sd_deer, function(group) {

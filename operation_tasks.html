@@ -121,15 +121,15 @@
 			</section>
 
 			<!--垫付任务类型一：关键字-->
-			<gjz :keyanswer="sd.keyAnswer" :wangwang="sd.accountName" :orderId="orderId" v-if="sd_dddf==1"></gjz>
+			<gjz :keyanswer="sd.keyAnswer" :wangwang="sd.accountName" :shuju_e="sd" v-if="sd_dddf==1"></gjz>
 			<!--垫付任务类型二：截图-->
-			<renwu :wangwang="sd.accountName" :orderId="orderId" v-if="sd_dddf==2"></renwu>
+			<renwu :wangwang="sd.accountName" v-if="sd_dddf==2" :shuju_e="sd"></renwu>
 
 			<!--浏览任务类型一：关键字-->
-			<llrw_gj :wangwang="sd.accountName" :orderId="orderId" v-if="sd_dddf==3" :keyanswer="sd.keyAnswer"></llrw_gj>
+			<llrw_gj :wangwang="sd.accountName" :orderId="orderId" :shuju_e="sd" v-if="sd_dddf==3" :keyanswer="sd.keyAnswer"></llrw_gj>
 
 			<!--浏览任务类型二：截图-->
-			<llrw_jt :wangwang="sd.accountName" :orderId="orderId" v-if="sd_dddf==4"></llrw_jt>
+			<llrw_jt :wangwang="sd.accountName" :orderId="orderId" :shuju_e="sd" v-if="sd_dddf==4"></llrw_jt>
 
 		</section>
 
@@ -138,7 +138,7 @@
 		<script src="js/vue.js"></script>
 		<script src="js/base.js"></script>
 		<script src="js/zujian/gjz.js"></script>
-		<script src="js/zujian/czrw.js"></script>
+		<script src="js/zujian/czrw.js?v=10"></script>
 		<script src="js/zujian/llrw_gj.js"></script>
 		<script src="js/zujian/llrw_jt.js"></script>
 		<script>
@@ -155,20 +155,17 @@
 					dakaitb: function() { //打开淘宝
 						location.href = "taobao://";
 					},
-
 				},
 				mounted: function() {
-
 					var th = this,
 						getTaskDetailsPage = {}
 					mui.plusReady(function() {
 						var self = plus.webview.currentWebview();
 						getTaskDetailsPage.key = localStorage.token
 						//						getTaskDetailsPage.orderId = 6667
-					getTaskDetailsPage.orderId = self.id_pe
-
+						//						th.orderId = 6667
+						getTaskDetailsPage.orderId = self.id_pe
 						th.orderId = getTaskDetailsPage.orderId
-
 						m_ajax("/api/order/getTaskDetail", getTaskDetailsPage, function(data) {
 							th.sd = data
 							th.goodsInfo = data.goodsInfo
